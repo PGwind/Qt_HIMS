@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/backgroud">
+        <file>images/backgroud/login_bg.png</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>images/icons/close.png</file>
+        <file>images/icons/minus.png</file>
+    </qresource>
+</RCC>
