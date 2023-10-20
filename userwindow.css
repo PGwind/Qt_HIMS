@@ -1,0 +1,31 @@
+/* 设置主窗口的背景图片 */
+QMainWindow#userwindow {
+    /*background-image: url(:/backgroud/images/backgroud/user_bg.jpg);*/
+    background-color: #E6E6E6;
+    background-repeat: no-repeat;
+    background-position: center;QMainWindow {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #FFFFFF, stop:1 rgba(255, 255, 255, 0));
+}
+
+}
+
+QGroupBox {
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+QLabel {
+    background-color: #3498db;
+    color: white;
+    border: 2px solid #2980b9;
+    border-radius: 5px;
+    text-align: center; /* 设置文本水平居中 */
+    vertical-align: middle; /* 设置文本垂直居中 */
+}
+
+QLabel:hover {
+    background-color: #FACC2E;
+}
+
+
