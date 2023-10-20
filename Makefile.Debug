@@ -118,13 +118,22 @@ compiler_rcc_clean:
 	-$(DEL_FILE) debug\qrc_images.cpp debug\qrc_style.cpp
 debug/qrc_images.cpp: images.qrc \
 		E:/qt/6.2.4/mingw_64/bin/rcc.exe \
+		images/backgroud/user_bg.jpg \
+		images/backgroud/uesr_bg.png \
 		images/backgroud/login_bg.png \
+		images/icons/picture.png \
+		images/icons/clear.png \
+		images/icons/cancel.png \
 		images/icons/minus.png \
-		images/icons/close.png
+		images/icons/search.png \
+		images/icons/close.png \
+		images/icons/modify.png \
+		images/icons/save.png
 	E:\qt\6.2.4\mingw_64\bin\rcc.exe -name images images.qrc -o debug\qrc_images.cpp
 
 debug/qrc_style.cpp: style.qrc \
 		E:/qt/6.2.4/mingw_64/bin/rcc.exe \
+		userwindow.css \
 		login.css
 	E:\qt\6.2.4\mingw_64\bin\rcc.exe -name style style.qrc -o debug\qrc_style.cpp
 
@@ -268,6 +277,26 @@ debug/moc_login.cpp: login.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qicon.h \
+		userwindow.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLineEdit \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextcursor.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextformat.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qpen.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextoption.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QPushButton \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/QFile \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/QWidget \
 		E:/qt/6.2.4/mingw_64/include/QtGui/QMouseEvent \
 		E:/qt/6.2.4/mingw_64/include/QtSql/QtSql \
@@ -320,8 +349,6 @@ debug/moc_login.cpp: login.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qcryptographichash.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qdir.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qfileinfo.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qdiriterator.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qeasingcurve.h \
@@ -420,7 +447,6 @@ debug/moc_login.cpp: login.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qstyle.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabbar.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qrubberband.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlistview.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractitemview.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractscrollarea.h \
@@ -702,6 +728,25 @@ debug/moc_userwindow.cpp: userwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qicon.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLineEdit \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextcursor.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextformat.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qpen.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextoption.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QPushButton \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/QFile \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		debug/moc_predefs.h \
 		E:/qt/6.2.4/mingw_64/bin/moc.exe
 	E:\qt\6.2.4\mingw_64\bin\moc.exe $(DEFINES) --include D:/qt_project/Project/IMS/debug/moc_predefs.h -IE:/qt/6.2.4/mingw_64/mkspecs/win32-g++ -ID:/qt_project/Project/IMS -IE:/qt/6.2.4/mingw_64/include -IE:/qt/6.2.4/mingw_64/include/QtWidgets -IE:/qt/6.2.4/mingw_64/include/QtGui -IE:/qt/6.2.4/mingw_64/include/QtSql -IE:/qt/6.2.4/mingw_64/include/QtCore -IE:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IE:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IE:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IE:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IE:/qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IE:/qt/Tools/mingw1120_64/x86_64-w64-mingw32/include userwindow.h -o debug\moc_userwindow.cpp
@@ -868,6 +913,26 @@ debug/login.o: login.cpp login.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qicon.h \
+		userwindow.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLineEdit \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextcursor.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextformat.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qpen.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextoption.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QPushButton \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/QFile \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/QWidget \
 		E:/qt/6.2.4/mingw_64/include/QtGui/QMouseEvent \
 		E:/qt/6.2.4/mingw_64/include/QtSql/QtSql \
@@ -920,8 +985,6 @@ debug/login.o: login.cpp login.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qcryptographichash.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qdir.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qfileinfo.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qdiriterator.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qeasingcurve.h \
@@ -1020,7 +1083,6 @@ debug/login.o: login.cpp login.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qstyle.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabbar.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qrubberband.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlistview.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractitemview.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractscrollarea.h \
@@ -1035,29 +1097,9 @@ debug/login.o: login.cpp login.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmessagebox.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qdialog.h \
 		ui_login.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/QVariant \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qinputmethod.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QFrame \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLabel \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlabel.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qpicture.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qtextdocument.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLineEdit \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlineedit.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qtextcursor.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qtextformat.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qpen.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qtextoption.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QPushButton \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qpushbutton.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractbutton.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/QFile \
 		E:/qt/6.2.4/mingw_64/include/QtCore/QDateTime \
-		E:/qt/6.2.4/mingw_64/include/QtCore/QRandomGenerator
+		E:/qt/6.2.4/mingw_64/include/QtCore/QRandomGenerator \
+		E:/qt/6.2.4/mingw_64/include/QtCore/QRegularExpression
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\login.o login.cpp
 
 debug/main.o: main.cpp mainwindow.h \
@@ -1212,6 +1254,26 @@ debug/main.o: main.cpp mainwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qlocale.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h \
 		login.h \
+		userwindow.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLineEdit \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextcursor.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextformat.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qpen.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextoption.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QPushButton \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/QFile \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/QWidget \
 		E:/qt/6.2.4/mingw_64/include/QtGui/QMouseEvent \
 		E:/qt/6.2.4/mingw_64/include/QtSql/QtSql \
@@ -1248,8 +1310,6 @@ debug/main.o: main.cpp mainwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qconcatenatetablesproxymodel.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qcryptographichash.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qdir.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qfileinfo.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qdiriterator.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qeasingcurve.h \
@@ -1348,7 +1408,6 @@ debug/main.o: main.cpp mainwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qstyle.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabbar.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qrubberband.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlistview.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractitemview.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractscrollarea.h \
@@ -1494,36 +1553,7 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qicon.h \
-		ui_mainwindow.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/QVariant \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qcoreapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qeventloop.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfuture.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfutureinterface.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qmutex.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qresultstore.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qfuture_impl.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qthreadpool.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qthread.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qdeadlinetimer.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qelapsedtimer.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qrunnable.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qexception.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qpromise.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qinputmethod.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/qlocale.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QMenuBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmenubar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmenu.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qaction.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QStatusBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qstatusbar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o mainwindow.cpp
 
 debug/userwindow.o: userwindow.cpp userwindow.h \
@@ -1656,6 +1686,25 @@ debug/userwindow.o: userwindow.cpp userwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/qnativeinterface.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtabwidget.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qicon.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLineEdit \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlineedit.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qframe.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextcursor.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextformat.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qpen.h \
+		E:/qt/6.2.4/mingw_64/include/QtGui/qtextoption.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QPushButton \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qpushbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractbutton.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QSpacerItem \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayoutitem.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/QHBoxLayout \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qboxlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgridlayout.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/QFile \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfile.h \
+		E:/qt/6.2.4/mingw_64/include/QtCore/qfiledevice.h \
 		ui_userwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\userwindow.o userwindow.cpp
 
