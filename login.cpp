@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QDateTime>
 #include <QRandomGenerator>
+#include <QRegularExpression>
 
 login::login(QWidget *parent) :
     QWidget(parent),
@@ -136,10 +137,10 @@ void login::on_btnRegister_clicked()
     QString uid = QUuid::createUuid().toString(); // 生成唯一的UUID
 
     // 密码复杂性检测
-    if (!isPasswordValid(password)) {
-        QMessageBox::warning(this, "密码较弱", "密码必须大于6位且包含大小写字母");
-        return;
-    }
+//    if (!isPasswordValid(password)) {
+//        QMessageBox::warning(this, "密码较弱", "密码必须大于6位且包含大小写字母");
+//        return;
+//    }
 
     // 检查用户名是否已存在
     QSqlQuery checkQuery;
@@ -151,6 +152,14 @@ void login::on_btnRegister_clicked()
         return;
     }
 
+
+     // 验证用户名是否包含中文字符
+    QRegularExpression regex("^[a-zA-Z0-9_]+$");
+    if (!regex.match(count).hasMatch()) {
+        QMessageBox::warning(this, "用户名包含非法字符", "用户名不能包含中文字符或特殊符号!");
+        return;
+    }
+
     // 生成随机盐值
     QString salt = GenerateRandomSalt(16);
 
@@ -159,12 +168,11 @@ void login::on_btnRegister_clicked()
 
     // 将用户名、哈希密码和盐值存储在数据库表中
     QSqlQuery query;
-    query.prepare("INSERT INTO users (uid, count, password, salt, role) VALUES (:uid, :count, :password, :salt, :role)");
-    query.bindValue(":uid", uid);
-    query.bindValue(":count", count);
-    query.bindValue(":password", hashedPassword);
-    query.bindValue(":salt", salt);
-    query.bindValue(":role", "user"); // 默认角色为 "user"
+    query.prepare("INSERT INTO users (count, password, salt, role) VALUES (:count, :password, :salt, :role)");
+    query.bindValue(":count", count); // 绑定用户名
+    query.bindValue(":password", hashedPassword); // 绑定哈希密码
+    query.bindValue(":salt", salt); // 绑定盐值
+    query.bindValue(":role", "user"); // 绑定角色
 
     if (query.exec()) {
         QMessageBox::information(this, "注册成功", "用户已成功注册!");
@@ -199,7 +207,7 @@ void login::on_btnLogin_clicked()
                 // 密码正确
                 if (userRole == "user") {
                     // 打开用户页面
-                    userWindow = new userwindow();
+                    userWindow = new userwindow(nullptr, count);
                     userWindow->show();
                    // qDebug() << "User login successful!";
                 } else if (userRole == "admin") {
@@ -233,7 +241,5 @@ void login::keyPressEvent(QKeyEvent *event) {
         on_btnLogin_clicked();
     }
 }
-
-
 
 
