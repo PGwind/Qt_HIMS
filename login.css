@@ -1,0 +1,78 @@
+/* 设置frame的背景图片 */
+QFrame#frame {
+    background-image: url(:/backgroud/images/backgroud/login_bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 设置lineEdit的样式，包括背景透明 */
+QLineEdit {
+    border: 1px solid #ccc; /* 边框 */
+    border-radius: 5px; /* 圆角 */
+    padding: 2px;
+}
+
+
+
+/* 设置btnLogin的样式 */
+QPushButton#btnLogin {
+    background-color: #58ACFA; /* 背景颜色 */
+    color: white; /* 文本颜色 */
+    border: none; /* 去掉边框 */
+    border-radius: 5px; /* 圆角 */
+    padding: 5px 10px; /* 按钮内边距 */
+}
+
+/* 鼠标悬停时的btnLogin样式 */
+QPushButton#btnLogin:hover {
+    background-color: #00568D; /* 鼠标悬停时的背景颜色 */
+}
+
+QPushButton#btnRegister {
+    background-color: #58ACFA; /* 背景颜色 */
+    color: white; /* 文本颜色 */
+    border: none; /* 去掉边框 */
+    border-radius: 5px; /* 圆角 */
+    padding: 5px 10px; /* 按钮内边距 */
+}
+
+/* 鼠标悬停时的btnLogin样式 */
+QPushButton#btnRegister:hover {
+    background-color: #00568D; /* 鼠标悬停时的背景颜色 */
+}
+
+/* 设置QLabel的样式 */
+QLabel#labelCover {
+    color: #000000; /* 文本颜色 */
+    border: 2px solid #007ACC; /* 边框颜色 */
+    border-radius: 5px; /* 圆角边框 */
+    padding: 5px; /* 内边距 */
+    background: rgba(255,255,255,0.8);
+}
+
+QPushButton {
+    border: one;
+}
+
+/* 窗口按钮 */
+QPushButton#btnMin {
+    image: url(:/icons/images/icons/minus.png);
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    padding: 4px;
+}
+
+QPushButton#btnMin:hover {
+    background-color:rgba(190, 190, 190, 200);
+}
+
+QPushButton#btnClose {
+    image: url(:/icons/images/icons/close.png);
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    padding: 4px;
+}
+
+QPushButton#btnClose:hover {
+    background-color:rgba(190, 190, 190, 200);
+}
