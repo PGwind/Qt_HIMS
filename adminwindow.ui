@@ -52,8 +52,10 @@
    <addaction name="actAdd"/>
    <addaction name="actModify"/>
    <addaction name="actDelete"/>
+   <addaction name="actRevert"/>
    <addaction name="actSave"/>
    <addaction name="separator"/>
+   <addaction name="actPwd"/>
   </widget>
   <action name="actAdd">
    <property name="icon">
@@ -101,6 +103,30 @@
    </property>
    <property name="toolTip">
     <string>保存</string>
+   </property>
+  </action>
+  <action name="actRevert">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/icons/cancel.png</normaloff>:/icons/images/icons/cancel.png</iconset>
+   </property>
+   <property name="text">
+    <string>撤回修改</string>
+   </property>
+   <property name="toolTip">
+    <string>撤回</string>
+   </property>
+  </action>
+  <action name="actPwd">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/icons/passwd.png</normaloff>:/icons/images/icons/passwd.png</iconset>
+   </property>
+   <property name="text">
+    <string>修改密码</string>
+   </property>
+   <property name="toolTip">
+    <string>修改</string>
    </property>
   </action>
  </widget>
