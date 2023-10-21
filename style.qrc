@@ -2,5 +2,6 @@
     <qresource prefix="/css">
         <file>login.css</file>
         <file>userwindow.css</file>
+        <file>adminwindow.css</file>
     </qresource>
 </RCC>
