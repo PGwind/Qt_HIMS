@@ -15,19 +15,6 @@ userwindow::userwindow(QWidget *parent, const QString &loginCount) :
     QString style = QLatin1String(styleFile.readAll());
     qApp->setStyleSheet(style);
 
-    /* 搜索栏
-    QLineEdit *searchLineEdit = new QLineEdit;
-    searchLineEdit->setPlaceholderText("搜索...");
-    searchLineEdit->setMaximumWidth(200);
-
-    // 搜索按钮
-    QPushButton *searchButton = new QPushButton();
-    searchButton->setIcon(QIcon(":/icons/images/icons/search.png")); // 设置按钮的图标
-
-    ui->toolBarUser->addWidget(searchLineEdit);
-    ui->toolBarUser->addWidget(searchButton);
-    */
-
 
     // 编号
     QLabel *count_name = new QLabel("用户名", this);

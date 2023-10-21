@@ -39,7 +39,7 @@
      <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -52,7 +52,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_3">
        <property name="title">
-        <string> </string>
+        <string/>
        </property>
        <widget class="QLabel" name="label_id">
         <property name="geometry">
@@ -171,7 +171,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_4">
        <property name="title">
-        <string> </string>
+        <string/>
        </property>
        <widget class="QLabel" name="label_attending">
         <property name="geometry">
@@ -233,7 +233,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>9</x>
@@ -252,7 +252,7 @@
         </size>
        </property>
        <property name="title">
-        <string> </string>
+        <string/>
        </property>
        <widget class="QComboBox" name="comboBox_build">
         <property name="geometry">
@@ -343,7 +343,7 @@
      <item>
       <widget class="QGroupBox" name="groupBox_2">
        <property name="title">
-        <string> </string>
+        <string/>
        </property>
        <widget class="QLabel" name="label_inpatients">
         <property name="geometry">
@@ -468,6 +468,7 @@
    <addaction name="actSave"/>
    <addaction name="actCancel"/>
    <addaction name="separator"/>
+   <addaction name="actPwd"/>
   </widget>
   <action name="actClear">
    <property name="icon">
@@ -533,6 +534,18 @@
    </property>
    <property name="toolTip">
     <string>取消修改</string>
+   </property>
+  </action>
+  <action name="actPwd">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/icons/passwd.png</normaloff>:/icons/images/icons/passwd.png</iconset>
+   </property>
+   <property name="text">
+    <string>修改密码</string>
+   </property>
+   <property name="toolTip">
+    <string>修改</string>
    </property>
   </action>
  </widget>
