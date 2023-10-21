@@ -36,9 +36,10 @@ public:
     QAction *actModify;
     QAction *actSave;
     QAction *actCancel;
+    QAction *actPwd;
     QWidget *centralwidget;
     QLabel *label_photo;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_2;
     QGroupBox *groupBox_3;
     QLabel *label_id;
@@ -54,7 +55,7 @@ public:
     QLabel *label_department;
     QLineEdit *lineEdit_attending;
     QComboBox *comboBox_department;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QGroupBox *groupBox;
     QComboBox *comboBox_build;
@@ -108,18 +109,23 @@ public:
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/icons/images/icons/cancel.png"), QSize(), QIcon::Normal, QIcon::Off);
         actCancel->setIcon(icon4);
+        actPwd = new QAction(userwindow);
+        actPwd->setObjectName(QString::fromUtf8("actPwd"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons/images/icons/passwd.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actPwd->setIcon(icon5);
         centralwidget = new QWidget(userwindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         label_photo = new QLabel(centralwidget);
         label_photo->setObjectName(QString::fromUtf8("label_photo"));
         label_photo->setGeometry(QRect(20, 40, 181, 181));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(220, 30, 561, 191));
-        horizontalLayout_2 = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(220, 30, 561, 191));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        groupBox_3 = new QGroupBox(widget);
+        groupBox_3 = new QGroupBox(layoutWidget);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
         label_id = new QLabel(groupBox_3);
         label_id->setObjectName(QString::fromUtf8("label_id"));
@@ -154,7 +160,7 @@ public:
 
         horizontalLayout_2->addWidget(groupBox_3);
 
-        groupBox_4 = new QGroupBox(widget);
+        groupBox_4 = new QGroupBox(layoutWidget);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
         label_attending = new QLabel(groupBox_4);
         label_attending->setObjectName(QString::fromUtf8("label_attending"));
@@ -173,13 +179,13 @@ public:
 
         horizontalLayout_2->addWidget(groupBox_4);
 
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(9, 255, 781, 241));
-        horizontalLayout = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(9, 255, 781, 241));
+        horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        groupBox = new QGroupBox(widget1);
+        groupBox = new QGroupBox(layoutWidget1);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setMaximumSize(QSize(350, 16777215));
         comboBox_build = new QComboBox(groupBox);
@@ -208,7 +214,7 @@ public:
 
         horizontalLayout->addWidget(groupBox);
 
-        groupBox_2 = new QGroupBox(widget1);
+        groupBox_2 = new QGroupBox(layoutWidget1);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         label_inpatients = new QLabel(groupBox_2);
         label_inpatients->setObjectName(QString::fromUtf8("label_inpatients"));
@@ -255,6 +261,7 @@ public:
         toolBarUser->addAction(actSave);
         toolBarUser->addAction(actCancel);
         toolBarUser->addSeparator();
+        toolBarUser->addAction(actPwd);
 
         retranslateUi(userwindow);
 
@@ -283,6 +290,10 @@ public:
         actCancel->setText(QCoreApplication::translate("userwindow", "\345\217\226\346\266\210\344\277\256\346\224\271", nullptr));
 #if QT_CONFIG(tooltip)
         actCancel->setToolTip(QCoreApplication::translate("userwindow", "\345\217\226\346\266\210\344\277\256\346\224\271", nullptr));
+#endif // QT_CONFIG(tooltip)
+        actPwd->setText(QCoreApplication::translate("userwindow", "\344\277\256\346\224\271\345\257\206\347\240\201", nullptr));
+#if QT_CONFIG(tooltip)
+        actPwd->setToolTip(QCoreApplication::translate("userwindow", "\344\277\256\346\224\271", nullptr));
 #endif // QT_CONFIG(tooltip)
         label_photo->setText(QCoreApplication::translate("userwindow", "TextLabel", nullptr));
         groupBox_3->setTitle(QString());

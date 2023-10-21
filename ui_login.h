@@ -25,7 +25,6 @@ public:
     QFrame *frame;
     QLineEdit *lineEdit_count;
     QLineEdit *lineEdit_passwd;
-    QPushButton *btnRegister;
     QLabel *labelCover;
     QPushButton *btnMin;
     QPushButton *btnClose;
@@ -58,9 +57,6 @@ public:
         lineEdit_passwd->setObjectName(QString::fromUtf8("lineEdit_passwd"));
         lineEdit_passwd->setGeometry(QRect(120, 200, 171, 31));
         lineEdit_passwd->setFont(font);
-        btnRegister = new QPushButton(frame);
-        btnRegister->setObjectName(QString::fromUtf8("btnRegister"));
-        btnRegister->setGeometry(QRect(90, 260, 91, 24));
         labelCover = new QLabel(frame);
         labelCover->setObjectName(QString::fromUtf8("labelCover"));
         labelCover->setGeometry(QRect(90, 50, 250, 50));
@@ -77,7 +73,7 @@ public:
         btnClose->setGeometry(QRect(400, 0, 30, 30));
         btnLogin = new QPushButton(frame);
         btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
-        btnLogin->setGeometry(QRect(220, 260, 101, 24));
+        btnLogin->setGeometry(QRect(140, 260, 121, 24));
 
         retranslateUi(login);
 
@@ -89,7 +85,6 @@ public:
         login->setWindowTitle(QCoreApplication::translate("login", "Form", nullptr));
         lineEdit_count->setPlaceholderText(QCoreApplication::translate("login", "Count", nullptr));
         lineEdit_passwd->setPlaceholderText(QCoreApplication::translate("login", "Password", nullptr));
-        btnRegister->setText(QCoreApplication::translate("login", "\346\263\250\345\206\214", nullptr));
         labelCover->setText(QCoreApplication::translate("login", "\345\214\273\351\231\242\344\275\217\351\231\242\347\256\241\347\220\206\347\263\273\347\273\237", nullptr));
         btnMin->setText(QString());
         btnClose->setText(QString());
