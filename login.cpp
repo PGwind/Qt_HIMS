@@ -14,7 +14,7 @@ login::login(QWidget *parent) :
     setWindowFlag(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
 
-    /* 加载CSS */
+    /* CSS */
     QFile styleFile(":/css/login.css");
     styleFile.open(QFile::ReadOnly);
     QString style = QLatin1String(styleFile.readAll());
@@ -45,8 +45,8 @@ login::login(QWidget *parent) :
 
 
     // 在qryModel中执行SQL查询并设置选择模型
-    qryModel->setQuery("SELECT * FROM your_table_name");
-    selModel->setModel(qryModel);
+//    qryModel->setQuery("SELECT * FROM your_table_name");
+//    selModel->setModel(qryModel);
 }
 
 login::~login()
@@ -130,6 +130,7 @@ bool login::isPasswordValid(const QString &password)
 
 
 /* 注册用户 */
+/*
 void login::on_btnRegister_clicked()
 {
     QString count = ui->lineEdit_count->text();
@@ -144,7 +145,7 @@ void login::on_btnRegister_clicked()
 
     // 检查用户名是否已存在
     QSqlQuery checkQuery;
-    checkQuery.prepare("SELECT * FROM users WHERE count = :count");
+    checkQuery.prepare("SELECT * FROM admin WHERE count = :count");
     checkQuery.bindValue(":count", count);
 
     if (checkQuery.exec() && checkQuery.next()) {
@@ -168,11 +169,10 @@ void login::on_btnRegister_clicked()
 
     // 将用户名、哈希密码和盐值存储在数据库表中
     QSqlQuery query;
-    query.prepare("INSERT INTO users (count, password, salt, role) VALUES (:count, :password, :salt, :role)");
+    query.prepare("INSERT INTO admin (count, password, salt) VALUES (:count, :password, :salt)");
     query.bindValue(":count", count); // 绑定用户名
     query.bindValue(":password", hashedPassword); // 绑定哈希密码
     query.bindValue(":salt", salt); // 绑定盐值
-    query.bindValue(":role", "user"); // 绑定角色
 
     if (query.exec()) {
         QMessageBox::information(this, "注册成功", "用户已成功注册!");
@@ -180,7 +180,7 @@ void login::on_btnRegister_clicked()
         QMessageBox::critical(this, "注册失败", "无法注册用户: " + query.lastError().text());
     }
 }
-
+*/
 
 /* 用户登录 */
 void login::on_btnLogin_clicked()
@@ -190,48 +190,38 @@ void login::on_btnLogin_clicked()
 
     // 查询数据库以获取用户的盐值和哈希密码
     QSqlQuery query;
-    query.prepare("SELECT salt, password, role FROM users WHERE count = :count");
+    query.prepare("SELECT password, salt FROM admin WHERE count = :count");
     query.bindValue(":count", count);
 
-    if (query.exec()) {
-        if (query.next()) {
-            QString salt = query.value(0).toString();
-            QString storedHashedPassword = query.value(1).toString();
-            QString userRole = query.value(2).toString();
 
-            // 重新计算用户输入密码的哈希
-            QString hashedPassword = hashPassword(password, salt);
-
-
-            if (hashedPassword == storedHashedPassword) {
-                // 密码正确
-                if (userRole == "user") {
-                    // 打开用户页面
-                    userWindow = new userwindow(nullptr, count);
-                    userWindow->show();
-                   // qDebug() << "User login successful!";
-                } else if (userRole == "admin") {
-                    // 打开管理员页面
-                    adminWindow = new MainWindow();
-                    adminWindow->show();
-                    //qDebug() << "Admin login successful!";
-                } else {
-                    // 未知角色
-                    QMessageBox::critical(this, "登录失败", "未知角色");
-                }
+    QRegularExpression regex("[a-zA-Z]");
+    if (regex.match(count).hasMatch()) {
+        if (count.contains("admin")) {
+            bool admin = adminCheck(count, password);
+            if (admin) {
+                adminWindow = new class adminWindow();
+                adminWindow->show();
                 this->close();
-
-            } else {
-                // 密码错误
-                QMessageBox::critical(this, "登录失败", "密码错误");
-            }
+            } else
+                QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
         } else {
-            // 用户不存在
-            QMessageBox::critical(this, "登录失败", "用户不存在");
+            bool manage = manageCheck(count, password);
+            if (manage) {
+                manageWindow = new MainWindow();
+                manageWindow->show();
+                this->close();
+            } else
+                QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
         }
     } else {
-        // 数据库查询失败
-        QMessageBox::critical(this, "登录失败", "数据库查询失败: " + query.lastError().text());
+        bool user = userCheck(count, password);
+        if (user) {
+            userWindow = new userwindow();
+            userWindow->show();
+            qDebug() << "成功";
+            this->close();
+        } else
+            QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
     }
 }
 
@@ -243,3 +233,67 @@ void login::keyPressEvent(QKeyEvent *event) {
 }
 
 
+// 账户管理检测
+bool login::adminCheck(const QString& count, const QString& password)
+{
+    QSqlQuery query;
+    query.prepare("SELECT password, salt FROM admin WHERE count = :count");
+    query.bindValue(":count", count);
+
+    if (query.exec() && query.next()) {
+        QString salt = query.value(1).toString();
+        QString storedHashedPassword = query.value(0).toString();
+
+        QString hashedPassword = hashPassword(password, salt);
+
+        if (hashedPassword == storedHashedPassword) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// 病人信息管理检测
+bool login::manageCheck(const QString& count, const QString& password)
+{
+    QSqlQuery query;
+    query.prepare("SELECT password, salt FROM manage WHERE count = :count");
+    query.bindValue(":count", count);
+
+    if (query.exec() && query.next()) {
+        QString salt = query.value(1).toString();
+        QString storedHashedPassword = query.value(0).toString();
+
+        QString hashedPassword = hashPassword(password, salt);
+
+        if (hashedPassword == storedHashedPassword) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// 病人信息展示检测
+bool login::userCheck(const QString& id, const QString& password)
+{
+    QSqlQuery query;
+    query.prepare("SELECT password, salt FROM users WHERE id = :id");
+    query.bindValue(":id", id);
+
+    if (query.exec() && query.next()) {
+        QString salt = query.value(1).toString();
+        QString storedHashedPassword = query.value(0).toString();
+
+       // QString hashedPassword = hashPassword(password, salt);
+
+//        if (hashedPassword == storedHashedPassword) {
+//            return true;
+//        }
+        if (password == storedHashedPassword)
+            return true;
+    }
+    qDebug() << "出现错误";
+    return false;
+}

@@ -102,19 +102,6 @@
      <string>Password</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnRegister">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>260</y>
-      <width>91</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>注册</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="labelCover">
     <property name="geometry">
      <rect>
@@ -147,7 +134,7 @@
      </rect>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="btnClose">
@@ -160,15 +147,15 @@
      </rect>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="btnLogin">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>140</x>
       <y>260</y>
-      <width>101</width>
+      <width>121</width>
       <height>24</height>
      </rect>
     </property>
