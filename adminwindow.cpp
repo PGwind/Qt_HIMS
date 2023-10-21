@@ -6,8 +6,8 @@ adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
     ui(new Ui::adminWindow),
     loginCount(loginCount)
 {
-//    if (loginCount == "admin")  // 超级用户
-//        power = true;
+    if (loginCount == "admin")  // 超级用户
+        power = true;
 //    if (power)
 //        qDebug() << "超级用户";
 //    else
