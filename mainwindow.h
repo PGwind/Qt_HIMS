@@ -13,11 +13,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
-
+    QString loginCount;
 };
 #endif // MAINWINDOW_H
