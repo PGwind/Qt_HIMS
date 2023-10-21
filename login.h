@@ -4,6 +4,10 @@
 #include "mainwindow.h"
 #include "userwindow.h"
 #include "adminwindow.h"
+#include <QFile>
+#include <QDateTime>
+#include <QRandomGenerator>
+#include <QRegularExpression>
 #include <QWidget>
 #include <QMouseEvent>
 #include <QtSql>
@@ -18,9 +22,12 @@ class login : public QWidget
 {
     Q_OBJECT
 private:
+    bool isPasswordValid(const QString &password); // 密码安全检测
+    bool adminCheck(const QString& count, const QString& password);
+    bool userCheck(const QString& count, const QString& password);
     bool m_dragging;
-    QPoint m_dragPosition;
 
+    QPoint m_dragPosition;
     QSqlDatabase  DB;   //数据库
     QSqlQueryModel  *qryModel;  //数据模型
     QItemSelectionModel *selModel;  //选择模型
@@ -28,6 +35,10 @@ private:
     userwindow *userWindow; // 病人信息展示
     MainWindow *manageWindow;   // 病人信息管理
     adminWindow *adminWindow;   // 管理员账户修改
+
+    // method
+    QString GenerateRandomSalt(int length); // 哈希盐值salt
+    QString hashPassword(const QString &password, const QString &salt); // 哈希加密
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -38,12 +49,7 @@ public:
     explicit login(QWidget *parent = nullptr);
     ~login();
 
-    QString GenerateRandomSalt(int length); // 哈希盐值salt
-    QString hashPassword(const QString &password, const QString &salt); // 哈希加密
-    bool isPasswordValid(const QString &password); // 密码安全检测
-    bool adminCheck(const QString& count, const QString& password);
-    bool manageCheck(const QString& count, const QString& password);
-    bool userCheck(const QString& count, const QString& password);
+
 
 private slots:
     void on_btnMin_clicked();   // 最小化

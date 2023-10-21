@@ -1,9 +1,5 @@
 #include "login.h"
 #include "ui_login.h"
-#include <QFile>
-#include <QDateTime>
-#include <QRandomGenerator>
-#include <QRegularExpression>
 
 login::login(QWidget *parent) :
     QWidget(parent),
@@ -199,16 +195,18 @@ void login::on_btnLogin_clicked()
         if (count.contains("admin")) {
             bool admin = adminCheck(count, password);
             if (admin) {
-                adminWindow = new class adminWindow();
+                adminWindow = new class adminWindow(nullptr, count);
                 adminWindow->show();
+                DB.close();
                 this->close();
             } else
                 QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
         } else {
-            bool manage = manageCheck(count, password);
+            bool manage = adminCheck(count, password);
             if (manage) {
-                manageWindow = new MainWindow();
+                manageWindow = new MainWindow(nullptr, count);
                 manageWindow->show();
+                DB.close();
                 this->close();
             } else
                 QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
@@ -218,7 +216,7 @@ void login::on_btnLogin_clicked()
         if (user) {
             userWindow = new userwindow();
             userWindow->show();
-            qDebug() << "成功";
+            DB.close();
             this->close();
         } else
             QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
@@ -238,27 +236,6 @@ bool login::adminCheck(const QString& count, const QString& password)
 {
     QSqlQuery query;
     query.prepare("SELECT password, salt FROM admin WHERE count = :count");
-    query.bindValue(":count", count);
-
-    if (query.exec() && query.next()) {
-        QString salt = query.value(1).toString();
-        QString storedHashedPassword = query.value(0).toString();
-
-        QString hashedPassword = hashPassword(password, salt);
-
-        if (hashedPassword == storedHashedPassword) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-// 病人信息管理检测
-bool login::manageCheck(const QString& count, const QString& password)
-{
-    QSqlQuery query;
-    query.prepare("SELECT password, salt FROM manage WHERE count = :count");
     query.bindValue(":count", count);
 
     if (query.exec() && query.next()) {
