@@ -13,6 +13,9 @@
         <file>images/icons/picture.png</file>
         <file>images/icons/cancel.png</file>
         <file>images/icons/search.png</file>
+        <file>images/icons/addUser.png</file>
+        <file>images/icons/delete.png</file>
+        <file>images/icons/passwd.png</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
