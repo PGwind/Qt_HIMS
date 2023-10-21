@@ -1,0 +1,22 @@
+/* 设置搜索框样式 */
+QLineEdit#searchLineEdit {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 100px;
+}
+
+/* 设置搜索按钮样式 */
+QPushButton#searchButton {
+    background-color: #4CAF50; /* 正常状态的背景颜色 */
+    color: white; /* 正常状态的文本颜色 */
+    border: 1px solid #4CAF50; /* 正常状态的边框颜色 */
+    border-radius: 5px; /* 圆角 */
+}
+
+/* 按下状态的搜索按钮样式 */
+QPushButton#searchButton:pressed {
+    background-color: #45a049; /* 按下状态的背景颜色 */
+    border: 1px solid #45a049; /* 按下状态的边框颜色 */
+}
+
