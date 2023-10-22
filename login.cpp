@@ -195,8 +195,8 @@ void login::on_btnLogin_clicked()
         if (count.contains("admin")) {
             bool admin = adminCheck(count, password);
             if (admin) {
-                adminWindow = new class adminWindow(nullptr, count);
-                adminWindow->show();
+                adminWin = new adminWindow(nullptr, count);
+                adminWin->show();
                 DB.close();
                 this->close();
             } else
@@ -214,7 +214,7 @@ void login::on_btnLogin_clicked()
     } else {
         bool user = userCheck(count, password);
         if (user) {
-            userWindow = new userwindow();
+            userWindow = new userwindow(nullptr, count);
             userWindow->show();
             DB.close();
             this->close();
@@ -271,6 +271,6 @@ bool login::userCheck(const QString& id, const QString& password)
         if (password == storedHashedPassword)
             return true;
     }
-    qDebug() << "出现错误";
+    //qDebug() << "出现错误";
     return false;
 }

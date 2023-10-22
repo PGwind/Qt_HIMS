@@ -1,14 +1,12 @@
-/* 设置frame的背景图片 */
 QFrame#frame {
     background-image: url(:/backgroud/images/backgroud/login_bg.png);
     background-repeat: no-repeat;
     background-position: center;
 }
 
-/* 设置lineEdit的样式，包括背景透明 */
 QLineEdit {
-    border: 1px solid #ccc; /* 边框 */
-    border-radius: 5px; /* 圆角 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
     padding: 2px;
 }
 
@@ -16,37 +14,24 @@ QLineEdit {
 
 /* 设置btnLogin的样式 */
 QPushButton#btnLogin {
-    background-color: #58ACFA; /* 背景颜色 */
-    color: white; /* 文本颜色 */
-    border: none; /* 去掉边框 */
-    border-radius: 5px; /* 圆角 */
-    padding: 5px 10px; /* 按钮内边距 */
+    background-color: #0099ff; /* 背景颜色 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 
 /* 鼠标悬停时的btnLogin样式 */
 QPushButton#btnLogin:hover {
-    background-color: #00568D; /* 鼠标悬停时的背景颜色 */
-}
-
-QPushButton#btnRegister {
-    background-color: #58ACFA; /* 背景颜色 */
-    color: white; /* 文本颜色 */
-    border: none; /* 去掉边框 */
-    border-radius: 5px; /* 圆角 */
-    padding: 5px 10px; /* 按钮内边距 */
-}
-
-/* 鼠标悬停时的btnLogin样式 */
-QPushButton#btnRegister:hover {
-    background-color: #00568D; /* 鼠标悬停时的背景颜色 */
+    background-color: #008deb;
 }
 
 /* 设置QLabel的样式 */
 QLabel#labelCover {
-    color: #000000; /* 文本颜色 */
-    border: 2px solid #007ACC; /* 边框颜色 */
-    border-radius: 5px; /* 圆角边框 */
-    padding: 5px; /* 内边距 */
+    color: #000000;
+    border: 2px solid #007ACC;
+    border-radius: 5px;
+    padding: 5px;
     background: rgba(255,255,255,0.8);
 }
 

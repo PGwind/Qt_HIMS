@@ -34,7 +34,7 @@ private:
 
     userwindow *userWindow; // 病人信息展示
     MainWindow *manageWindow;   // 病人信息管理
-    adminWindow *adminWindow;   // 管理员账户修改
+    adminWindow *adminWin;   // 管理员账户修改
 
     // method
     QString GenerateRandomSalt(int length); // 哈希盐值salt
