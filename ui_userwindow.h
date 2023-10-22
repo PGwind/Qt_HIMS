@@ -40,22 +40,6 @@ public:
     QWidget *centralwidget;
     QLabel *label_photo;
     QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout_2;
-    QGroupBox *groupBox_3;
-    QLabel *label_id;
-    QLineEdit *lineEdit_2;
-    QLabel *label_name;
-    QLabel *label_age;
-    QLabel *label_sex;
-    QLineEdit *lineEdit_3;
-    QSpinBox *spinBox;
-    QComboBox *comboBox_5;
-    QGroupBox *groupBox_4;
-    QLabel *label_attending;
-    QLabel *label_department;
-    QLineEdit *lineEdit_attending;
-    QComboBox *comboBox_department;
-    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QGroupBox *groupBox;
     QComboBox *comboBox_build;
@@ -71,6 +55,24 @@ public:
     QDateEdit *dateEdit_inpatients;
     QDateEdit *dateEdit_discharge;
     QTextEdit *textEdit_note;
+    QGroupBox *groupBox_4;
+    QLabel *label_attending;
+    QLabel *label_department;
+    QLineEdit *lineEdit_attending;
+    QComboBox *comboBox_department;
+    QLabel *label_address;
+    QLineEdit *lineEdit_address;
+    QGroupBox *groupBox_3;
+    QLabel *label_id;
+    QLineEdit *lineEdit_id;
+    QLabel *label_name;
+    QLabel *label_age;
+    QLabel *label_sex;
+    QLineEdit *lineEdit_name;
+    QSpinBox *spinBox_age;
+    QComboBox *comboBox_sex;
+    QLabel *label_idNumber;
+    QLineEdit *lineEdit_idNumber;
     QMenuBar *menubar;
     QStatusBar *statusbar;
     QToolBar *toolBarUser;
@@ -121,71 +123,11 @@ public:
         label_photo->setGeometry(QRect(20, 40, 181, 181));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(220, 30, 561, 191));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget);
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        groupBox_3 = new QGroupBox(layoutWidget);
-        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        label_id = new QLabel(groupBox_3);
-        label_id->setObjectName(QString::fromUtf8("label_id"));
-        label_id->setGeometry(QRect(20, 30, 50, 30));
-        QFont font;
-        font.setPointSize(14);
-        label_id->setFont(font);
-        lineEdit_2 = new QLineEdit(groupBox_3);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(100, 30, 171, 31));
-        label_name = new QLabel(groupBox_3);
-        label_name->setObjectName(QString::fromUtf8("label_name"));
-        label_name->setGeometry(QRect(20, 70, 50, 30));
-        label_name->setFont(font);
-        label_age = new QLabel(groupBox_3);
-        label_age->setObjectName(QString::fromUtf8("label_age"));
-        label_age->setGeometry(QRect(20, 120, 50, 30));
-        label_age->setFont(font);
-        label_sex = new QLabel(groupBox_3);
-        label_sex->setObjectName(QString::fromUtf8("label_sex"));
-        label_sex->setGeometry(QRect(163, 120, 51, 31));
-        label_sex->setFont(font);
-        lineEdit_3 = new QLineEdit(groupBox_3);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(100, 70, 171, 31));
-        spinBox = new QSpinBox(groupBox_3);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        spinBox->setGeometry(QRect(80, 120, 61, 31));
-        comboBox_5 = new QComboBox(groupBox_3);
-        comboBox_5->setObjectName(QString::fromUtf8("comboBox_5"));
-        comboBox_5->setGeometry(QRect(220, 120, 51, 31));
-
-        horizontalLayout_2->addWidget(groupBox_3);
-
-        groupBox_4 = new QGroupBox(layoutWidget);
-        groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        label_attending = new QLabel(groupBox_4);
-        label_attending->setObjectName(QString::fromUtf8("label_attending"));
-        label_attending->setGeometry(QRect(10, 40, 90, 30));
-        label_attending->setFont(font);
-        label_department = new QLabel(groupBox_4);
-        label_department->setObjectName(QString::fromUtf8("label_department"));
-        label_department->setGeometry(QRect(10, 110, 90, 30));
-        label_department->setFont(font);
-        lineEdit_attending = new QLineEdit(groupBox_4);
-        lineEdit_attending->setObjectName(QString::fromUtf8("lineEdit_attending"));
-        lineEdit_attending->setGeometry(QRect(110, 40, 161, 31));
-        comboBox_department = new QComboBox(groupBox_4);
-        comboBox_department->setObjectName(QString::fromUtf8("comboBox_department"));
-        comboBox_department->setGeometry(QRect(110, 110, 161, 31));
-
-        horizontalLayout_2->addWidget(groupBox_4);
-
-        layoutWidget1 = new QWidget(centralwidget);
-        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(9, 255, 781, 241));
-        horizontalLayout = new QHBoxLayout(layoutWidget1);
+        layoutWidget->setGeometry(QRect(9, 255, 781, 241));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        groupBox = new QGroupBox(layoutWidget1);
+        groupBox = new QGroupBox(layoutWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setMaximumSize(QSize(350, 16777215));
         comboBox_build = new QComboBox(groupBox);
@@ -194,6 +136,8 @@ public:
         label_build = new QLabel(groupBox);
         label_build->setObjectName(QString::fromUtf8("label_build"));
         label_build->setGeometry(QRect(40, 30, 70, 40));
+        QFont font;
+        font.setPointSize(14);
         label_build->setFont(font);
         label_room = new QLabel(groupBox);
         label_room->setObjectName(QString::fromUtf8("label_room"));
@@ -214,7 +158,7 @@ public:
 
         horizontalLayout->addWidget(groupBox);
 
-        groupBox_2 = new QGroupBox(layoutWidget1);
+        groupBox_2 = new QGroupBox(layoutWidget);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
         label_inpatients = new QLabel(groupBox_2);
         label_inpatients->setObjectName(QString::fromUtf8("label_inpatients"));
@@ -240,6 +184,68 @@ public:
 
         horizontalLayout->addWidget(groupBox_2);
 
+        groupBox_4 = new QGroupBox(centralwidget);
+        groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
+        groupBox_4->setGeometry(QRect(504, 11, 276, 231));
+        label_attending = new QLabel(groupBox_4);
+        label_attending->setObjectName(QString::fromUtf8("label_attending"));
+        label_attending->setGeometry(QRect(10, 40, 90, 30));
+        label_attending->setFont(font);
+        label_department = new QLabel(groupBox_4);
+        label_department->setObjectName(QString::fromUtf8("label_department"));
+        label_department->setGeometry(QRect(20, 110, 71, 30));
+        label_department->setFont(font);
+        lineEdit_attending = new QLineEdit(groupBox_4);
+        lineEdit_attending->setObjectName(QString::fromUtf8("lineEdit_attending"));
+        lineEdit_attending->setGeometry(QRect(110, 40, 161, 31));
+        comboBox_department = new QComboBox(groupBox_4);
+        comboBox_department->setObjectName(QString::fromUtf8("comboBox_department"));
+        comboBox_department->setGeometry(QRect(110, 110, 161, 31));
+        label_address = new QLabel(groupBox_4);
+        label_address->setObjectName(QString::fromUtf8("label_address"));
+        label_address->setGeometry(QRect(9, 180, 51, 30));
+        label_address->setFont(font);
+        lineEdit_address = new QLineEdit(groupBox_4);
+        lineEdit_address->setObjectName(QString::fromUtf8("lineEdit_address"));
+        lineEdit_address->setGeometry(QRect(70, 180, 191, 31));
+        groupBox_3 = new QGroupBox(centralwidget);
+        groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
+        groupBox_3->setGeometry(QRect(221, 11, 277, 231));
+        label_id = new QLabel(groupBox_3);
+        label_id->setObjectName(QString::fromUtf8("label_id"));
+        label_id->setGeometry(QRect(20, 30, 50, 30));
+        label_id->setFont(font);
+        lineEdit_id = new QLineEdit(groupBox_3);
+        lineEdit_id->setObjectName(QString::fromUtf8("lineEdit_id"));
+        lineEdit_id->setGeometry(QRect(100, 30, 171, 31));
+        label_name = new QLabel(groupBox_3);
+        label_name->setObjectName(QString::fromUtf8("label_name"));
+        label_name->setGeometry(QRect(20, 70, 50, 30));
+        label_name->setFont(font);
+        label_age = new QLabel(groupBox_3);
+        label_age->setObjectName(QString::fromUtf8("label_age"));
+        label_age->setGeometry(QRect(20, 120, 50, 30));
+        label_age->setFont(font);
+        label_sex = new QLabel(groupBox_3);
+        label_sex->setObjectName(QString::fromUtf8("label_sex"));
+        label_sex->setGeometry(QRect(163, 120, 51, 31));
+        label_sex->setFont(font);
+        lineEdit_name = new QLineEdit(groupBox_3);
+        lineEdit_name->setObjectName(QString::fromUtf8("lineEdit_name"));
+        lineEdit_name->setGeometry(QRect(100, 70, 171, 31));
+        spinBox_age = new QSpinBox(groupBox_3);
+        spinBox_age->setObjectName(QString::fromUtf8("spinBox_age"));
+        spinBox_age->setGeometry(QRect(80, 120, 61, 31));
+        comboBox_sex = new QComboBox(groupBox_3);
+        comboBox_sex->setObjectName(QString::fromUtf8("comboBox_sex"));
+        comboBox_sex->setGeometry(QRect(220, 120, 51, 31));
+        label_idNumber = new QLabel(groupBox_3);
+        label_idNumber->setObjectName(QString::fromUtf8("label_idNumber"));
+        label_idNumber->setGeometry(QRect(9, 180, 61, 30));
+        label_idNumber->setFont(font);
+        lineEdit_idNumber = new QLineEdit(groupBox_3);
+        lineEdit_idNumber->setObjectName(QString::fromUtf8("lineEdit_idNumber"));
+        lineEdit_idNumber->setGeometry(QRect(80, 180, 181, 31));
         userwindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(userwindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -271,9 +277,9 @@ public:
     void retranslateUi(QMainWindow *userwindow)
     {
         userwindow->setWindowTitle(QCoreApplication::translate("userwindow", "MainWindow", nullptr));
-        actClear->setText(QCoreApplication::translate("userwindow", "\346\270\205\351\231\244\345\244\264\345\203\217", nullptr));
+        actClear->setText(QCoreApplication::translate("userwindow", "\346\270\205\351\231\244\347\205\247\347\211\207", nullptr));
 #if QT_CONFIG(tooltip)
-        actClear->setToolTip(QCoreApplication::translate("userwindow", "\346\270\205\351\231\244\345\244\264\345\203\217", nullptr));
+        actClear->setToolTip(QCoreApplication::translate("userwindow", "\346\270\205\351\231\244\347\205\247\347\211\207", nullptr));
 #endif // QT_CONFIG(tooltip)
         actPhoto->setText(QCoreApplication::translate("userwindow", "\350\256\276\347\275\256\347\205\247\347\211\207", nullptr));
 #if QT_CONFIG(tooltip)
@@ -296,14 +302,6 @@ public:
         actPwd->setToolTip(QCoreApplication::translate("userwindow", "\344\277\256\346\224\271", nullptr));
 #endif // QT_CONFIG(tooltip)
         label_photo->setText(QCoreApplication::translate("userwindow", "TextLabel", nullptr));
-        groupBox_3->setTitle(QString());
-        label_id->setText(QCoreApplication::translate("userwindow", "\347\274\226\345\217\267", nullptr));
-        label_name->setText(QCoreApplication::translate("userwindow", "\345\247\223\345\220\215", nullptr));
-        label_age->setText(QCoreApplication::translate("userwindow", "\345\271\264\351\276\204", nullptr));
-        label_sex->setText(QCoreApplication::translate("userwindow", "\346\200\247\345\210\253", nullptr));
-        groupBox_4->setTitle(QString());
-        label_attending->setText(QCoreApplication::translate("userwindow", "\344\270\273\346\262\273\345\214\273\345\270\210", nullptr));
-        label_department->setText(QCoreApplication::translate("userwindow", "\347\247\221\345\256\244", nullptr));
         groupBox->setTitle(QString());
         label_build->setText(QCoreApplication::translate("userwindow", "\344\275\217\351\231\242\346\245\274", nullptr));
         label_room->setText(QCoreApplication::translate("userwindow", "\347\227\205\346\210\277", nullptr));
@@ -312,6 +310,16 @@ public:
         label_inpatients->setText(QCoreApplication::translate("userwindow", "\345\205\245\351\231\242\346\227\266\351\227\264", nullptr));
         label_discharge->setText(QCoreApplication::translate("userwindow", "\345\207\272\351\231\242\346\227\266\351\227\264", nullptr));
         label_note->setText(QCoreApplication::translate("userwindow", "\345\244\207\346\263\250", nullptr));
+        groupBox_4->setTitle(QString());
+        label_attending->setText(QCoreApplication::translate("userwindow", "\344\270\273\346\262\273\345\214\273\345\270\210", nullptr));
+        label_department->setText(QCoreApplication::translate("userwindow", "\347\247\221\345\256\244", nullptr));
+        label_address->setText(QCoreApplication::translate("userwindow", "\344\275\217\345\235\200", nullptr));
+        groupBox_3->setTitle(QString());
+        label_id->setText(QCoreApplication::translate("userwindow", "\347\274\226\345\217\267", nullptr));
+        label_name->setText(QCoreApplication::translate("userwindow", "\345\247\223\345\220\215", nullptr));
+        label_age->setText(QCoreApplication::translate("userwindow", "\345\271\264\351\276\204", nullptr));
+        label_sex->setText(QCoreApplication::translate("userwindow", "\346\200\247\345\210\253", nullptr));
+        label_idNumber->setText(QCoreApplication::translate("userwindow", "\350\272\253\344\273\275\350\257\201", nullptr));
         toolBarUser->setWindowTitle(QCoreApplication::translate("userwindow", "toolBar", nullptr));
     } // retranslateUi
 

@@ -73,7 +73,7 @@ public:
         btnClose->setGeometry(QRect(400, 0, 30, 30));
         btnLogin = new QPushButton(frame);
         btnLogin->setObjectName(QString::fromUtf8("btnLogin"));
-        btnLogin->setGeometry(QRect(140, 260, 121, 24));
+        btnLogin->setGeometry(QRect(130, 260, 151, 25));
 
         retranslateUi(login);
 
