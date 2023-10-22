@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     adminwindow.cpp \
+    dialog.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,12 +19,14 @@ SOURCES += \
 
 HEADERS += \
     adminwindow.h \
+    dialog.h \
     login.h \
     mainwindow.h \
     userwindow.h
 
 FORMS += \
     adminwindow.ui \
+    dialog.ui \
     login.ui \
     mainwindow.ui \
     userwindow.ui
