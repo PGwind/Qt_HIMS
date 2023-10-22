@@ -2,6 +2,22 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVBoxLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QSpacerItem>
+#include <QStatusBar>
+#include <QHBoxLayout>
+#include <QFile>
+#include <QLabel>
+#include <QtSql>
+#include <QItemSelectionModel>
+#include <QMessageBox>
+#include <QRandomGenerator>
+#include <QInputDialog>
+#include <QMouseEvent>
+#include <userwindow.h>
+
 
 
 QT_BEGIN_NAMESPACE
@@ -11,10 +27,39 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+private:
+    QLineEdit *searchLineEdit;
+    QPushButton *searchButton;
+    QLabel *recordCountLabel;
+
+    QSqlDatabase DB;
+    QSqlQueryModel *qryModel;
+    QItemSelectionModel *selModel;
+
+    bool isEditingEnabled; // tableview编辑
+
+    void openTable();   // 连接
+    void selectData(); //查询数据
+    void showRecordCount(); // 记录数
+    void updateRecord(int recNo);
+
+    QString GenerateRandomSalt(int length); // 哈希盐值salt
+    QString hashPassword(const QString &password, const QString &salt); // 哈希加密
+    bool updatePassword(const QString &logincount, const QString &newPassword); // 密码修改
+   // void keyPressEvent(QKeyEvent *event) override; // 快捷键搜索
 
 public:
     MainWindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_actModify_triggered();
+
+    void on_tableView_doubleClicked(const QModelIndex &index);
+
+    void on_actAdd_triggered();
+
+    void on_actDelete_triggered();
 
 private:
     Ui::MainWindow *ui;
