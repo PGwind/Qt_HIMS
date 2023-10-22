@@ -3,5 +3,6 @@
         <file>login.css</file>
         <file>userwindow.css</file>
         <file>adminwindow.css</file>
+        <file>mainwindow.css</file>
     </qresource>
 </RCC>
