@@ -16,8 +16,6 @@ adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
     ui->setupUi(this);
     setWindowTitle("高级用户信息管理");
 
-    isEditingEnabled = false;
-
     /* CSS */
     QFile styleFile(":/css/adminwindow.css");
     styleFile.open(QFile::ReadOnly);
@@ -117,6 +115,7 @@ void adminWindow::openTable()
 
     /* 2.Model/View结构 */
     ui->tableView->setModel(model);
+    isEditingEnabled = false; // 默认禁止修改
     // 标题样式
     QHeaderView* header = ui->tableView->horizontalHeader();
     header->setStyleSheet("QHeaderView::section { background-color: #3498db; color: white; border: 1px solid #2980b9; }");
@@ -152,9 +151,6 @@ void adminWindow::openTable()
     ui->actModify->setEnabled(true);
     ui->actDelete->setEnabled(false);
     ui->actRevert->setEnabled(false);
-
-
-
 }
 
 /* 显示记录 */
@@ -296,7 +292,7 @@ void adminWindow::on_actSave_triggered()
 void adminWindow::on_actDelete_triggered()
 {
     int row = ui->tableView->currentIndex().row();//记录当前选择行
-    if(QMessageBox::Yes == QMessageBox::question(this,"警告","确定删除第"+QString::number(row)+"行吗？",QMessageBox::Yes | QMessageBox::No , QMessageBox::Yes))
+    if(QMessageBox::Yes == QMessageBox::question(this,"警告","确定删除第"+QString::number(row)+"行吗？此操作无法撤回！",QMessageBox::Yes | QMessageBox::No , QMessageBox::Yes))
     {
         if(model->select())//判断是否为空表
             model->removeRow(row);//删除当前行
@@ -385,7 +381,7 @@ bool adminWindow::updatePassword(const QString &logincount, const QString &newPa
         QModelIndex index = model->index(i, model->fieldIndex("count"));
         if (model->data(index).toString() == logincount) {
             row = i;
-            qDebug() << QString("行数 %1").arg(i);
+           // qDebug() << QString("行数 %1").arg(i);
             break;
         }
     }

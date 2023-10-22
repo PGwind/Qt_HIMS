@@ -30,9 +30,9 @@ private:
 
     bool isEditingEnabled;
     QLabel *recordCountLabel;
-    QSqlDatabase DB; //数据库连接
-    QSqlTableModel *model; //数据模型
-    QItemSelectionModel *selModel; //选择模型
+    QSqlDatabase DB; 
+    QSqlTableModel *model; 
+    QItemSelectionModel *selModel; 
 
     void openTable();   // 连接
     void showRecordCount(); // 记录数
