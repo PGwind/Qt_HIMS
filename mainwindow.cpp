@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent, const QString &loginCount)
     ui->setupUi(this);
     setWindowTitle("住院病人信息管理");
 
+    qDebug() << loginCount;
+
     /* CSS */
     QFile styleFile(":/css/mainwindow.css");
     styleFile.open(QFile::ReadOnly);
@@ -156,14 +158,15 @@ void MainWindow::selectData()
 }
 
 
-/* 显示记录 */
+/************************************ 按钮 **********************************/
+// 显示记录
 void MainWindow::showRecordCount()
 {
     int recordCount = qryModel->rowCount(); // 使用 qryModel 获取记录数
     recordCountLabel->setText(QString("记录条数：%1").arg(recordCount));
 }
 
-// 修改
+// 修改按钮
 void MainWindow::on_actModify_triggered()
 {
     int curRecNo= selModel->currentIndex().row();
@@ -195,36 +198,32 @@ void MainWindow::updateRecord(int recNo)
     }
 
     curRec = query.record();
-    userwindow *user = new userwindow(this, id);
-    //Qt::WindowFlags flags= user->windowFlags();
-    //user->setWindowFlags(flags | Qt:: MSWindowsFixedSizeDialogHint);
-  //  user->updateRecord(curRec);
-    user->show();
+    Dialog *dataDialog = new Dialog(this);
+    Qt::WindowFlags flags= dataDialog->windowFlags();
+    dataDialog->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint); //对话框固定大小
+    dataDialog->setUpdateRecord(curRec);
 
-    bool ret = user->isSave;
-    if (ret) {
-        QSqlRecord recData= user->getRecordData(); //获取对话框返回的记录
+    int ret= dataDialog->exec();
+    if (ret == QDialog::Accepted) {
+        QSqlRecord recData= dataDialog->getRecordData(); //获取对话框返回的记录
         query.prepare("UPDATE personinfo SET name=:name, age=:age,"
                       " gender=:gender, photo=:photo,"
-                      " idNumber=:idNumber, address=:address");
+                      " idNumber=:idNumber, contact=:contact, address=:address");
 
-        query.bindValue(":name", recData.value("Name"));
-        query.bindValue("age", recData.value("Gender"));
-        query.bindValue(":gender",recData.value("Birthday"));
-        query.bindValue(":photo",recData.value("Province"));
-        query.bindValue(":idNumber", recData.value("Department"));
-        query.bindValue(":address", recData.value("Salary"));
-        query.bindValue(":Memo", recData.value("Memo"));
-        query.bindValue(":Photo", recData.value("Photo"));
+        query.bindValue(":name", recData.value("name"));
+        query.bindValue("age", recData.value("age"));
+        query.bindValue(":gender",recData.value("gender"));
+        query.bindValue(":photo",recData.value("photo"));
+        query.bindValue(":idNumber", recData.value("idNumber"));
+        query.bindValue(":contact", recData.value("contact"));
+        query.bindValue(":address", recData.value("address"));
 
         if (!query.exec())
             QMessageBox::critical(this, "错误", "记录更新错误\n"+query.lastError().text());
         else
             qryModel->query().exec(); //数据模型重新查询数据，更新 tableView 显示内容
-
-         delete user;
     }
-
+    delete dataDialog;
 }
 
 // 添加
@@ -234,15 +233,14 @@ void MainWindow::on_actAdd_triggered()
     query.exec("SELECT * FROM personinfo WHERE id = -1"); //查不出实际记录，只查询出字段信息
     QSqlRecord curRec= query.record(); //获取当前记录，实际为空记
 
-    userwindow *user = new userwindow(this);
-    Qt::WindowFlags flags= user->windowFlags();
-    user->setWindowFlags(flags | Qt:: MSWindowsFixedSizeDialogHint);
-    user->addRecord(curRec);
-    user->show();
+    Dialog *dataDialog = new Dialog(this);
+    Qt::WindowFlags flags= dataDialog->windowFlags();
+    dataDialog->setWindowFlags(flags | Qt::
+                               MSWindowsFixedSizeDialogHint); //对话框固定大小
 
-    bool ret = user->isSave;
-    if (ret) {
-        QSqlRecord recData= user->getRecordData(); //获取对话框返回的记录
+    int ret= dataDialog->exec();
+    if (ret == QDialog::Accepted) {
+        QSqlRecord recData= dataDialog->getRecordData(); //获取对话框返回的记录
         query.prepare("INSERT INTO personinfo (name,age,gender,photo,idNumber,"
                       " address) "
                       " VALUES(:name, :age, :gender, :photot, :idNumber,"
@@ -260,10 +258,13 @@ void MainWindow::on_actAdd_triggered()
         else
             qryModel->query().exec(); //数据模型重新查询数据，更新 tableView 显示内容
     }
-    delete user;
+
 }
 
 
+
+
+// 删除
 void MainWindow::on_actDelete_triggered()
 {
     int curRecNo= selModel->currentIndex().row();
@@ -282,4 +283,145 @@ void MainWindow::on_actDelete_triggered()
             qryModel->setQuery(sqlStr); //重新查询数据
         }
 }
+
+
+/************************ 修改密码  *********************************/
+void MainWindow::on_actPwd_triggered()
+{
+    bool ok = true;;
+    QString newPassword = QInputDialog::getText(this, "修改密码","请输入 " + loginCount + " 的新密码:", QLineEdit::Normal, "请确保密码安全性！！！", &ok);
+    if (ok) {
+        if (updatePassword(loginCount, newPassword)) {
+            QMessageBox::information(this, "成功", "密码已成功修改");
+        } else {
+            qDebug() << loginCount;
+            QMessageBox::warning(this, "错误", "密码修改失败");
+        }
+    }
+}
+
+// 更新密码
+/*  存在bug，数据库修改失败
+bool MainWindow::updatePassword(const QString &loginCount, const QString &newPassword)
+{
+    QString newSalt = MainWindow::GenerateRandomSalt(16);
+    QString hashedPassword = MainWindow::hashPassword(newPassword, newSalt);
+
+    QSqlQuery query(DB);
+    query.prepare("UPDATE admin SET password = :password, salt = :salt WHERE count = :loginCount");
+    query.bindValue(":password", hashedPassword);
+    query.bindValue(":salt", newSalt);
+    query.bindValue(":count", loginCount);
+    if (query.exec()) {
+        qDebug() << "查询成功" ;
+        return true;
+    } else {
+        qDebug() << query.lastError().text();
+        return false;
+    }
+}
+*/
+
+// 更新密码
+bool MainWindow::updatePassword(const QString &logincount, const QString &newPassword)
+{
+    QSqlTableModel *model = new QSqlTableModel(nullptr, DB);
+    model->setTable("admin"); // 设置表名
+    model->setEditStrategy(QSqlTableModel::OnManualSubmit);
+    model->select();
+    int row = -1;
+
+    for (int i = 0; i < model->rowCount(); ++i) {
+        QModelIndex index = model->index(i, model->fieldIndex("count"));
+        if (model->data(index).toString() == logincount) {
+            row = i;
+            qDebug() << QString("行数 %1").arg(i);
+            break;
+        }
+    }
+
+    QString salt = GenerateRandomSalt(16);
+    QString hashedPassword = hashPassword(newPassword, salt);
+
+    if (row != -1) {
+        QModelIndex passwordIndex = model->index(row, model->fieldIndex("password"));
+        model->setData(passwordIndex, hashedPassword);
+
+        // 更新 salt
+        QModelIndex saltIndex = model->index(row, model->fieldIndex("salt"));
+        model->setData(saltIndex, salt);
+
+        if (model->submitAll())
+        {
+            qDebug() << "submit success";
+            return true;
+        } else {
+             qDebug() << "submit error";
+            return false;
+        }
+
+    } else {
+        qDebug() << "serach error";
+        return false;
+    }
+}
+
+/* 哈希加密 */
+QString MainWindow::GenerateRandomSalt(int length)
+{
+    const QString characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    const int charactersLength = characters.length();
+    QString salt;
+
+    for (int i = 0; i < length; ++i) {
+         int randomIndex = QRandomGenerator::global()->bounded(charactersLength);
+         salt += characters.at(randomIndex);
+    }
+
+    return salt;
+}
+
+QString MainWindow::hashPassword(const QString &password, const QString &salt)
+{
+    QByteArray saltByteArray = salt.toUtf8();
+    QByteArray passwordBytes = password.toUtf8();
+    passwordBytes.append(saltByteArray);
+
+    // 使用SHA-256哈希算法对密码和盐值进行哈希
+    QByteArray hashedPassword = QCryptographicHash::hash(passwordBytes, QCryptographicHash::Sha256);
+    return QString(hashedPassword.toHex());
+}
+
+/********************** 搜索 *************************/
+void MainWindow::searchButtonClicked()
+{
+    QString searchTerm = searchLineEdit->text(); // 获取搜索条件，假设你有一个 QLineEdit 用于输入搜索条件
+
+    //QSqlQueryModel *searchModel = new QSqlQueryModel(this);
+
+    if (searchTerm.isEmpty()) {
+        // 如果搜索条件为空，显示全部记录
+        qryModel->setQuery("SELECT id, name, gender, idNumber, address FROM personinfo", DB);
+    } else {
+        // 否则，根据搜索条件执行查询
+        qryModel->setQuery("SELECT id, name, gender, idNumber, address FROM personinfo WHERE id LIKE '%" + searchTerm + "%'", DB);
+    }
+
+    if (qryModel->lastError().isValid()) {
+        QMessageBox::information(this, "错误", "数据表查询错误, 错误信息\n" + qryModel->lastError().text());
+        return;
+    }
+
+    ui->tableView->setModel(qryModel);
+}
+
+/* Enter快捷键搜索 */
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+        if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
+            searchButtonClicked();
+        }
+}
+
+
+
 

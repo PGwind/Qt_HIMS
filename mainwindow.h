@@ -16,7 +16,7 @@
 #include <QRandomGenerator>
 #include <QInputDialog>
 #include <QMouseEvent>
-#include <userwindow.h>
+#include "dialog.h"
 
 
 
@@ -46,13 +46,15 @@ private:
     QString GenerateRandomSalt(int length); // 哈希盐值salt
     QString hashPassword(const QString &password, const QString &salt); // 哈希加密
     bool updatePassword(const QString &logincount, const QString &newPassword); // 密码修改
-   // void keyPressEvent(QKeyEvent *event) override; // 快捷键搜索
+    void keyPressEvent(QKeyEvent *event) override; // 快捷键搜索
 
 public:
     MainWindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
     ~MainWindow();
 
 private slots:
+    void searchButtonClicked(); // 搜索
+
     void on_actModify_triggered();
 
     void on_tableView_doubleClicked(const QModelIndex &index);
@@ -60,6 +62,8 @@ private slots:
     void on_actAdd_triggered();
 
     void on_actDelete_triggered();
+
+    void on_actPwd_triggered();
 
 private:
     Ui::MainWindow *ui;
