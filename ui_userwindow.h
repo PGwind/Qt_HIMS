@@ -301,7 +301,7 @@ public:
 #if QT_CONFIG(tooltip)
         actPwd->setToolTip(QCoreApplication::translate("userwindow", "\344\277\256\346\224\271", nullptr));
 #endif // QT_CONFIG(tooltip)
-        label_photo->setText(QCoreApplication::translate("userwindow", "TextLabel", nullptr));
+        label_photo->setText(QString());
         groupBox->setTitle(QString());
         label_build->setText(QCoreApplication::translate("userwindow", "\344\275\217\351\231\242\346\245\274", nullptr));
         label_room->setText(QCoreApplication::translate("userwindow", "\347\227\205\346\210\277", nullptr));
