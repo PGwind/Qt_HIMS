@@ -1,11 +1,13 @@
-/* 设置主窗口的背景图片 */
+/* 设置主窗口的背景图片*/
 QMainWindow#userwindow {
-    /*background-image: url(:/backgroud/images/backgroud/user_bg.jpg);*/
     background-color: #E6E6E6;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+QDialog {
+    background-color: #E6E6E6;
+}
 
 QGroupBox {
     border: 2px solid #3498db;
