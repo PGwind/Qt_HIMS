@@ -221,7 +221,7 @@ void adminWindow::on_actAdd_triggered()
     QString countValue = ui->tableView->model()->index(row, model->fieldIndex("count")).data().toString();
     QString noteValue = ui->tableView->model()->index(row, model->fieldIndex("note")).data().toString();
     // 哈希密码和盐值
-    QString salt = adminWindow::GenerateRandomSalt(16);
+    QString salt = GenerateRandomSalt(16);
     QString password = "xuyi";
     QString hashedPassword = hashPassword(password, salt);
 
