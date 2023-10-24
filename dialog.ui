@@ -10,6 +10,11 @@
     <height>553</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <bold>true</bold>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
@@ -74,6 +79,9 @@
    </property>
   </widget>
   <widget class="QFrame" name="frame">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>-10</x>
@@ -105,19 +113,28 @@
       <widget class="QLineEdit" name="lineEdit_name"/>
      </item>
      <item row="2" column="2">
-      <widget class="QSpinBox" name="spinBox_age"/>
+      <widget class="QSpinBox" name="spinBox_age">
+       <property name="maximum">
+        <number>120</number>
+       </property>
+      </widget>
      </item>
      <item row="0" column="3" colspan="3">
       <widget class="QLineEdit" name="lineEdit_id"/>
      </item>
      <item row="2" column="5">
-      <widget class="QComboBox" name="comboBox_gender"/>
+      <widget class="QComboBox" name="comboBox_gender">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_name">
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -130,6 +147,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -142,6 +160,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -154,6 +173,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -173,7 +193,7 @@
      </rect>
     </property>
     <property name="title">
-     <string> </string>
+     <string/>
     </property>
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
@@ -181,6 +201,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -196,6 +217,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -211,10 +233,11 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>联系方式</string>
+        <string>联系电话</string>
        </property>
       </widget>
      </item>
@@ -233,7 +256,7 @@
      </rect>
     </property>
     <property name="title">
-     <string> </string>
+     <string/>
     </property>
     <layout class="QGridLayout" name="gridLayout_4">
      <item row="0" column="0">
@@ -241,6 +264,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -249,13 +273,18 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox_department"/>
+      <widget class="QComboBox" name="comboBox_department">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_build">
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -264,13 +293,18 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox_build"/>
+      <widget class="QComboBox" name="comboBox_build">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_room">
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -286,6 +320,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -294,7 +329,11 @@
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QComboBox" name="comboBox_bed"/>
+      <widget class="QComboBox" name="comboBox_bed">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -308,7 +347,7 @@
      </rect>
     </property>
     <property name="title">
-     <string> </string>
+     <string/>
     </property>
     <layout class="QGridLayout" name="gridLayout_5">
      <item row="0" column="0">
@@ -316,6 +355,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -331,6 +371,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -346,6 +387,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -368,7 +410,7 @@
      </rect>
     </property>
     <property name="title">
-     <string> </string>
+     <string/>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
@@ -376,6 +418,7 @@
        <property name="font">
         <font>
          <pointsize>14</pointsize>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
@@ -398,9 +441,26 @@
      </rect>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_lock">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>10</y>
+     <width>90</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>设置密码</string>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/icons/passwd.png</normaloff>:/icons/images/icons/passwd.png</iconset>
+   </property>
   </widget>
  </widget>
  <resources>

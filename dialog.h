@@ -5,6 +5,8 @@
 #include <QSqlRecord>
 #include <QFile>
 #include <QFileDialog>
+#include <QtSql>
+#include <QInputDialog>
 
 namespace Ui {
 class Dialog;
@@ -24,10 +26,15 @@ public:
     void    setInsertRecord(QSqlRecord &recData);   //插入记录
     QSqlRecord  getRecordData();     //获取界面输入的数据
 
+    QString GenerateRandomSalt(int length); // 哈希盐值salt
+    QString hashPassword(const QString &password, const QString &salt); // 哈希加密
+
 private slots:
     void on_pushButton_setPhoto_clicked();
 
     void on_pushButton_clear_clicked();
+
+    void on_pushButton_lock_clicked();
 
 private:
     Ui::Dialog *ui;
