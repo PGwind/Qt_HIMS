@@ -9,6 +9,7 @@
 #include <QFile>
 #include <QtSql>
 #include <QFileDialog>
+#include <QMessageBox>
 
 namespace Ui {
 class userwindow;
@@ -19,14 +20,18 @@ class userwindow : public QMainWindow
     Q_OBJECT
 private:
     QSqlRecord m_record;
+    QSqlDatabase DB;
+    QSqlQueryModel *qryModel;
+    void openTable();   // 连接
+    void Init();
+
 
 public:
-    bool isSave = false;
     explicit userwindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
     ~userwindow();
-    void updateRecord(QSqlRecord &recData); //更新记录
-    void addRecord(QSqlRecord &recData); //插入记录
-    QSqlRecord getRecordData(); //获取界面中输入的数据
+    void setUpdateRecord(QSqlRecord &recData);
+    QSqlRecord getRecordData();
+    void setFlag(bool flag);
 
 private slots:
     void on_actClear_triggered();
@@ -35,7 +40,9 @@ private slots:
 
     void on_actSave_triggered();
 
-    void on_actCancel_triggered();
+    void on_actModify_triggered();
+
+    void on_actPwd_triggered();
 
 private:
     Ui::userwindow *ui;
