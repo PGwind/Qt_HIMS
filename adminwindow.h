@@ -16,7 +16,6 @@
 #include <QInputDialog>
 #include <QMouseEvent>
 
-
 namespace Ui {
 class adminWindow;
 }

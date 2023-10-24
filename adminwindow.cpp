@@ -386,7 +386,7 @@ bool adminWindow::updatePassword(const QString &logincount, const QString &newPa
         }
     }
 
-    QString salt = adminWindow::GenerateRandomSalt(16);
+    QString salt = GenerateRandomSalt(16);
     QString hashedPassword = hashPassword(newPassword, salt);
 
     if (row != -1) {
