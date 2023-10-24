@@ -76,12 +76,16 @@ public:
     QLabel *label_deparment_2;
     QTextEdit *textEdit_note;
     QLabel *label_photo;
+    QPushButton *pushButton_lock;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QString::fromUtf8("Dialog"));
         Dialog->resize(844, 553);
+        QFont font;
+        font.setBold(true);
+        Dialog->setFont(font);
         pushButton_setPhoto = new QPushButton(Dialog);
         pushButton_setPhoto->setObjectName(QString::fromUtf8("pushButton_setPhoto"));
         pushButton_setPhoto->setGeometry(QRect(10, 10, 80, 30));
@@ -102,6 +106,7 @@ public:
         pushButton_Cancel->setGeometry(QRect(750, 10, 80, 30));
         frame = new QFrame(Dialog);
         frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setEnabled(true);
         frame->setGeometry(QRect(-10, 50, 861, 511));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
@@ -117,6 +122,7 @@ public:
 
         spinBox_age = new QSpinBox(groupBox);
         spinBox_age->setObjectName(QString::fromUtf8("spinBox_age"));
+        spinBox_age->setMaximum(120);
 
         gridLayout->addWidget(spinBox_age, 2, 2, 1, 1);
 
@@ -127,32 +133,34 @@ public:
 
         comboBox_gender = new QComboBox(groupBox);
         comboBox_gender->setObjectName(QString::fromUtf8("comboBox_gender"));
+        comboBox_gender->setEnabled(true);
 
         gridLayout->addWidget(comboBox_gender, 2, 5, 1, 1);
 
         label_name = new QLabel(groupBox);
         label_name->setObjectName(QString::fromUtf8("label_name"));
-        QFont font;
-        font.setPointSize(14);
-        label_name->setFont(font);
+        QFont font1;
+        font1.setPointSize(14);
+        font1.setBold(true);
+        label_name->setFont(font1);
 
         gridLayout->addWidget(label_name, 1, 0, 1, 1);
 
         label_age = new QLabel(groupBox);
         label_age->setObjectName(QString::fromUtf8("label_age"));
-        label_age->setFont(font);
+        label_age->setFont(font1);
 
         gridLayout->addWidget(label_age, 2, 0, 1, 1);
 
         label_id = new QLabel(groupBox);
         label_id->setObjectName(QString::fromUtf8("label_id"));
-        label_id->setFont(font);
+        label_id->setFont(font1);
 
         gridLayout->addWidget(label_id, 0, 0, 1, 1);
 
         label_gender = new QLabel(groupBox);
         label_gender->setObjectName(QString::fromUtf8("label_gender"));
-        label_gender->setFont(font);
+        label_gender->setFont(font1);
 
         gridLayout->addWidget(label_gender, 2, 4, 1, 1);
 
@@ -163,7 +171,7 @@ public:
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         label_idNumber = new QLabel(groupBox_2);
         label_idNumber->setObjectName(QString::fromUtf8("label_idNumber"));
-        label_idNumber->setFont(font);
+        label_idNumber->setFont(font1);
 
         gridLayout_2->addWidget(label_idNumber, 0, 0, 1, 1);
 
@@ -174,7 +182,7 @@ public:
 
         label_address = new QLabel(groupBox_2);
         label_address->setObjectName(QString::fromUtf8("label_address"));
-        label_address->setFont(font);
+        label_address->setFont(font1);
 
         gridLayout_2->addWidget(label_address, 1, 0, 1, 1);
 
@@ -185,7 +193,7 @@ public:
 
         label_contact = new QLabel(groupBox_2);
         label_contact->setObjectName(QString::fromUtf8("label_contact"));
-        label_contact->setFont(font);
+        label_contact->setFont(font1);
 
         gridLayout_2->addWidget(label_contact, 2, 0, 1, 1);
 
@@ -201,29 +209,31 @@ public:
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         label_deparment = new QLabel(groupBox_3);
         label_deparment->setObjectName(QString::fromUtf8("label_deparment"));
-        label_deparment->setFont(font);
+        label_deparment->setFont(font1);
 
         gridLayout_4->addWidget(label_deparment, 0, 0, 1, 1);
 
         comboBox_department = new QComboBox(groupBox_3);
         comboBox_department->setObjectName(QString::fromUtf8("comboBox_department"));
+        comboBox_department->setEnabled(true);
 
         gridLayout_4->addWidget(comboBox_department, 0, 1, 1, 1);
 
         label_build = new QLabel(groupBox_3);
         label_build->setObjectName(QString::fromUtf8("label_build"));
-        label_build->setFont(font);
+        label_build->setFont(font1);
 
         gridLayout_4->addWidget(label_build, 1, 0, 1, 1);
 
         comboBox_build = new QComboBox(groupBox_3);
         comboBox_build->setObjectName(QString::fromUtf8("comboBox_build"));
+        comboBox_build->setEnabled(true);
 
         gridLayout_4->addWidget(comboBox_build, 1, 1, 1, 1);
 
         label_room = new QLabel(groupBox_3);
         label_room->setObjectName(QString::fromUtf8("label_room"));
-        label_room->setFont(font);
+        label_room->setFont(font1);
 
         gridLayout_4->addWidget(label_room, 2, 0, 1, 1);
 
@@ -234,12 +244,13 @@ public:
 
         label_bed = new QLabel(groupBox_3);
         label_bed->setObjectName(QString::fromUtf8("label_bed"));
-        label_bed->setFont(font);
+        label_bed->setFont(font1);
 
         gridLayout_4->addWidget(label_bed, 3, 0, 1, 1);
 
         comboBox_bed = new QComboBox(groupBox_3);
         comboBox_bed->setObjectName(QString::fromUtf8("comboBox_bed"));
+        comboBox_bed->setEnabled(true);
 
         gridLayout_4->addWidget(comboBox_bed, 3, 1, 1, 1);
 
@@ -250,7 +261,7 @@ public:
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         label_attending = new QLabel(groupBox_4);
         label_attending->setObjectName(QString::fromUtf8("label_attending"));
-        label_attending->setFont(font);
+        label_attending->setFont(font1);
 
         gridLayout_5->addWidget(label_attending, 0, 0, 1, 1);
 
@@ -261,7 +272,7 @@ public:
 
         label_admission = new QLabel(groupBox_4);
         label_admission->setObjectName(QString::fromUtf8("label_admission"));
-        label_admission->setFont(font);
+        label_admission->setFont(font1);
 
         gridLayout_5->addWidget(label_admission, 1, 0, 1, 1);
 
@@ -272,7 +283,7 @@ public:
 
         label_discharge = new QLabel(groupBox_4);
         label_discharge->setObjectName(QString::fromUtf8("label_discharge"));
-        label_discharge->setFont(font);
+        label_discharge->setFont(font1);
 
         gridLayout_5->addWidget(label_discharge, 2, 0, 1, 1);
 
@@ -288,7 +299,7 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label_deparment_2 = new QLabel(groupBox_5);
         label_deparment_2->setObjectName(QString::fromUtf8("label_deparment_2"));
-        label_deparment_2->setFont(font);
+        label_deparment_2->setFont(font1);
 
         verticalLayout->addWidget(label_deparment_2);
 
@@ -300,6 +311,12 @@ public:
         label_photo = new QLabel(frame);
         label_photo->setObjectName(QString::fromUtf8("label_photo"));
         label_photo->setGeometry(QRect(50, 30, 120, 120));
+        pushButton_lock = new QPushButton(Dialog);
+        pushButton_lock->setObjectName(QString::fromUtf8("pushButton_lock"));
+        pushButton_lock->setGeometry(QRect(220, 10, 90, 30));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icons/images/icons/passwd.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_lock->setIcon(icon2);
 
         retranslateUi(Dialog);
         QObject::connect(pushButton_OK, &QPushButton::clicked, Dialog, qOverload<>(&QDialog::accept));
@@ -323,7 +340,7 @@ public:
         groupBox_2->setTitle(QString());
         label_idNumber->setText(QCoreApplication::translate("Dialog", "\350\272\253\344\273\275\350\257\201", nullptr));
         label_address->setText(QCoreApplication::translate("Dialog", "\344\275\217\345\235\200", nullptr));
-        label_contact->setText(QCoreApplication::translate("Dialog", "\350\201\224\347\263\273\346\226\271\345\274\217", nullptr));
+        label_contact->setText(QCoreApplication::translate("Dialog", "\350\201\224\347\263\273\347\224\265\350\257\235", nullptr));
         groupBox_3->setTitle(QString());
         label_deparment->setText(QCoreApplication::translate("Dialog", "\347\247\221\345\256\244", nullptr));
         label_build->setText(QCoreApplication::translate("Dialog", "\344\275\217\351\231\242\346\245\274", nullptr));
@@ -336,6 +353,7 @@ public:
         groupBox_5->setTitle(QString());
         label_deparment_2->setText(QCoreApplication::translate("Dialog", "\345\244\207\346\263\250", nullptr));
         label_photo->setText(QString());
+        pushButton_lock->setText(QCoreApplication::translate("Dialog", "\350\256\276\347\275\256\345\257\206\347\240\201", nullptr));
     } // retranslateUi
 
 };
