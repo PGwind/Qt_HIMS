@@ -67,7 +67,6 @@ MainWindow::MainWindow(QWidget *parent, const QString &loginCount)
     // 数据库连接与映射
     openTable();
     selectData();
-    showRecordCount();
 }
 
 MainWindow::~MainWindow()
@@ -90,8 +89,6 @@ void MainWindow::openTable()
         // 数据库连接失败，处理错误
         qDebug() << "Database connection error: " << DB.lastError().text();
     }
-
-
 }
 
 void MainWindow::selectData()
@@ -100,7 +97,7 @@ void MainWindow::selectData()
     selModel= new QItemSelectionModel(qryModel,this);
     ui->tableView->setModel(qryModel);
     ui->tableView->setSelectionModel(selModel);
-    qryModel->setQuery("SELECT id, name, gender, idNumber, address FROM personinfo");
+    qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo");
     if (qryModel->lastError().isValid())
     {
         QMessageBox::information(this, "错误", "数据表查询错误,错误信息\n" + qryModel->lastError().text());
@@ -147,7 +144,10 @@ void MainWindow::selectData()
     qryModel->setHeaderData(rec.indexOf("name"), Qt::Horizontal, "姓名");
     qryModel->setHeaderData(rec.indexOf("gender"), Qt::Horizontal, "性别");
     qryModel->setHeaderData(rec.indexOf("idNumber"), Qt::Horizontal, "身份证号");
+    qryModel->setHeaderData(rec.indexOf("contact"), Qt::Horizontal, "联系方式");
     qryModel->setHeaderData(rec.indexOf("address"), Qt::Horizontal, "地址");
+
+    showRecordCount();
 
     ui->actAdd->setEnabled(true);
     ui->actDelete->setEnabled(true);
@@ -159,7 +159,7 @@ void MainWindow::selectData()
 
 
 /************************************ 按钮 **********************************/
-// 显示记录
+// 显示记录数
 void MainWindow::showRecordCount()
 {
     int recordCount = qryModel->rowCount(); // 使用 qryModel 获取记录数
@@ -174,21 +174,25 @@ void MainWindow::on_actModify_triggered()
 }
 
 
-// 双击
+// 双击修改
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 {
     int curRecNo=index.row();
     updateRecord(curRecNo);
 }
 
-// 修改调用
+// 更新记录
 void MainWindow::updateRecord(int recNo)
 {
     QSqlRecord curRec= qryModel->record(recNo);
-    QString id = curRec.value("id").toString();
+    int id = curRec.value("id").toInt();
     QSqlQuery query(DB);
-    query.prepare("SELECT * FROM personinfo WHERE id = :ID");
-    query.bindValue(":ID",id);
+   // query.prepare("SELECT * FROM personinfo WHERE id = :ID");
+    query.prepare("SELECT personinfo.*, patientinfo.* "
+                  "FROM personinfo "
+                  "INNER JOIN patientinfo ON personinfo.id = patientinfo.id "
+                  "WHERE personinfo.id = :ID");
+    query.bindValue(":ID", id);
     query.exec();
     query.first();
 
@@ -198,6 +202,12 @@ void MainWindow::updateRecord(int recNo)
     }
 
     curRec = query.record();
+
+    int age = curRec.value("age").toInt(); // 假设 field1 是一个整数字段
+    QString depa  = curRec.value("department").toString(); // 假设 field2 是一个字符串字段
+    qDebug() << "mainwindow从数据库抽取数据" << age << depa;
+
+
     Dialog *dataDialog = new Dialog(this);
     Qt::WindowFlags flags= dataDialog->windowFlags();
     dataDialog->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint); //对话框固定大小
@@ -205,23 +215,54 @@ void MainWindow::updateRecord(int recNo)
 
     int ret= dataDialog->exec();
     if (ret == QDialog::Accepted) {
-        QSqlRecord recData= dataDialog->getRecordData(); //获取对话框返回的记录
+        QSqlRecord recData = dataDialog->getRecordData(); //获取对话框返回的记录
+
         query.prepare("UPDATE personinfo SET name=:name, age=:age,"
                       " gender=:gender, photo=:photo,"
-                      " idNumber=:idNumber, contact=:contact, address=:address");
+                      " idNumber=:idNumber, contact=:contact, address=:address"
+                      " WHERE id = :ID");
 
         query.bindValue(":name", recData.value("name"));
-        query.bindValue("age", recData.value("age"));
+        query.bindValue(":age", recData.value("age").toInt());
         query.bindValue(":gender",recData.value("gender"));
         query.bindValue(":photo",recData.value("photo"));
         query.bindValue(":idNumber", recData.value("idNumber"));
         query.bindValue(":contact", recData.value("contact"));
         query.bindValue(":address", recData.value("address"));
+        query.bindValue(":ID", id);
 
-        if (!query.exec())
-            QMessageBox::critical(this, "错误", "记录更新错误\n"+query.lastError().text());
-        else
-            qryModel->query().exec(); //数据模型重新查询数据，更新 tableView 显示内容
+        if (!query.exec()) {
+            QMessageBox::critical(this, "错误", "personinfo 表记录更新错误\n" + query.lastError().text());
+            return;
+        }
+
+        // 更新 patientinfo 表
+        int age = recData.value("age").toInt(); // 假设 field1 是一个整数字段
+        QString depa  = recData.value("department").toString(); // 假设 field2 是一个字符串字段
+        qDebug() << "mainwindow更新后数据" << age << depa;
+
+
+        query.prepare("UPDATE patientinfo SET buildingNumber=:buildingNumber, roomNumber=:roomNumber, "
+                      "bedNumber=:bedNumber, department=:department, "
+                      "attendingPhysician=:attendingPhysician, admissionDate=:admissionDate, "
+                      "dischargeDate=:dischargeDate, notes=:notes "
+                      "WHERE id = :ID");
+        query.bindValue(":buildingNumber", recData.value("buildingNumber"));
+        query.bindValue(":roomNumber", recData.value("roomNumber"));
+        query.bindValue(":bedNumber", recData.value("bedNumber"));
+        query.bindValue(":department", recData.value("department"));
+        query.bindValue(":attendingPhysician", recData.value("attendingPhysician"));
+        query.bindValue(":admissionDate", recData.value("admissionDate"));
+        query.bindValue(":dischargeDate", recData.value("dischargeDate"));
+        query.bindValue(":notes", recData.value("notes"));
+        query.bindValue(":ID", id);
+
+         if (!query.exec()) {
+            QMessageBox::critical(this, "错误", "patientinfo 表记录更新错误\n" + query.lastError().text());
+            return;
+        }
+        qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo", DB); //数据模型重新查询数据，更新 tableView 显示内容
+        showRecordCount();
     }
     delete dataDialog;
 }
@@ -230,37 +271,76 @@ void MainWindow::updateRecord(int recNo)
 void MainWindow::on_actAdd_triggered()
 {
     QSqlQuery query(DB);
-    query.exec("SELECT * FROM personinfo WHERE id = -1"); //查不出实际记录，只查询出字段信息
-    QSqlRecord curRec= query.record(); //获取当前记录，实际为空记
+//    query.exec("SELECT * FROM personinfo WHERE id = -1"); // 查不出实际记录，只查询出字段信息
+    query.exec("SELECT personinfo.*, patientinfo.* "
+               "FROM personinfo "
+               "INNER JOIN patientinfo ON personinfo.id = patientinfo.id "
+               "WHERE personinfo.id = -1");
+
+    QSqlRecord curRec = query.record(); // 获取当前记录，实际为空
+    int ID = qryModel->rowCount() + 100000;
+    curRec.setValue("id", ID);
 
     Dialog *dataDialog = new Dialog(this);
-    Qt::WindowFlags flags= dataDialog->windowFlags();
-    dataDialog->setWindowFlags(flags | Qt::
-                               MSWindowsFixedSizeDialogHint); //对话框固定大小
+    Qt::WindowFlags flags = dataDialog->windowFlags();
+    dataDialog->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint); // 对话框固定大小
+    dataDialog->setInsertRecord(curRec); // 插入记录
 
-    int ret= dataDialog->exec();
+    int ret = dataDialog->exec();
     if (ret == QDialog::Accepted) {
-        QSqlRecord recData= dataDialog->getRecordData(); //获取对话框返回的记录
-        query.prepare("INSERT INTO personinfo (name,age,gender,photo,idNumber,"
-                      " address) "
-                      " VALUES(:name, :age, :gender, :photot, :idNumber,"
-                      " :address)");
+        QSqlRecord recData = dataDialog->getRecordData(); // 获取对话框返回的记录
 
+        // 插入 personinfo 表记录
+        query.prepare("INSERT INTO personinfo (id, name, age, gender, photo, idNumber, contact, address) "
+                      "VALUES(:id, :name, :age, :gender, :photo, :idNumber, :contact, :address)");
+        query.bindValue(":id", recData.value("id"));
         query.bindValue(":name", recData.value("name"));
-        query.bindValue("age", recData.value("age"));
-        query.bindValue(":gender",recData.value("gender"));
-        query.bindValue(":photo",recData.value("photo"));
+        query.bindValue(":age", recData.value("age"));
+        query.bindValue(":gender", recData.value("gender"));
+        query.bindValue(":photo", recData.value("photo"));
         query.bindValue(":idNumber", recData.value("idNumber"));
+        query.bindValue(":contact", recData.value("contact"));
         query.bindValue(":address", recData.value("address"));
 
-        if (!query.exec())
-            QMessageBox::critical(this, "错误", "记录更新错误\n"+query.lastError().text());
-        else
-            qryModel->query().exec(); //数据模型重新查询数据，更新 tableView 显示内容
+        QVariant nameValue = recData.value("name");
+
+        if (!query.exec()) {
+            QMessageBox::critical(this, "错误", "personinfo 表记录更新错误\n" + query.lastError().text());
+            return; // 处理错误并退出
+        }
+
+        query.prepare("UPDATE patientinfo SET buildingNumber=:buildingNumber, roomNumber=:roomNumber, "
+                      "bedNumber=:bedNumber, department=:department, "
+                      "attendingPhysician=:attendingPhysician, admissionDate=:admissionDate, "
+                      "dischargeDate=:dischargeDate, notes=:notes "
+                      "WHERE id = :ID");
+
+
+        query.bindValue(":buildingNumber", recData.value("buildingNumber"));
+        query.bindValue(":roomNumber", recData.value("roomNumber"));
+        query.bindValue(":bedNumber", recData.value("bedNumber"));
+        query.bindValue(":department", recData.value("department"));
+        query.bindValue(":attendingPhysician", recData.value("attendingPhysician"));
+        query.bindValue(":admissionDate", recData.value("admissionDate"));
+        query.bindValue(":dischargeDate", recData.value("dischargeDate"));
+        query.bindValue(":notes", recData.value("notes"));
+        query.bindValue(":ID", ID);
+
+        QVariant bedValue = recData.value("bedNumber");
+        qDebug() << "Bed:" << bedValue.toInt(); // 假设 age 是整数类型
+        // 继续绑定其他 patientinfo 表字段
+
+        if (!query.exec()) {
+            QMessageBox::critical(this, "错误", "patientinfo 表记录更新错误\n" + query.lastError().text());
+            // 如果 patientinfo 表记录插入失败，你可能需要在此处添加回滚操作以删除 personinfo 表中的记录。
+            return; // 处理错误并退出
+        }
+
+        qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo", DB);
+        showRecordCount();
     }
-
+    delete dataDialog;
 }
-
 
 
 
@@ -277,11 +357,17 @@ void MainWindow::on_actDelete_triggered()
     query.bindValue(":ID",id);
     if (!query.exec())
         QMessageBox::critical(this, "错误",  "删除记录出现错误\n"+query.lastError().text());
-    else
-        {
-            QString sqlStr= qryModel->query().executedQuery(); // 运行过的 SELECT 语句
-            qryModel->setQuery(sqlStr); //重新查询数据
+    else {
+            // 删除 patientinfo 表中相应记录
+            query.prepare("DELETE FROM patientinfo WHERE id = :ID");
+            query.bindValue(":ID", id);
+        if (!query.exec()) {
+            QMessageBox::critical(this, "错误", "删除 patientinfo 表记录出现错误\n" + query.lastError().text());
+        } else {
+            qryModel->setQuery("SELECT id, name, gender, idNumber, address FROM personinfo", DB);
+            showRecordCount();
         }
+    }
 }
 
 
@@ -401,10 +487,10 @@ void MainWindow::searchButtonClicked()
 
     if (searchTerm.isEmpty()) {
         // 如果搜索条件为空，显示全部记录
-        qryModel->setQuery("SELECT id, name, gender, idNumber, address FROM personinfo", DB);
+        qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo", DB);
     } else {
         // 否则，根据搜索条件执行查询
-        qryModel->setQuery("SELECT id, name, gender, idNumber, address FROM personinfo WHERE id LIKE '%" + searchTerm + "%'", DB);
+        qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo WHERE id LIKE '%" + searchTerm + "%'", DB);
     }
 
     if (qryModel->lastError().isValid()) {
@@ -413,6 +499,7 @@ void MainWindow::searchButtonClicked()
     }
 
     ui->tableView->setModel(qryModel);
+    showRecordCount();
 }
 
 /* Enter快捷键搜索 */
