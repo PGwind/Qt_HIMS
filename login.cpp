@@ -263,11 +263,11 @@ bool login::userCheck(const QString& id, const QString& password)
         QString salt = query.value(1).toString();
         QString storedHashedPassword = query.value(0).toString();
 
-       // QString hashedPassword = hashPassword(password, salt);
+        QString hashedPassword = hashPassword(password, salt);
 
-//        if (hashedPassword == storedHashedPassword) {
-//            return true;
-//        }
+        if (hashedPassword == storedHashedPassword) {
+            return true;
+        }
         if (password == storedHashedPassword)
             return true;
     }
