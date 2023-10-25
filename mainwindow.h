@@ -8,13 +8,9 @@
 #include <QSpacerItem>
 #include <QStatusBar>
 #include <QHBoxLayout>
-#include <QFile>
 #include <QLabel>
-#include <QtSql>
 #include <QItemSelectionModel>
 #include <QMessageBox>
-#include <QRandomGenerator>
-#include <QInputDialog>
 #include <QMouseEvent>
 #include "dialog.h"
 

@@ -203,11 +203,6 @@ void MainWindow::updateRecord(int recNo)
 
     curRec = query.record();
 
-    int age = curRec.value("age").toInt(); // 假设 field1 是一个整数字段
-    QString depa  = curRec.value("department").toString(); // 假设 field2 是一个字符串字段
-    qDebug() << "mainwindow从数据库抽取数据" << age << depa;
-
-
     Dialog *dataDialog = new Dialog(this);
     Qt::WindowFlags flags= dataDialog->windowFlags();
     dataDialog->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint); //对话框固定大小
@@ -237,11 +232,6 @@ void MainWindow::updateRecord(int recNo)
         }
 
         // 更新 patientinfo 表
-        int age = recData.value("age").toInt(); // 假设 field1 是一个整数字段
-        QString depa  = recData.value("department").toString(); // 假设 field2 是一个字符串字段
-        qDebug() << "mainwindow更新后数据" << age << depa;
-
-
         query.prepare("UPDATE patientinfo SET buildingNumber=:buildingNumber, roomNumber=:roomNumber, "
                       "bedNumber=:bedNumber, department=:department, "
                       "attendingPhysician=:attendingPhysician, admissionDate=:admissionDate, "
