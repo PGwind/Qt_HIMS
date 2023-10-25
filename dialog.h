@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include <QtSql>
 #include <QInputDialog>
+#include <QRandomGenerator>
 
 namespace Ui {
 class Dialog;

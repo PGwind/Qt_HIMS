@@ -79,23 +79,19 @@ void Dialog::setUpdateRecord(QSqlRecord &recData)   //更新记录
     ui->lineEdit_name->setText(recData.value("name").toString());
     ui->spinBox_age->setValue(recData.value("age").toInt());
 
-    ui->comboBox_gender->setEditText(recData.value("gender").toString());
+    ui->comboBox_gender->setCurrentText(recData.value("gender").toString());
     ui->lineEdit_idNumber->setText(recData.value("idNumber").toString());
     ui->lineEdit_contact->setText(recData.value("contact").toString());
     ui->lineEdit_address->setText(recData.value("address").toString());
 
-    ui->comboBox_build->setEditText(recData.value("buildingNumber").toString());
+    ui->comboBox_build->setCurrentText(recData.value("buildingNumber").toString());
     ui->lineEdit_room->setText(recData.value("roomNumber").toString());
-    ui->comboBox_bed->setEditText(recData.value("bedNumber").toString());
-    ui->comboBox_department->setEditText(recData.value("department").toString());
+    ui->comboBox_bed->setCurrentText(recData.value("bedNumber").toString());
+    ui->comboBox_department->setCurrentText(recData.value("department").toString());
     ui->lineEdit_attend->setText(recData.value("attendingPhysician").toString());
     ui->dateEdit_admission->setDate(recData.value("admissionDate").toDate());
     ui->dateEdit_discharge->setDate(recData.value("dischargeDate").toDate());
     ui->textEdit_note->setText(recData.value("notes").toString());
-
-    QString departmentValue = recData.value("department").toString();
-    ui->comboBox_department->setEditText(departmentValue);
-    qDebug() << "Department from recData: " << departmentValue << "ui_department = " << ui->comboBox_department->currentText();
 
     QVariant va= recData.value("photo");
     if (!va.isValid()) //Photo 字段内容为空
@@ -142,7 +138,6 @@ QSqlRecord Dialog::getRecordData()     //获取界面输入的数据
     m_record.setValue("dischargeDate", ui->dateEdit_discharge->date());
     m_record.setValue("notes", ui->textEdit_note->toPlainText());
 
-     qDebug() << "getRecordData: " << ui->spinBox_age->value() << ui->comboBox_department->currentText();
     return m_record;
 }
 
