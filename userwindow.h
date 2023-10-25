@@ -10,6 +10,7 @@
 #include <QtSql>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QInputDialog>
 
 namespace Ui {
 class userwindow;
@@ -29,9 +30,12 @@ private:
 public:
     explicit userwindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
     ~userwindow();
-    void setUpdateRecord(QSqlRecord &recData);
-    QSqlRecord getRecordData();
+    void setUpdateRecord(QSqlRecord &recData);  // 更新信息页
+    QSqlRecord getRecordData(); // 读取数据
     void setFlag(bool flag);
+
+    QString GenerateRandomSalt(int length); // 哈希盐值salt
+    QString hashPassword(const QString &password, const QString &salt); // 哈希加密
 
 private slots:
     void on_actClear_triggered();

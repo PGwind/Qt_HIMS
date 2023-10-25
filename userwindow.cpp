@@ -195,7 +195,27 @@ void userwindow::on_actModify_triggered()
 // 密码
 void userwindow::on_actPwd_triggered()
 {
+    bool ok;
+    QString newPassword = QInputDialog::getText(this, "输入密码", "请输入新密码：", QLineEdit::Password, "", &ok);
 
+    if (ok) {
+        QString salt = GenerateRandomSalt(16);
+        QString hashedPassword = hashPassword(newPassword, salt);
+
+        QSqlQuery query(DB);
+        query.prepare("UPDATE users SET password = :password, salt = :salt WHERE id = :count");
+        query.bindValue(":password", hashedPassword);
+        query.bindValue(":salt", salt);
+        query.bindValue(":count", loginCount); // 指定要更新的记录的 loginCount
+
+        if (query.exec()) {
+            QMessageBox::information(this, "成功", "密码已更新并保存");
+        } else {
+             QMessageBox::warning(this, "错误", "密码更新失败");
+        }
+    } else {
+
+    }
 }
 
 
@@ -207,15 +227,15 @@ void userwindow::setUpdateRecord(QSqlRecord &recData)   //更新记录
     ui->lineEdit_id->setText(recData.value("id").toString());
     ui->lineEdit_name->setText(recData.value("name").toString());
     ui->spinBox_age->setValue(recData.value("age").toInt());
-    ui->comboBox_sex->setEditText(recData.value("gender").toString());
+    ui->comboBox_sex->setCurrentText(recData.value("gender").toString());
     ui->lineEdit_idNumber->setText(recData.value("idNumber").toString());
     ui->lineEdit_contact->setText(recData.value("contact").toString());
     ui->lineEdit_address->setText(recData.value("address").toString());
 
-    ui->comboBox_build->setEditText(recData.value("buildingNumber").toString());
+    ui->comboBox_build->setCurrentText(recData.value("buildingNumber").toString());
     ui->lineEdit_room->setText(recData.value("roomNumber").toString());
-    ui->comboBox_bed->setEditText(recData.value("bedNumber").toString());
-    ui->comboBox_department->setEditText(recData.value("department").toString());
+    ui->comboBox_bed->setCurrentText(recData.value("bedNumber").toString());
+    ui->comboBox_department->setCurrentText(recData.value("department").toString());
     ui->lineEdit_attending->setText(recData.value("attendingPhysician").toString());
     ui->dateEdit_inpatients->setDate(recData.value("admissionDate").toDate());
     ui->dateEdit_discharge->setDate(recData.value("dischargeDate").toDate());
@@ -260,4 +280,30 @@ QSqlRecord userwindow::getRecordData()     //获取界面输入的数据
 
     qDebug() << "getRecordData: " << ui->spinBox_age->value() << ui->comboBox_bed->currentText();
     return m_record;
+}
+
+
+QString userwindow::GenerateRandomSalt(int length) // 哈希盐值salt
+{
+    const QString characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    const int charactersLength = characters.length();
+    QString salt;
+
+    for (int i = 0; i < length; ++i) {
+        int randomIndex = QRandomGenerator::global()->bounded(charactersLength);
+        salt += characters.at(randomIndex);
+    }
+
+    return salt;
+}
+
+QString userwindow::hashPassword(const QString &password, const QString &salt) // 哈希加密
+{
+    QByteArray saltByteArray = salt.toUtf8();
+    QByteArray passwordbytes = password.toUtf8();
+    passwordbytes.append(saltByteArray);
+
+    // 使用SHA-256哈希算法对密码和盐值进行哈希
+    QByteArray hashedPassword = QCryptographicHash::hash(passwordbytes, QCryptographicHash::Sha256);
+    return QString(hashedPassword.toHex());
 }
