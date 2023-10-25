@@ -38,11 +38,6 @@ login::login(QWidget *parent) :
     // 创建数据模型和选择模型
     qryModel = new QSqlQueryModel;
     selModel = new QItemSelectionModel(qryModel);
-
-
-    // 在qryModel中执行SQL查询并设置选择模型
-//    qryModel->setQuery("SELECT * FROM your_table_name");
-//    selModel->setModel(qryModel);
 }
 
 login::~login()
@@ -231,9 +226,15 @@ void login::keyPressEvent(QKeyEvent *event) {
 }
 
 
-// 账户管理检测
+// 账户管理登录检测
 bool login::adminCheck(const QString& count, const QString& password)
 {
+    if (password.isEmpty()) {
+        // 弹出密码为空的提醒
+        QMessageBox::warning(this, "提醒", "密码不能为空！");
+        return false;
+    }
+
     QSqlQuery query;
     query.prepare("SELECT password, salt FROM admin WHERE count = :count");
     query.bindValue(":count", count);
@@ -252,9 +253,15 @@ bool login::adminCheck(const QString& count, const QString& password)
     return false;
 }
 
-// 病人信息展示检测
+// 病人信息登录检测
 bool login::userCheck(const QString& id, const QString& password)
 {
+    if (password.isEmpty()) {
+        // 弹出密码为空的提醒
+        QMessageBox::warning(this, "提醒", "密码不能为空！");
+        return false;
+    }
+
     QSqlQuery query;
     query.prepare("SELECT password, salt FROM users WHERE id = :id");
     query.bindValue(":id", id);
