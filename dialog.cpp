@@ -7,6 +7,16 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    Init();
+}
+
+Dialog::~Dialog()
+{
+    delete ui;
+}
+
+void Dialog::Init()
+{
     /* 加载CSS */
     QFile styleFile(":/css/userwindow.css");
     styleFile.open(QFile::ReadOnly);
@@ -37,11 +47,6 @@ Dialog::Dialog(QWidget *parent) :
     ui->comboBox_department->addItems(items);
 }
 
-Dialog::~Dialog()
-{
-    delete ui;
-}
-
 void Dialog::on_pushButton_setPhoto_clicked()
 {
     QString aFile=QFileDialog::getOpenFileName(this,"选择图片文件","", "照片(*.jpg)");
@@ -61,7 +66,6 @@ void Dialog::on_pushButton_setPhoto_clicked()
     pic.loadFromData(data);
     ui->label_photo->setPixmap(pic.scaledToWidth(ui->label_photo->size().width()));
 }
-
 
 void Dialog::on_pushButton_clear_clicked()
 {
@@ -106,7 +110,7 @@ void Dialog::setUpdateRecord(QSqlRecord &recData)   //更新记录
         }
         else
         {
-            qDebug() << "加载图像失败";
+            // qDebug() << "加载图像失败";
         }
     }
 }
@@ -151,10 +155,8 @@ void Dialog::on_pushButton_lock_clicked()
     db.setPassword("root"); // MySQL密码
 
     if (db.open()) {
-        // 数据库连接成功
-        qDebug() << "dialog connect";
+        //qDebug() << "dialog connect";
     } else {
-        // 数据库连接失败，处理错误
         qDebug() << "Database connection error: " << db.lastError().text();
     }
 
@@ -172,7 +174,7 @@ void Dialog::on_pushButton_lock_clicked()
 
     // 执行更新
     if (query.exec()) {
-        // 更新成功
+
     } else {
         // 更新出错，处理错误
         qDebug() << "更新失败: " << query.lastError().text();

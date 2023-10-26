@@ -21,10 +21,13 @@ private:
 
 public:
     explicit Dialog(QWidget *parent = nullptr);
+
     ~Dialog();
 
-    void    setUpdateRecord(QSqlRecord &recData);   //更新记录
-    void    setInsertRecord(QSqlRecord &recData);   //插入记录
+    void Init();
+
+    void setUpdateRecord(QSqlRecord &recData);   //更新记
+    void setInsertRecord(QSqlRecord &recData);   //插入记录
     QSqlRecord  getRecordData();     //获取界面输入的数据
 
     QString GenerateRandomSalt(int length); // 哈希盐值salt
