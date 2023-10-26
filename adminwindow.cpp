@@ -72,8 +72,6 @@ adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
 
     // 数据库连接与映射
     openTable();
-
-
 }
 
 adminWindow::~adminWindow()

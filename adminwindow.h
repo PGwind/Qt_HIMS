@@ -26,19 +26,24 @@ class adminWindow : public QMainWindow
 private:
     QLineEdit *searchLineEdit;
     QPushButton *searchButton;
-
     bool isEditingEnabled;
     QLabel *recordCountLabel;
-    QSqlDatabase DB; 
-    QSqlTableModel *model; 
+    QSqlDatabase DB;
+    QSqlTableModel *model;
     QItemSelectionModel *selModel; 
 
     void openTable();   // 连接
+
     void showRecordCount(); // 记录数
+
     QString GenerateRandomSalt(int length); // 哈希盐值salt
+
     QString hashPassword(const QString &password, const QString &salt); // 哈希加密
+
     bool updatePassword(const QString &logincount, const QString &newPassword); // 密码修改
+
     void keyPressEvent(QKeyEvent *event) override; // 快捷键搜索
+
 public:
     explicit adminWindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
     ~adminWindow();
