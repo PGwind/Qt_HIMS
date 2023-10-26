@@ -9,8 +9,18 @@ MainWindow::MainWindow(QWidget *parent, const QString &loginCount)
     ui->setupUi(this);
     setWindowTitle("住院病人信息管理");
 
-    qDebug() << loginCount;
+    Init();
+    openTable();
+    selectData();
+}
 
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::Init()
+{
     /* CSS */
     QFile styleFile(":/css/mainwindow.css");
     styleFile.open(QFile::ReadOnly);
@@ -63,28 +73,19 @@ MainWindow::MainWindow(QWidget *parent, const QString &loginCount)
     setCentralWidget(centralWidget);
     ui->tableView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-    // 数据库连接与映射
-    openTable();
-    selectData();
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }
 
 void MainWindow::openTable()
 {
     /* 1.数据库处理 */
-    DB = QSqlDatabase::addDatabase("QMYSQL", "manage");
-    DB.setHostName("localhost"); // MySQL服务器主机名
-    DB.setDatabaseName("ims"); // 数据库名称
-    DB.setUserName("root"); // MySQL用户名
-    DB.setPassword("root"); // MySQL密码
+    DB = QSqlDatabase::addDatabase("QMYSQL");
+    DB.setHostName("localhost");
+    DB.setDatabaseName("ims");
+    DB.setUserName("ims");
+    DB.setPassword("ims");
     if (DB.open()) {
         // 数据库连接成功
-        qDebug() << "DB_patients connect";
+        // qDebug() << "DB_patients connect";
     } else {
         // 数据库连接失败，处理错误
         qDebug() << "Database connection error: " << DB.lastError().text();
@@ -172,7 +173,6 @@ void MainWindow::on_actModify_triggered()
     int curRecNo= selModel->currentIndex().row();
     updateRecord(curRecNo);
 }
-
 
 // 双击修改
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
@@ -316,10 +316,6 @@ void MainWindow::on_actAdd_triggered()
         query.bindValue(":notes", recData.value("notes"));
         query.bindValue(":ID", ID);
 
-        QVariant bedValue = recData.value("bedNumber");
-        qDebug() << "Bed:" << bedValue.toInt(); // 假设 age 是整数类型
-        // 继续绑定其他 patientinfo 表字段
-
         if (!query.exec()) {
             QMessageBox::critical(this, "错误", "patientinfo 表记录更新错误\n" + query.lastError().text());
             // 如果 patientinfo 表记录插入失败，你可能需要在此处添加回滚操作以删除 personinfo 表中的记录。
@@ -331,8 +327,6 @@ void MainWindow::on_actAdd_triggered()
     }
     delete dataDialog;
 }
-
-
 
 // 删除
 void MainWindow::on_actDelete_triggered()

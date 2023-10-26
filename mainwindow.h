@@ -34,6 +34,7 @@ private:
 
     bool isEditingEnabled; // tableview编辑
 
+    void Init();
     void openTable();   // 连接
     void selectData(); //查询数据
     void showRecordCount(); // 记录数
