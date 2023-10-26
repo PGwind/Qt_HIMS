@@ -13,6 +13,8 @@
 #include <QtSql>
 #include <QDataWidgetMapper>
 #include <QMessageBox>
+#include <QIcon>
+
 
 namespace Ui {
 class login;
@@ -36,7 +38,10 @@ private:
     MainWindow *manageWindow;   // 病人信息管理
     adminWindow *adminWin;      // 管理员账户修改
 
+    void Init();
+
     QString GenerateRandomSalt(int length);
+
     QString hashPassword(const QString &password, const QString &salt);
 
 protected:
@@ -47,8 +52,6 @@ protected:
 public:
     explicit login(QWidget *parent = nullptr);
     ~login();
-
-
 
 private slots:
     void on_btnMin_clicked();   // 最小化
