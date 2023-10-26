@@ -19,23 +19,23 @@ class userwindow;
 class userwindow : public QMainWindow
 {
     Q_OBJECT
+
 private:
     QSqlRecord m_record;
     QSqlDatabase DB;
     QSqlQueryModel *qryModel;
     void openTable();   // 连接
     void Init();
-
-
-public:
-    explicit userwindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
-    ~userwindow();
     void setUpdateRecord(QSqlRecord &recData);  // 更新信息页
     QSqlRecord getRecordData(); // 读取数据
     void setFlag(bool flag);
 
     QString GenerateRandomSalt(int length); // 哈希盐值salt
     QString hashPassword(const QString &password, const QString &salt); // 哈希加密
+
+public:
+    explicit userwindow(QWidget *parent = nullptr, const QString &loginCount = nullptr);
+    ~userwindow(); 
 
 private slots:
     void on_actClear_triggered();

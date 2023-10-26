@@ -9,7 +9,6 @@ userwindow::userwindow(QWidget *parent, const QString &loginCount) :
     ui->setupUi(this);
     setWindowTitle("医院信息管理系统");
 
-
     openTable();
     Init();
 }
@@ -22,11 +21,11 @@ userwindow::~userwindow()
 void userwindow::openTable()
 {
     /* 1.数据库处理 */
-    DB = QSqlDatabase::addDatabase("QMYSQL", "user");
-    DB.setHostName("localhost"); // MySQL服务器主机名
-    DB.setDatabaseName("ims"); // 数据库名称
-    DB.setUserName("root"); // MySQL用户名
-    DB.setPassword("root"); // MySQL密码
+    DB = QSqlDatabase::addDatabase("QMYSQL");
+    DB.setHostName("localhost");
+    DB.setDatabaseName("ims");
+    DB.setUserName("ims");
+    DB.setPassword("ims");
     if (DB.open()) {
         // 数据库连接成功
         qDebug() << "DB_patients connect";
@@ -67,7 +66,6 @@ void userwindow::Init()
     << "肝胆外科" << "泌尿外科" << "烧伤科" << "妇科" << "产科" << "血透室" << "重症监护室";
     items.sort();
     ui->comboBox_department->addItems(items);
-    qDebug() << loginCount;
 
     ui->actSave->setEnabled(false);
     //ui->centralwidget->setEnabled(false);
@@ -278,7 +276,6 @@ QSqlRecord userwindow::getRecordData()     //获取界面输入的数据
     m_record.setValue("dischargeDate", ui->dateEdit_discharge->date());
     m_record.setValue("notes", ui->textEdit_note->toPlainText());
 
-    qDebug() << "getRecordData: " << ui->spinBox_age->value() << ui->comboBox_bed->currentText();
     return m_record;
 }
 
