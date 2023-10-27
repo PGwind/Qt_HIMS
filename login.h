@@ -23,12 +23,7 @@ class login;
 class login : public QWidget
 {
     Q_OBJECT
-private:
-    bool isPasswordValid(const QString &password);
-    bool adminCheck(const QString& count, const QString& password);
-    bool userCheck(const QString& count, const QString& password);
-    bool m_dragging;
-
+private:    
     QPoint m_dragPosition;
     QSqlDatabase  DB;                //数据库
     QSqlQueryModel  *qryModel;       //数据模型
@@ -38,10 +33,15 @@ private:
     MainWindow *manageWindow;   // 病人信息管理
     adminWindow *adminWin;      // 管理员账户修改
 
+    bool isPasswordValid(const QString &password);
+    bool adminCheck(const QString& count, const QString& password);
+    bool userCheck(const QString& count, const QString& password);
+    bool m_dragging;
+    bool right;
+
     void Init();
 
     QString GenerateRandomSalt(int length);
-
     QString hashPassword(const QString &password, const QString &salt);
 
 protected:

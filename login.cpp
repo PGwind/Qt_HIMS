@@ -32,16 +32,16 @@ void login::Init()
     ui->lineEdit_passwd->setEchoMode(QLineEdit::Password);  // 输入时隐藏
 
     // 连接数据库
-    DB = QSqlDatabase::addDatabase("QMYSQL");
+    DB = QSqlDatabase::addDatabase("QMYSQL", "login");
     DB.setHostName("localhost");
     DB.setDatabaseName("ims");
     DB.setUserName("ims");
     DB.setPassword("ims");
 
     if (DB.open()) {
-    //  qDebug() << "Connected to the database!";
+        //qDebug() << "Connected to the database!";
     } else {
-    // qDebug() << "Failed to connect to the database: " << DB.lastError().text();
+        //qDebug() << "Failed to connect to the database: " << DB.lastError().text();
     }
 
     // 创建数据模型和选择模型
@@ -49,11 +49,13 @@ void login::Init()
     selModel = new QItemSelectionModel(qryModel);
 }
 
+/* 最小化 */
 void login::on_btnMin_clicked()
 {
     this->showMinimized();
 }
 
+/* 关闭窗口 */
 void login::on_btnClose_clicked()
 {
     this->close();
@@ -77,7 +79,6 @@ void login::mouseMoveEvent(QMouseEvent *event)
     }
 }
 
-
 void login::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
@@ -91,15 +92,15 @@ void login::on_btnLogin_clicked()
     QString password = ui->lineEdit_passwd->text();
 
     // 管理员检测
-    QSqlQuery query;
+    QSqlQuery query(DB);
     query.prepare("SELECT password, salt FROM admin WHERE count = :count");
     query.bindValue(":count", count);
 
     QRegularExpression regex("[a-zA-Z]");
     if (regex.match(count).hasMatch()) {
         if (count.contains("admin")) {
-            bool admin = adminCheck(count, password);
-            if (admin) {
+            right = adminCheck(count, password);
+            if (right) {
                 adminWin = new adminWindow(nullptr, count);
                 adminWin->show();
                 DB.close();
@@ -107,8 +108,8 @@ void login::on_btnLogin_clicked()
             } else
                 QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
         } else {
-            bool manage = adminCheck(count, password);
-            if (manage) {
+            right = adminCheck(count, password);
+            if (right) {
                 manageWindow = new MainWindow(nullptr, count);
                 manageWindow->show();
                 DB.close();
@@ -117,8 +118,8 @@ void login::on_btnLogin_clicked()
                 QMessageBox::critical(this, "登录失败", "用户不存在或密码错误");
         }
     } else {
-        bool user = userCheck(count, password);
-        if (user) {
+        bool right = userCheck(count, password);
+        if (right) {
             userWindow = new userwindow(nullptr, count);
             userWindow->show();
             DB.close();
@@ -135,7 +136,7 @@ void login::keyPressEvent(QKeyEvent *event) {
     }
 }
 
-// 账户管理登录检测
+/* 管理员登录检测 */
 bool login::adminCheck(const QString& count, const QString& password)
 {
     if (password.isEmpty()) {
@@ -143,7 +144,7 @@ bool login::adminCheck(const QString& count, const QString& password)
         return false;
     }
 
-    QSqlQuery query;
+    QSqlQuery query(DB);
     query.prepare("SELECT password, salt FROM admin WHERE count = :count");
     query.bindValue(":count", count);
 
@@ -161,7 +162,7 @@ bool login::adminCheck(const QString& count, const QString& password)
     return false;
 }
 
-// 病人信息登录检测
+/* 病人登录检测 */
 bool login::userCheck(const QString& id, const QString& password)
 {
     if (password.isEmpty()) {
@@ -169,7 +170,7 @@ bool login::userCheck(const QString& id, const QString& password)
         return false;
     }
 
-    QSqlQuery query;
+    QSqlQuery query(DB);
     query.prepare("SELECT password, salt FROM users WHERE id = :id");
     query.bindValue(":id", id);
 
@@ -223,7 +224,6 @@ bool login::isPasswordValid(const QString &password)
 
     return match.hasMatch();
 }
-
 
 
 /* 注册用户 */
