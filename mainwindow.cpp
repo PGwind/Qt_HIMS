@@ -21,13 +21,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::Init()
 {
-    /* CSS */
+    // CSS
     QFile styleFile(":/css/mainwindow.css");
     styleFile.open(QFile::ReadOnly);
     QString style = QLatin1String(styleFile.readAll());
     qApp->setStyleSheet(style);
 
-    /* 搜索 */
+    // 搜索
     searchLineEdit = new QLineEdit;
     searchLineEdit->setPlaceholderText("搜索...");
     searchLineEdit->setMaximumWidth(200);
@@ -55,7 +55,7 @@ void MainWindow::Init()
 
    // connect(searchButton, &QPushButton::clicked, this, &adminWindow::searchButtonClicked);
 
-  /* 底部状态栏 */
+    // 底部状态栏
     QStatusBar *statusBar = new QStatusBar(this);
     setStatusBar(statusBar);
     //statusBar->setFixedSize(200, 30);
@@ -65,7 +65,7 @@ void MainWindow::Init()
                                     " color: white; border: 1px solid #2980b9; "
                                     "border-radius: 5px; padding: 2px; font-weight: bold; font-size: 16px;}");
 
-    /* tableView 大小伸展*/
+    // tableView 大小伸展
     QVBoxLayout *table_layout = new QVBoxLayout;
     table_layout->addWidget(ui->tableView);
     QWidget *centralWidget = new QWidget;
@@ -77,8 +77,8 @@ void MainWindow::Init()
 
 void MainWindow::openTable()
 {
-    /* 1.数据库处理 */
-    DB = QSqlDatabase::addDatabase("QMYSQL");
+    // 数据库处理
+    DB = QSqlDatabase::addDatabase("QMYSQL", "manage");
     DB.setHostName("localhost");
     DB.setDatabaseName("ims");
     DB.setUserName("ims");
@@ -88,7 +88,7 @@ void MainWindow::openTable()
         // qDebug() << "DB_patients connect";
     } else {
         // 数据库连接失败，处理错误
-        qDebug() << "Database connection error: " << DB.lastError().text();
+        //qDebug() << "Database connection error: " << DB.lastError().text();
     }
 }
 
@@ -160,13 +160,6 @@ void MainWindow::selectData()
 
 
 /************************************ 按钮 **********************************/
-// 显示记录数
-void MainWindow::showRecordCount()
-{
-    int recordCount = qryModel->rowCount(); // 使用 qryModel 获取记录数
-    recordCountLabel->setText(QString("记录条数：%1").arg(recordCount));
-}
-
 // 修改按钮
 void MainWindow::on_actModify_triggered()
 {
@@ -261,7 +254,6 @@ void MainWindow::updateRecord(int recNo)
 void MainWindow::on_actAdd_triggered()
 {
     QSqlQuery query(DB);
-//    query.exec("SELECT * FROM personinfo WHERE id = -1"); // 查不出实际记录，只查询出字段信息
     query.exec("SELECT personinfo.*, patientinfo.* "
                "FROM personinfo "
                "INNER JOIN patientinfo ON personinfo.id = patientinfo.id "
@@ -296,7 +288,7 @@ void MainWindow::on_actAdd_triggered()
 
         if (!query.exec()) {
             QMessageBox::critical(this, "错误", "personinfo 表记录更新错误\n" + query.lastError().text());
-            return; // 处理错误并退出
+            return;
         }
 
         query.prepare("UPDATE patientinfo SET buildingNumber=:buildingNumber, roomNumber=:roomNumber, "
@@ -318,8 +310,7 @@ void MainWindow::on_actAdd_triggered()
 
         if (!query.exec()) {
             QMessageBox::critical(this, "错误", "patientinfo 表记录更新错误\n" + query.lastError().text());
-            // 如果 patientinfo 表记录插入失败，你可能需要在此处添加回滚操作以删除 personinfo 表中的记录。
-            return; // 处理错误并退出
+            return;
         }
 
         qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo", DB);
@@ -331,11 +322,12 @@ void MainWindow::on_actAdd_triggered()
 // 删除
 void MainWindow::on_actDelete_triggered()
 {
-    int curRecNo= selModel->currentIndex().row();
-    QSqlRecord curRec= qryModel->record(curRecNo); //获取当前记录
-    if (curRec.isEmpty()) //当前为空记录
+    int curRecNo= selModel->currentIndex().row();//获取当前记录
+    QSqlRecord curRec= qryModel->record(curRecNo);
+    if (curRec.isEmpty())
         return;
-    int id = curRec.value("id").toInt(); //获取工号
+
+    int id = curRec.value("id").toInt();
     QSqlQuery query(DB);
     query.prepare("DELETE FROM personinfo WHERE id = :ID");
     query.bindValue(":ID",id);
@@ -369,6 +361,9 @@ void MainWindow::on_actPwd_triggered()
         }
     }
 }
+
+
+
 
 // 更新密码
 /*  存在bug，数据库修改失败
@@ -436,7 +431,7 @@ bool MainWindow::updatePassword(const QString &logincount, const QString &newPas
     }
 }
 
-/* 哈希加密 */
+// 哈希加密
 QString MainWindow::GenerateRandomSalt(int length)
 {
     const QString characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -465,15 +460,11 @@ QString MainWindow::hashPassword(const QString &password, const QString &salt)
 /********************** 搜索 *************************/
 void MainWindow::searchButtonClicked()
 {
-    QString searchTerm = searchLineEdit->text(); // 获取搜索条件，假设你有一个 QLineEdit 用于输入搜索条件
-
-    //QSqlQueryModel *searchModel = new QSqlQueryModel(this);
+    QString searchTerm = searchLineEdit->text();
 
     if (searchTerm.isEmpty()) {
-        // 如果搜索条件为空，显示全部记录
         qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo", DB);
     } else {
-        // 否则，根据搜索条件执行查询
         qryModel->setQuery("SELECT id, name, gender, idNumber, contact, address FROM personinfo WHERE id LIKE '%" + searchTerm + "%'", DB);
     }
 
@@ -493,6 +484,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         }
 }
 
+/* 显示记录数 */
+void MainWindow::showRecordCount()
+{
+    int recordCount = qryModel->rowCount(); // 使用 qryModel 获取记录数
+    recordCountLabel->setText(QString("记录条数：%1").arg(recordCount));
+}
 
 
 

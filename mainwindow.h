@@ -35,6 +35,7 @@ private:
     bool isEditingEnabled; // tableview编辑
 
     void Init();
+
     void openTable();   // 连接
     void selectData(); //查询数据
     void showRecordCount(); // 记录数
@@ -43,6 +44,7 @@ private:
     QString GenerateRandomSalt(int length); // 哈希盐值salt
     QString hashPassword(const QString &password, const QString &salt); // 哈希加密
     bool updatePassword(const QString &logincount, const QString &newPassword); // 密码修改
+
     void keyPressEvent(QKeyEvent *event) override; // 快捷键搜索
 
 public:
