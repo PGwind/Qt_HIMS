@@ -8,21 +8,29 @@ adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
 {
     if (loginCount == "admin")  // 超级用户
         power = true;
-//    if (power)
-//        qDebug() << "超级用户";
-//    else
-//        qDebug() << "非超级用户";
 
     ui->setupUi(this);
     setWindowTitle("高级用户信息管理");
 
-    /* CSS */
+    Init();
+    openTable(); // 数据库
+}
+
+adminWindow::~adminWindow()
+{
+    delete ui;
+}
+
+/* 初始化 */
+void adminWindow::Init()
+{
+    // CSS
     QFile styleFile(":/css/adminwindow.css");
     styleFile.open(QFile::ReadOnly);
     QString style = QLatin1String(styleFile.readAll());
     qApp->setStyleSheet(style);
 
-    /* 搜索 */
+    // 搜索
     searchLineEdit = new QLineEdit;
     searchLineEdit->setPlaceholderText("搜索...");
     searchLineEdit->setMaximumWidth(200);
@@ -51,17 +59,16 @@ adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
     connect(searchButton, &QPushButton::clicked, this, &adminWindow::searchButtonClicked);
 
 
-    /* 底部状态栏 */
+    // 底部状态栏
     QStatusBar *statusBar = new QStatusBar(this);
     setStatusBar(statusBar);
-    //statusBar->setFixedSize(200, 30);
     recordCountLabel = new QLabel("记录数: 0", this);
     statusBar->addWidget(recordCountLabel);
     recordCountLabel->setStyleSheet("QLabel { background-color: #3498db;"
                                     " color: white; border: 1px solid #2980b9; "
                                     "border-radius: 5px; padding: 2px; font-weight: bold; font-size: 16px;}");
 
-    /* tableView 大小伸展*/
+    // tableView 大小伸展
     QVBoxLayout *table_layout = new QVBoxLayout;
     table_layout->addWidget(ui->tableView);
     QWidget *centralWidget = new QWidget;
@@ -69,29 +76,20 @@ adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
     setCentralWidget(centralWidget);
     ui->tableView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-    // 数据库连接与映射
-    openTable();
 }
 
-adminWindow::~adminWindow()
-{
-    delete ui;
-}
 
 void adminWindow::openTable()
 {
-    /* 1.数据库处理 */
+    /* 数据库 */
     DB = QSqlDatabase::addDatabase("QMYSQL", "admin");
     DB.setHostName("localhost"); // MySQL服务器主机名
     DB.setDatabaseName("ims"); // 数据库名称
-    DB.setUserName("root"); // MySQL用户名
-    DB.setPassword("root"); // MySQL密码
+    DB.setUserName("ims"); // MySQL用户名
+    DB.setPassword("ims"); // MySQL密码
     if (DB.open()) {
-        // 数据库连接成功
         //qDebug() << "admin connect";
     } else {
-        // 数据库连接失败，处理错误
         qDebug() << "Database connection error: " << DB.lastError().text();
     }
 
@@ -109,6 +107,7 @@ void adminWindow::openTable()
     }
 
     showRecordCount();
+
 
 
     /* 2.Model/View结构 */
@@ -143,6 +142,8 @@ void adminWindow::openTable()
     selModel=new QItemSelectionModel(model,this);
     connect(selModel,&QItemSelectionModel::currentRowChanged,
             this,&adminWindow::do_currentRowChanged);
+
+
 
     /* 3.按钮设置 */
     ui->actSave->setEnabled(false);
@@ -197,7 +198,6 @@ QString adminWindow::hashPassword(const QString &password, const QString &salt)
     QByteArray passwordBytes = password.toUtf8();
     passwordBytes.append(saltByteArray);
 
-    // 使用SHA-256哈希算法对密码和盐值进行哈希
     QByteArray hashedPassword = QCryptographicHash::hash(passwordBytes, QCryptographicHash::Sha256);
     return QString(hashedPassword.toHex());
 }
@@ -273,6 +273,7 @@ void adminWindow::on_actSave_triggered()
             ui->actRevert->setEnabled(false);
         }
     }
+
     showRecordCount();
 
     isEditingEnabled = false;

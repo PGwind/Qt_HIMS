@@ -30,7 +30,9 @@ private:
     QLabel *recordCountLabel;
     QSqlDatabase DB;
     QSqlTableModel *model;
-    QItemSelectionModel *selModel; 
+    QItemSelectionModel *selModel;
+
+    void Init();
 
     void openTable();   // 连接
 
@@ -74,7 +76,7 @@ private slots:
 private:
     Ui::adminWindow *ui;
     QString loginCount;
-    bool power = false;
+    bool power = false; // 最高级用户
 };
 
 #endif // ADMINWINDOW_H
