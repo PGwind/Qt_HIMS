@@ -15,9 +15,10 @@ Dialog::~Dialog()
     delete ui;
 }
 
+/* 初始化 */
 void Dialog::Init()
 {
-    /* 加载CSS */
+    // 加载CSS
     QFile styleFile(":/css/userwindow.css");
     styleFile.open(QFile::ReadOnly);
     QString style = QLatin1String(styleFile.readAll());
@@ -47,6 +48,7 @@ void Dialog::Init()
     ui->comboBox_department->addItems(items);
 }
 
+/* 设置图片 */
 void Dialog::on_pushButton_setPhoto_clicked()
 {
     QString aFile=QFileDialog::getOpenFileName(this,"选择图片文件","", "照片(*.jpg)");
@@ -60,20 +62,22 @@ void Dialog::on_pushButton_setPhoto_clicked()
     file->close();
     delete file;
 
-    m_record.setValue("photo",data); //图片保存到Photo字段
+    m_record.setValue("photo",data);
 
     QPixmap pic;
     pic.loadFromData(data);
     ui->label_photo->setPixmap(pic.scaledToWidth(ui->label_photo->size().width()));
 }
 
+/* 清除图片 */
 void Dialog::on_pushButton_clear_clicked()
 {
     ui->label_photo->clear();
     m_record.setNull("photo");
 }
 
-void Dialog::setUpdateRecord(QSqlRecord &recData)   //更新记录
+/* 更新记录 */
+void Dialog::setUpdateRecord(QSqlRecord &recData)
 {
     m_record = recData;
     ui->lineEdit_id->setEnabled(false);
@@ -115,7 +119,8 @@ void Dialog::setUpdateRecord(QSqlRecord &recData)   //更新记录
     }
 }
 
-void Dialog::setInsertRecord(QSqlRecord &recData)   //插入记录
+/* 插入记录 */
+void Dialog::setInsertRecord(QSqlRecord &recData)
 {
     m_record = recData;
     ui->lineEdit_id->setEnabled(false);
@@ -123,7 +128,8 @@ void Dialog::setInsertRecord(QSqlRecord &recData)   //插入记录
     ui->lineEdit_id->setText(recData.value("id").toString());
 }
 
-QSqlRecord Dialog::getRecordData()     //获取界面输入的数据
+/* 获取界面输入的数据 */
+QSqlRecord Dialog::getRecordData()
 {
     m_record.setValue("id", ui->lineEdit_id->text().toInt());
     m_record.setValue("name", ui->lineEdit_name->text());
@@ -145,14 +151,15 @@ QSqlRecord Dialog::getRecordData()     //获取界面输入的数据
     return m_record;
 }
 
+/* 修改密码 */
 void Dialog::on_pushButton_lock_clicked()
 {
     int id = m_record.value("id").toInt();
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL", "change");
-    db.setHostName("localhost"); // MySQL服务器主机名
-    db.setDatabaseName("ims"); // 数据库名称
-    db.setUserName("root"); // MySQL用户名
-    db.setPassword("root"); // MySQL密码
+    db.setHostName("localhost");
+    db.setDatabaseName("ims");
+    db.setUserName("ims");
+    db.setPassword("ims");
 
     if (db.open()) {
         //qDebug() << "dialog connect";
@@ -167,16 +174,13 @@ void Dialog::on_pushButton_lock_clicked()
     QSqlQuery query(db);
     query.prepare("UPDATE users SET password=:password, salt=:salt WHERE id=:id");
 
-    // 绑定值
     query.bindValue(":password", hashedPassword);
     query.bindValue(":salt", salt);
     query.bindValue(":id", id);
 
-    // 执行更新
     if (query.exec()) {
 
     } else {
-        // 更新出错，处理错误
         qDebug() << "更新失败: " << query.lastError().text();
     }
 
