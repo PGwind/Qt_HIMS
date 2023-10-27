@@ -7,10 +7,10 @@ userwindow::userwindow(QWidget *parent, const QString &loginCount) :
     loginCount(loginCount)
 {
     ui->setupUi(this);
-    setWindowTitle("医院信息管理系统");
+    setWindowTitle("个人信息");
 
-    openTable();
     Init();
+    openTable();
 }
 
 userwindow::~userwindow()
@@ -18,29 +18,45 @@ userwindow::~userwindow()
     delete ui;
 }
 
+/* 数据库 */
 void userwindow::openTable()
 {
-    /* 1.数据库处理 */
-    DB = QSqlDatabase::addDatabase("QMYSQL");
+    DB = QSqlDatabase::addDatabase("QMYSQL", "user");
     DB.setHostName("localhost");
     DB.setDatabaseName("ims");
     DB.setUserName("ims");
     DB.setPassword("ims");
     if (DB.open()) {
-        // 数据库连接成功
-        qDebug() << "DB_patients connect";
+        //qDebug() << "DB_patients connect";
     } else {
-        // 数据库连接失败，处理错误
-        qDebug() << "Database connection error: " << DB.lastError().text();
+        //qDebug() << "Database connection error: " << DB.lastError().text();
     }
 
     qryModel= new QSqlQueryModel(this);
+
+    // 界面信息获取
+    QSqlQuery query(DB);
+    query.prepare("SELECT personinfo.*, patientinfo.* "
+                  "FROM personinfo "
+                  "INNER JOIN patientinfo ON personinfo.id = patientinfo.id "
+                  "WHERE personinfo.id = :ID");
+    query.bindValue(":ID", loginCount);
+    query.exec();
+    query.first();
+
+    if (!query.isValid()) { //无有效记录
+        qDebug() << "查询失败";
+        return;
+    }
+
+    QSqlRecord curRec = query.record();
+    setUpdateRecord(curRec);
 
 }
 
 void userwindow::Init()
 {
-    /* 加载CSS */
+    // CSS
     QFile styleFile(":/css/userwindow.css");
     styleFile.open(QFile::ReadOnly);
     QString style = QLatin1String(styleFile.readAll());
@@ -68,40 +84,23 @@ void userwindow::Init()
     ui->comboBox_department->addItems(items);
 
     ui->actSave->setEnabled(false);
-    //ui->centralwidget->setEnabled(false);
     ui->label_photo->setEnabled(true);
     ui->groupBox->setEnabled(false);
-    setFlag(false);
 
-    /************************** 数据初始化  *************************/
-    QSqlQuery query(DB);
-    query.prepare("SELECT personinfo.*, patientinfo.* "
-                  "FROM personinfo "
-                  "INNER JOIN patientinfo ON personinfo.id = patientinfo.id "
-                  "WHERE personinfo.id = :ID");
-    query.bindValue(":ID", loginCount);
-    query.exec();
-    query.first();
-
-    if (!query.isValid()) { //无有效记录
-        qDebug() << "查询失败";
-        return;
-    }
-
-    QSqlRecord curRec = query.record();
-    setUpdateRecord(curRec);
+    ui->groupBox->setEnabled(false);
+    ui->groupBox_2->setEnabled(false);
+    ui->groupBox_3->setEnabled(false);
+    ui->groupBox_4->setEnabled(false);
+    ui->groupBox_5->setEnabled(false);
 }
 
 void userwindow::setFlag(bool flag)
 {
-    ui->groupBox->setEnabled(flag);
-    ui->groupBox_2->setEnabled(flag);
     ui->groupBox_3->setEnabled(flag);
     ui->groupBox_4->setEnabled(flag);
-    ui->groupBox_5->setEnabled(flag);
 }
 
-// 清除图像
+/* 清除图像 */
 void userwindow::on_actClear_triggered()
 {
     ui->actModify->setEnabled(true);
@@ -110,7 +109,7 @@ void userwindow::on_actClear_triggered()
     m_record.setNull("photo");
 }
 
-// 修改图像
+/* 修改图像 */
 void userwindow::on_actPhoto_triggered()
 {
     ui->actModify->setEnabled(true);
@@ -130,7 +129,7 @@ void userwindow::on_actPhoto_triggered()
     ui->label_photo->setPixmap(pic.scaledToWidth(ui->label_photo->size().width()));
 }
 
-// 保存
+/* 保存 */
 void userwindow::on_actSave_triggered()
 {
     setFlag(false);
@@ -179,7 +178,7 @@ void userwindow::on_actSave_triggered()
         }
 }
 
-// 修改
+/* 修改 */
 void userwindow::on_actModify_triggered()
 {
     setFlag(true);
@@ -190,7 +189,7 @@ void userwindow::on_actModify_triggered()
 
 }
 
-// 密码
+/* 密码 */
 void userwindow::on_actPwd_triggered()
 {
     bool ok;
@@ -216,8 +215,8 @@ void userwindow::on_actPwd_triggered()
     }
 }
 
-
-void userwindow::setUpdateRecord(QSqlRecord &recData)   //更新记录
+/* 更新记录 */
+void userwindow::setUpdateRecord(QSqlRecord &recData)
 {
     m_record = recData;
     ui->lineEdit_id->setEnabled(false);
@@ -257,7 +256,8 @@ void userwindow::setUpdateRecord(QSqlRecord &recData)   //更新记录
     }
 }
 
-QSqlRecord userwindow::getRecordData()     //获取界面输入的数据
+/* 获取界面输入的数据 */
+QSqlRecord userwindow::getRecordData()
 {
     m_record.setValue("id", ui->lineEdit_id->text().toInt());
     m_record.setValue("name", ui->lineEdit_name->text());
@@ -279,8 +279,8 @@ QSqlRecord userwindow::getRecordData()     //获取界面输入的数据
     return m_record;
 }
 
-
-QString userwindow::GenerateRandomSalt(int length) // 哈希盐值salt
+/* 哈希加密 */
+QString userwindow::GenerateRandomSalt(int length)
 {
     const QString characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     const int charactersLength = characters.length();
@@ -300,7 +300,6 @@ QString userwindow::hashPassword(const QString &password, const QString &salt) /
     QByteArray passwordbytes = password.toUtf8();
     passwordbytes.append(saltByteArray);
 
-    // 使用SHA-256哈希算法对密码和盐值进行哈希
     QByteArray hashedPassword = QCryptographicHash::hash(passwordbytes, QCryptographicHash::Sha256);
     return QString(hashedPassword.toHex());
 }
