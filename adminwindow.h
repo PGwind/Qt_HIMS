@@ -28,6 +28,7 @@ private:
     QPushButton *searchButton;
     bool isEditingEnabled;
     QLabel *recordCountLabel;
+
     QSqlDatabase DB;
     QSqlTableModel *model;
     QItemSelectionModel *selModel;
