@@ -78,17 +78,17 @@ void MainWindow::Init()
 void MainWindow::openTable()
 {
     // 数据库处理
-    DB = QSqlDatabase::addDatabase("QMYSQL", "manage");
+    DB = QSqlDatabase::addDatabase("QMYSQL");
     DB.setHostName("localhost");
     DB.setDatabaseName("ims");
     DB.setUserName("ims");
     DB.setPassword("ims");
     if (DB.open()) {
         // 数据库连接成功
-        // qDebug() << "DB_patients connect";
+         qDebug() << "DB_patients connect";
     } else {
         // 数据库连接失败，处理错误
-        //qDebug() << "Database connection error: " << DB.lastError().text();
+        qDebug() << "Database connection error: " << DB.lastError().text();
     }
 }
 
