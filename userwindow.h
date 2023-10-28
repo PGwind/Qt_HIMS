@@ -24,6 +24,7 @@ private:
     QSqlRecord m_record;
     QSqlDatabase DB;
     QSqlQueryModel *qryModel;
+
     void openTable();   // 连接
     void Init();
     void setUpdateRecord(QSqlRecord &recData);  // 更新信息页
