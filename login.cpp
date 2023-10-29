@@ -39,9 +39,9 @@ void login::Init()
     DB.setPassword("ims");
 
     if (DB.open()) {
-        //qDebug() << "Connected to the database!";
+        qDebug() << "Connected to the database!";
     } else {
-        //qDebug() << "Failed to connect to the database: " << DB.lastError().text();
+        qDebug() << "Failed to connect to the database: " << DB.lastError().text();
     }
 
     // 创建数据模型和选择模型
