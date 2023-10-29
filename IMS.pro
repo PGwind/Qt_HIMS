@@ -1,5 +1,6 @@
 QT       += core gui
 QT += sql
+QT += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,6 +16,7 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
+    statistics.cpp \
     userwindow.cpp
 
 HEADERS += \
@@ -22,6 +24,7 @@ HEADERS += \
     dialog.h \
     login.h \
     mainwindow.h \
+    statistics.h \
     userwindow.h
 
 FORMS += \
@@ -29,6 +32,7 @@ FORMS += \
     dialog.ui \
     login.ui \
     mainwindow.ui \
+    statistics.ui \
     userwindow.ui
 
 # Default rules for deployment.
