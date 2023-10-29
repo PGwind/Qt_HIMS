@@ -13,7 +13,7 @@
 #include <QMessageBox>
 #include <QMouseEvent>
 #include "dialog.h"
-
+#include "statistics.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -63,6 +63,10 @@ private slots:
     void on_actDelete_triggered();
 
     void on_actPwd_triggered();
+
+    void on_actSum_triggered();
+
+    void onStatisticsClosed();
 
 private:
     Ui::MainWindow *ui;

@@ -84,10 +84,8 @@ void MainWindow::openTable()
     DB.setUserName("ims");
     DB.setPassword("ims");
     if (DB.open()) {
-        // 数据库连接成功
-         qDebug() << "DB_patients connect";
+        // qDebug() << "ManagePatients connect";
     } else {
-        // 数据库连接失败，处理错误
         qDebug() << "Database connection error: " << DB.lastError().text();
     }
 }
@@ -346,6 +344,19 @@ void MainWindow::on_actDelete_triggered()
     }
 }
 
+// 信息统计
+void MainWindow::on_actSum_triggered()
+{
+    Statistics *statistic = new Statistics(this);
+    connect(statistic, &Statistics::closed, this, &MainWindow::onStatisticsClosed);
+    statistic->show();
+    ui->actSum->setEnabled(false);
+}
+
+void MainWindow::onStatisticsClosed()
+{
+    ui->actSum->setEnabled(true);
+}
 
 /************************ 修改密码  *********************************/
 void MainWindow::on_actPwd_triggered()
@@ -490,6 +501,9 @@ void MainWindow::showRecordCount()
     int recordCount = qryModel->rowCount(); // 使用 qryModel 获取记录数
     recordCountLabel->setText(QString("记录条数：%1").arg(recordCount));
 }
+
+
+
 
 
 

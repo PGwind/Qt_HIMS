@@ -53,6 +53,7 @@
    <addaction name="actDelete"/>
    <addaction name="separator"/>
    <addaction name="actPwd"/>
+   <addaction name="actSum"/>
   </widget>
   <action name="actAdd">
    <property name="icon">
@@ -120,6 +121,18 @@
    </property>
    <property name="toolTip">
     <string>修改密码</string>
+   </property>
+  </action>
+  <action name="actSum">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/icons/statistics.png</normaloff>:/icons/images/icons/statistics.png</iconset>
+   </property>
+   <property name="text">
+    <string>信息统计</string>
+   </property>
+   <property name="toolTip">
+    <string>信息统计</string>
    </property>
   </action>
  </widget>
