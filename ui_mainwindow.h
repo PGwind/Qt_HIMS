@@ -30,6 +30,7 @@ public:
     QAction *actRevert;
     QAction *actSave;
     QAction *actPwd;
+    QAction *actSum;
     QWidget *centralwidget;
     QTableView *tableView;
     QMenuBar *menubar;
@@ -67,6 +68,11 @@ public:
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/icons/images/icons/passwd.png"), QSize(), QIcon::Normal, QIcon::Off);
         actPwd->setIcon(icon4);
+        actSum = new QAction(MainWindow);
+        actSum->setObjectName(QString::fromUtf8("actSum"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons/images/icons/statistics.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actSum->setIcon(icon5);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         tableView = new QTableView(centralwidget);
@@ -87,6 +93,7 @@ public:
         toolBar->addAction(actDelete);
         toolBar->addSeparator();
         toolBar->addAction(actPwd);
+        toolBar->addAction(actSum);
 
         retranslateUi(MainWindow);
 
@@ -119,6 +126,10 @@ public:
         actPwd->setText(QCoreApplication::translate("MainWindow", "\344\277\256\346\224\271\345\257\206\347\240\201", nullptr));
 #if QT_CONFIG(tooltip)
         actPwd->setToolTip(QCoreApplication::translate("MainWindow", "\344\277\256\346\224\271\345\257\206\347\240\201", nullptr));
+#endif // QT_CONFIG(tooltip)
+        actSum->setText(QCoreApplication::translate("MainWindow", "\344\277\241\346\201\257\347\273\237\350\256\241", nullptr));
+#if QT_CONFIG(tooltip)
+        actSum->setToolTip(QCoreApplication::translate("MainWindow", "\344\277\241\346\201\257\347\273\237\350\256\241", nullptr));
 #endif // QT_CONFIG(tooltip)
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
