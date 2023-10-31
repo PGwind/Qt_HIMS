@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../IMS_1/mainwindow.h"
+#include "../mainwindow.h"
 #include <QtGui/qtextcursor.h>
 #include <QScreen>
 #include <QtCharts/qlineseries.h>
