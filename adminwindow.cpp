@@ -88,9 +88,9 @@ void adminWindow::openTable()
     DB.setUserName("ims"); // MySQL用户名
     DB.setPassword("ims"); // MySQL密码
     if (DB.open()) {
-        //qDebug() << "admin connect";
+       // qDebug() << "admin connect";
     } else {
-        qDebug() << "Database connection error: " << DB.lastError().text();
+       // qDebug() << "Database connection error: " << DB.lastError().text();
     }
 
     model = new QSqlTableModel(nullptr, DB);
@@ -113,6 +113,7 @@ void adminWindow::openTable()
     /* 2.Model/View结构 */
     ui->tableView->setModel(model);
     isEditingEnabled = false; // 默认禁止修改
+
     // 标题样式
     QHeaderView* header = ui->tableView->horizontalHeader();
     header->setStyleSheet("QHeaderView::section { background-color: #3498db; color: white; border: 1px solid #2980b9; }");
@@ -122,6 +123,7 @@ void adminWindow::openTable()
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);	//项选择
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);	//单项选择
     ui->tableView->setAlternatingRowColors(true);	//交错行底色
+
     // 标题大小
     int countColumnIndex = model->fieldIndex("count");
     ui->tableView->horizontalHeader()->resizeSection(countColumnIndex, 200);
@@ -129,10 +131,11 @@ void adminWindow::openTable()
     ui->tableView->horizontalHeader()->resizeSection(noteColumnIndex, 375);
     int logintimeColumnIndex = model->fieldIndex("logintime");
     ui->tableView->horizontalHeader()->resizeSection(logintimeColumnIndex, 250);
+
     // 选择需要显示的列
     ui->tableView->setColumnHidden(model->fieldIndex("password"), true);
     ui->tableView->setColumnHidden(model->fieldIndex("salt"), true);
-    //ui->tableView->setRowHidden(0, true);
+
     // 标题名称
     model->setHeaderData(model->fieldIndex("count"), Qt::Horizontal, "Count");
     model->setHeaderData(model->fieldIndex("note"), Qt::Horizontal, "Note");
@@ -142,7 +145,6 @@ void adminWindow::openTable()
     selModel=new QItemSelectionModel(model,this);
     connect(selModel,&QItemSelectionModel::currentRowChanged,
             this,&adminWindow::do_currentRowChanged);
-
 
 
     /* 3.按钮设置 */
