@@ -25,11 +25,13 @@ private:
     QSqlDatabase DB;
     QSqlQueryModel *qryModel;
 
-    void openTable();   // 连接
+    void openTable();
     void Init();
+
     void setUpdateRecord(QSqlRecord &recData);  // 更新信息页
     QSqlRecord getRecordData(); // 读取数据
-    void setFlag(bool flag);
+
+    void setFlag(bool flag);    // 控件禁用
 
     QString GenerateRandomSalt(int length); // 哈希盐值salt
     QString hashPassword(const QString &password, const QString &salt); // 哈希加密
