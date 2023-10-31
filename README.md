@@ -1,3 +1,99 @@
-## Introduction
+## 介绍
 
-A Qt  Hospital Inpatient Management System
+> 一款基于Qt的医院住院管理系统
+
+医院住院管理系统是一款基于 Qt 的医疗信息管理软件。用户需要通过密码验证进行登录，并且提供了高级管理员和信息管理员 两种角色。高级管理员负责系统管理，包括添加、修改信息管理员等任务，信息管理员则管理患者信息。系统连接 MySQL 数据 库以安全存储和检索数据，并生成一个随机的盐值以及使用SHA-256哈希算法对密码和盐值进行哈希处理。
+
+
+
+## 使用
+
+删除 `IMS.pro.user` 文件，用 `Qt Creator`  软件打开，选择编译配置信息 `Desktop Qt 6.2.4 MinGW 64-bit`。 
+
+打开 `SQL`文件夹，导入`ims.sql` ，修改相关数据库连接信息即可。
+
+默认最高级用户 `admin` 密码为 `admin`
+
+
+
+## 相关界面
+
+### 登录界面
+
+![](./README_image/login.png)
+
+`login.h` `login.cpp` `login.ui`
+
+用户通过登录界面进入相关角色界面。通过SHA-256哈希算法对密码和盐值进行哈希处理并存储在Mysql数据库中。
+
+通过比对账户不同进入不同界面。
+
+
+
+### 最终管理员界面
+
+![](./README_image/admin.png)
+
+  `adminwindow.h`   `adminwindow.cpp`   `adminwindow.ui` 
+
+负责系统管理，包括添加、修改信息管理员等任务
+
+
+
+### 信息管理员页面
+
+`mainwindow.h` `mainwindow.cpp` `mainwindow.ui`
+
+负责住院患者信息管理以及统计数据查看。包括患者账户密码修改。
+
+![](./README_image/main.png)
+
+
+
+`dialog.h` `dialog.cpp` `dialog.ui`
+
+进行患者信息修改时弹出的对话框，包含患者相关信息。
+
+![](./README_image/dialog.png)
+
+
+
+`statistics.h` `statistics.cpp` `statistics.ui`
+
+住院患者各科室人数统计图，目前仅有饼图
+
+![](./README_image/statistics.png)
+
+
+
+### 患者界面
+
+`userwindow.h` `userwindow.cpp` `userwindow.ui`
+
+患者登录后界面，可进行相关信息修改，包括患者照片、性别、年龄、身份证、地址以及联系方式。
+
+![](./README_image/user.png)
+
+
+
+## 其他文件
+
+`Makefile.*` `.qtc_clang` `IMS.*`
+
+相关配置文件，无需修改
+
+`debug`
+
+Debug 是调试版本，二进制文件带有调试信息，编译时不进行优化；
+
+`release`
+
+Release 是发行版 本，不带有调试信息，针对运行速度对文件大小进行了优化；
+
+`images.qrc`  `images`  
+
+相关按钮、背景资源
+
+`style.qrc`    `*.css`
+
+相关控件美化CSS
