@@ -164,11 +164,11 @@ void Dialog::on_pushButton_lock_clicked()
     if (db.open()) {
         //qDebug() << "dialog connect";
     } else {
-        qDebug() << "Database connection error: " << db.lastError().text();
+        // qDebug() << "Database connection error: " << db.lastError().text();
     }
 
     QString newPassword = QInputDialog::getText(this, "输入密码", "请输入新密码:", QLineEdit::Password);
-    qDebug() << newPassword;
+    // qDebug() << newPassword;
     QString salt = GenerateRandomSalt(16);
     QString hashedPassword = hashPassword(newPassword, salt);
     QSqlQuery query(db);
