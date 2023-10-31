@@ -3348,27 +3348,7 @@ release/adminwindow.o: adminwindow.cpp adminwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/QInputDialog \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qinputdialog.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/QMouseEvent \
-		ui_adminwindow.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/QVariant \
-		E:/qt/6.2.4/mingw_64/include/QtGui/QAction \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qaction.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qinputmethod.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QHeaderView \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qheaderview.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QMenuBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmenubar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmenu.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QStatusBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qstatusbar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QTableView \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtableview.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QToolBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtoolbar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QWidget
+		ui_adminwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\adminwindow.o adminwindow.cpp
 
 release/dialog.o: dialog.cpp dialog.h \
@@ -3672,38 +3652,7 @@ release/dialog.o: dialog.cpp dialog.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qpen.h \
 		E:/qt/6.2.4/mingw_64/include/QtGui/qtextoption.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/QRandomGenerator \
-		ui_dialog.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/QVariant \
-		E:/qt/6.2.4/mingw_64/include/QtGui/QIcon \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qinputmethod.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QComboBox \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QDateEdit \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qdatetimeedit.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QFrame \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QGridLayout \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgridlayout.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayout.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlayoutitem.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qboxlayout.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QGroupBox \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgroupbox.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLabel \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlabel.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qpicture.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qtextdocument.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLineEdit \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QPushButton \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qpushbutton.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qabstractbutton.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QSpinBox \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qspinbox.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QTextEdit \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtextedit.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QVBoxLayout
+		ui_dialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\dialog.o dialog.cpp
 
 release/login.o: login.cpp login.h \
@@ -4337,9 +4286,7 @@ release/login.o: login.cpp login.h \
 		E:/qt/6.2.4/mingw_64/include/QtCore/QRegularExpression \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/QDataWidgetMapper \
 		E:/qt/6.2.4/mingw_64/include/QtGui/QIcon \
-		ui_login.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QFrame
+		ui_login.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\login.o login.cpp
 
 release/main.o: main.cpp E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
@@ -5600,12 +5547,7 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtCharts/qvxymodelmapper.h \
 		E:/qt/6.2.4/mingw_64/include/QtCharts/qxylegendmarker.h \
 		E:/qt/6.2.4/mingw_64/include/QtCharts/qtchartsversion.h \
-		ui_mainwindow.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QHeaderView \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QMenuBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QTableView \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QToolBar
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o mainwindow.cpp
 
 release/statistics.o: statistics.cpp statistics.h \
@@ -6214,8 +6156,7 @@ release/statistics.o: statistics.cpp statistics.h \
 		E:/qt/6.2.4/mingw_64/include/QtSql/qsqltablemodel.h \
 		E:/qt/6.2.4/mingw_64/include/QtSql/qsqlresult.h \
 		E:/qt/6.2.4/mingw_64/include/QtSql/qtsqlversion.h \
-		ui_statistics.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication
+		ui_statistics.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\statistics.o statistics.cpp
 
 release/userwindow.o: userwindow.cpp userwindow.h \
@@ -6530,38 +6471,7 @@ release/userwindow.o: userwindow.cpp userwindow.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmessagebox.h \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/QInputDialog \
 		E:/qt/6.2.4/mingw_64/include/QtWidgets/qinputdialog.h \
-		ui_userwindow.h \
-		E:/qt/6.2.4/mingw_64/include/QtCore/QVariant \
-		E:/qt/6.2.4/mingw_64/include/QtGui/QAction \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qaction.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QApplication \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qinputmethod.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qguiapplication_platform.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QComboBox \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QDateEdit \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qdatetimeedit.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QGridLayout \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QGroupBox \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qgroupbox.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QLabel \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qlabel.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qpicture.h \
-		E:/qt/6.2.4/mingw_64/include/QtGui/qtextdocument.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QMenuBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmenubar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qmenu.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QSpinBox \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qspinbox.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QStatusBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qstatusbar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QTextEdit \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtextedit.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QToolBar \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/qtoolbar.h \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QVBoxLayout \
-		E:/qt/6.2.4/mingw_64/include/QtWidgets/QWidget
+		ui_userwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\userwindow.o userwindow.cpp
 
 release/qrc_images.o: release/qrc_images.cpp 
