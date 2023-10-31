@@ -24,9 +24,9 @@ void Statistics::openDB()
     DB.setUserName("ims"); // MySQL用户名
     DB.setPassword("ims"); // MySQL密码
     if (DB.open()) {
-        //qDebug() << "statistics connect";
+       // qDebug() << "statistics connect";
     } else {
-        qDebug() << "Database connection error: " << DB.lastError().text();
+       // qDebug() << "Database connection error: " << DB.lastError().text();
     }
 }
 
@@ -83,6 +83,8 @@ void Statistics::Init()
 
             pie_series->append(pie_slice);
             colorIndex++;
+            if (colorIndex == 19)
+                colorIndex = 0;
         }
 
         //图表视图
