@@ -80,6 +80,7 @@ void Statistics::Init()
             pie_slice->setColor(list_pie_color[colorIndex]);
             pie_slice->setLabelColor(list_pie_color[colorIndex]);
             pie_slice->setBorderColor(list_pie_color[colorIndex]);
+            //pie_slice->setLabelPosition(QPieSlice::LabelInsideHorizontal);
 
             pie_series->append(pie_slice);
             colorIndex++;
