@@ -86,7 +86,7 @@ void MainWindow::openTable()
     if (DB.open()) {
         // qDebug() << "ManagePatients connect";
     } else {
-        qDebug() << "Database connection error: " << DB.lastError().text();
+        // qDebug() << "Database connection error: " << DB.lastError().text();
     }
 }
 
