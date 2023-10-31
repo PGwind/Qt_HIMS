@@ -10,7 +10,7 @@
 
 删除 `IMS.pro.user` 文件，用 `Qt Creator`  软件打开，选择编译配置信息 `Desktop Qt 6.2.4 MinGW 64-bit`。 
 
-打开 `SQL`文件夹，导入`ims.sql` ，修改相关数据库连接信息即可。
+打开 `SQL`文件夹，导入`ims.sql` ，修改相关数据库连接信息即可。默认数据库名、用户名和密码皆为`ims`。
 
 默认最高级用户 `admin` 密码为 `admin`
 
@@ -40,7 +40,7 @@
 
 
 
-### 信息管理员页面
+### 信息管理员界面
 
 `mainwindow.h` `mainwindow.cpp` `mainwindow.ui`
 
