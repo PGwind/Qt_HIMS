@@ -8,6 +8,7 @@
 #include <QtSql>
 #include <QInputDialog>
 #include <QRandomGenerator>
+#include <QMessageBox>
 
 namespace Ui {
 class Dialog;

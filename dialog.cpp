@@ -1,6 +1,15 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 
+/**************************************************************
+
+Title：dialog.c
+Function: 信息管理二级界面，负载病人信息修改
+Time: 2023/10/31
+
+**************************************************************/
+
+
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
@@ -14,6 +23,7 @@ Dialog::~Dialog()
 {
     delete ui;
 }
+
 
 /* 初始化 */
 void Dialog::Init()
@@ -48,6 +58,7 @@ void Dialog::Init()
     ui->comboBox_department->addItems(items);
 }
 
+
 /* 设置图片 */
 void Dialog::on_pushButton_setPhoto_clicked()
 {
@@ -69,12 +80,14 @@ void Dialog::on_pushButton_setPhoto_clicked()
     ui->label_photo->setPixmap(pic.scaledToWidth(ui->label_photo->size().width()));
 }
 
+
 /* 清除图片 */
 void Dialog::on_pushButton_clear_clicked()
 {
     ui->label_photo->clear();
     m_record.setNull("photo");
 }
+
 
 /* 更新记录 */
 void Dialog::setUpdateRecord(QSqlRecord &recData)
@@ -119,6 +132,7 @@ void Dialog::setUpdateRecord(QSqlRecord &recData)
     }
 }
 
+
 /* 插入记录 */
 void Dialog::setInsertRecord(QSqlRecord &recData)
 {
@@ -127,6 +141,7 @@ void Dialog::setInsertRecord(QSqlRecord &recData)
     setWindowTitle("插入新记录");
     ui->lineEdit_id->setText(recData.value("id").toString());
 }
+
 
 /* 获取界面输入的数据 */
 QSqlRecord Dialog::getRecordData()
@@ -151,12 +166,13 @@ QSqlRecord Dialog::getRecordData()
     return m_record;
 }
 
+
 /* 修改密码 */
 void Dialog::on_pushButton_lock_clicked()
 {
     int id = m_record.value("id").toInt();
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL", "change");
-    db.setHostName("localhost");
+    db.setHostName("121.37.155.243");
     db.setDatabaseName("ims");
     db.setUserName("ims");
     db.setPassword("ims");
@@ -168,23 +184,27 @@ void Dialog::on_pushButton_lock_clicked()
     }
 
     QString newPassword = QInputDialog::getText(this, "输入密码", "请输入新密码:", QLineEdit::Password);
-    // qDebug() << newPassword;
-    QString salt = GenerateRandomSalt(16);
-    QString hashedPassword = hashPassword(newPassword, salt);
-    QSqlQuery query(db);
-    query.prepare("UPDATE users SET password=:password, salt=:salt WHERE id=:id");
-
-    query.bindValue(":password", hashedPassword);
-    query.bindValue(":salt", salt);
-    query.bindValue(":id", id);
-
-    if (query.exec()) {
-
+    if (newPassword.isEmpty()) {
+        QMessageBox::warning(this, "错误", "密码不能为空，请重新输入。");
     } else {
-        qDebug() << "更新失败: " << query.lastError().text();
+        QString salt = GenerateRandomSalt(16);
+        QString hashedPassword = hashPassword(newPassword, salt);
+        QSqlQuery query(db);
+        query.prepare("UPDATE users SET password=:password, salt=:salt WHERE id=:id");
+
+        query.bindValue(":password", hashedPassword);
+        query.bindValue(":salt", salt);
+        query.bindValue(":id", id);
+
+        if (query.exec()) {
+
+        } else {
+           qDebug() << "更新失败: " << query.lastError().text();
+        }
     }
 
 }
+
 
 /* 哈希加密 */
 QString Dialog::GenerateRandomSalt(int length)
