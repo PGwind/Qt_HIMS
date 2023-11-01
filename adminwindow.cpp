@@ -1,6 +1,15 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
 
+/**************************************************************
+
+Title：addminwindow.c
+Function: 最终管理员界面，负责信息管理员的增删改查
+Time: 2023/10/31
+
+**************************************************************/
+
+
 adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
     QMainWindow(parent),
     ui(new Ui::adminWindow),
@@ -21,6 +30,7 @@ adminWindow::~adminWindow()
     delete ui;
 }
 
+
 /* 初始化 */
 void adminWindow::Init()
 {
@@ -30,12 +40,12 @@ void adminWindow::Init()
     QString style = QLatin1String(styleFile.readAll());
     qApp->setStyleSheet(style);
 
-    // 搜索
+    // 搜索控件
     searchLineEdit = new QLineEdit;
     searchLineEdit->setPlaceholderText("搜索...");
     searchLineEdit->setMaximumWidth(200);
 
-    searchButton = new QPushButton();
+    searchButton = new QPushButton;
     searchButton->setIcon(QIcon(":/icons/images/icons/search.png")); // 设置按钮的图标
 
     searchLineEdit->setMinimumSize(100, 30);
@@ -79,11 +89,13 @@ void adminWindow::Init()
 }
 
 
+
+/* 数据库及模型映射 */
 void adminWindow::openTable()
 {
-    /* 数据库 */
+    // 数据库
     DB = QSqlDatabase::addDatabase("QMYSQL", "admin");
-    DB.setHostName("localhost"); // MySQL服务器主机名
+    DB.setHostName("121.37.155.243"); // MySQL服务器主机名
     DB.setDatabaseName("ims"); // 数据库名称
     DB.setUserName("ims"); // MySQL用户名
     DB.setPassword("ims"); // MySQL密码
@@ -154,11 +166,13 @@ void adminWindow::openTable()
     ui->actRevert->setEnabled(false);
 }
 
+
 /* 显示记录 */
 void adminWindow::showRecordCount()
 {
     recordCountLabel->setText(QString("记录条数：%1").arg(model->rowCount()));
 }
+
 
 /* 数据变化 */
 void adminWindow::do_currentChanged(const QModelIndex &current, const QModelIndex &previous)
@@ -168,6 +182,7 @@ void adminWindow::do_currentChanged(const QModelIndex &current, const QModelInde
     ui->actSave->setEnabled(model->isDirty());
     ui->actRevert->setEnabled(model->isDirty());
 }
+
 
 /* 行变化 */
 void adminWindow::do_currentRowChanged(const QModelIndex &current, const QModelIndex &previous)
@@ -246,6 +261,7 @@ void adminWindow::on_actAdd_triggered()
 
 }
 
+
 /* 保存 */
 void adminWindow::on_actSave_triggered()
 {
@@ -303,6 +319,7 @@ void adminWindow::on_actDelete_triggered()
     }
 }
 
+
 /* 撤回 */
 void adminWindow::on_actRevert_triggered()
 {
@@ -336,6 +353,7 @@ void adminWindow::on_actModify_triggered()
     ui->actDelete->setEnabled(true);
 }
 
+
 /* TableView修改属性 */
 void adminWindow::on_tableView_pressed(const QModelIndex &index)
 {
@@ -344,6 +362,7 @@ void adminWindow::on_tableView_pressed(const QModelIndex &index)
         ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     }
 }
+
 
 
 /********************************** 修改密码 **********************************/
@@ -358,13 +377,16 @@ void adminWindow::on_tableView_doubleClicked(const QModelIndex &index)  // 获�
     }
 }
 
+
 // 修改密码按钮
 void adminWindow::on_actPwd_triggered()
 {
     bool ok;
     QString newPassword = QInputDialog::getText(this, "修改密码","请输入 " + loginCount + " 的新密码:", QLineEdit::Normal, "请确保密码安全性！！！", &ok);
     if (ok) {
-        if (updatePassword(loginCount, newPassword)) {
+        if (newPassword.isEmpty()) {
+            QMessageBox::warning(this, "错误", "密码不能为空，请重新输入。");
+        } else if (updatePassword(loginCount, newPassword)) {
             QMessageBox::information(this, "成功", "密码已成功修改");
         } else {
             qDebug() << loginCount;
@@ -372,6 +394,7 @@ void adminWindow::on_actPwd_triggered()
         }
     }
 }
+
 
 // 更新密码
 bool adminWindow::updatePassword(const QString &logincount, const QString &newPassword)
@@ -412,6 +435,8 @@ bool adminWindow::updatePassword(const QString &logincount, const QString &newPa
         return false;
     }
 }
+
+
 
 /********************** 搜索 *************************/
 void adminWindow::searchButtonClicked()
