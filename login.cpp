@@ -1,6 +1,15 @@
 #include "login.h"
 #include "ui_login.h"
 
+/**************************************************************
+
+Title：login.c
+Function: 登录界面，账号密码验证，进入不同界面
+Time: 2023/10/31
+
+**************************************************************/
+
+
 login::login(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::login)
@@ -14,6 +23,7 @@ login::~login()
 {
     delete ui;
 }
+
 
 /* 初始化 */
 void login::Init()
@@ -33,15 +43,17 @@ void login::Init()
 
     // 连接数据库
     DB = QSqlDatabase::addDatabase("QMYSQL", "login");
-    DB.setHostName("localhost");
+    DB.setHostName("121.37.155.243");
     DB.setDatabaseName("ims");
     DB.setUserName("ims");
     DB.setPassword("ims");
 
     if (DB.open()) {
         //qDebug() << "Connected to the database!";
+        //QMessageBox::information(this, "Database Connection", "Connected to the database!");
     } else {
-     //   qDebug() << "Failed to connect to the database: " << DB.lastError().text();
+        //qDebug() << "Failed to connect to the database: " << DB.lastError().text();
+        //QMessageBox::critical(this, "Database Connection Error", "Failed to connect to the database: " + DB.lastError().text());
     }
 
     // 数据模型和选择模型
@@ -49,19 +61,23 @@ void login::Init()
     selModel = new QItemSelectionModel(qryModel);
 }
 
-/* 最小化 */
+
+/************* 窗口处理 *********************************/
+// 最小化
 void login::on_btnMin_clicked()
 {
     this->showMinimized();
 }
 
-/* 关闭窗口 */
+
+// 关闭窗口
 void login::on_btnClose_clicked()
 {
     this->close();
 }
 
-/* 窗口拖动 */
+
+// 窗口拖动
 void login::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
@@ -85,7 +101,9 @@ void login::mouseReleaseEvent(QMouseEvent *event)
     m_dragging = false;
 }
 
-/* 用户登录 */
+
+
+/**************************** 用户登录 **********************/
 void login::on_btnLogin_clicked()
 {
     QString count = ui->lineEdit_count->text();
@@ -129,12 +147,14 @@ void login::on_btnLogin_clicked()
     }
 }
 
+
 /* Enter快捷键登录 */
 void login::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
         on_btnLogin_clicked();
     }
 }
+
 
 /* 管理员登录检测 */
 bool login::adminCheck(const QString& count, const QString& password)
@@ -161,6 +181,7 @@ bool login::adminCheck(const QString& count, const QString& password)
 
     return false;
 }
+
 
 /* 病人登录检测 */
 bool login::userCheck(const QString& id, const QString& password)
@@ -189,6 +210,7 @@ bool login::userCheck(const QString& id, const QString& password)
     return false;
 }
 
+
 /* 哈希盐值salt  */
 QString login::GenerateRandomSalt(int length)
 {
@@ -215,6 +237,7 @@ QString login::hashPassword(const QString &password, const QString &salt)
     QByteArray hashedPassword = QCryptographicHash::hash(passwordBytes, QCryptographicHash::Sha256);
     return QString(hashedPassword.toHex());
 }
+
 
 /* 密码合法性检测 */
 bool login::isPasswordValid(const QString &password)
