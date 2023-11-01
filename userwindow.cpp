@@ -1,6 +1,15 @@
 #include "userwindow.h"
 #include "ui_userwindow.h"
 
+/**************************************************************
+
+Title：userwindow.c
+Function: 病人信息界面，可进行信息以及密码修改
+Time: 2023/10/31
+
+**************************************************************/
+
+
 userwindow::userwindow(QWidget *parent, const QString &loginCount) :
     QMainWindow(parent),
     ui(new Ui::userwindow),
@@ -18,11 +27,12 @@ userwindow::~userwindow()
     delete ui;
 }
 
+
 /* 数据库 */
 void userwindow::openTable()
 {
     DB = QSqlDatabase::addDatabase("QMYSQL", "user");
-    DB.setHostName("localhost");
+    DB.setHostName("121.37.155.243");
     DB.setDatabaseName("ims");
     DB.setUserName("ims");
     DB.setPassword("ims");
@@ -54,6 +64,8 @@ void userwindow::openTable()
 
 }
 
+
+/* 初始化 */
 void userwindow::Init()
 {
     // CSS
@@ -94,11 +106,14 @@ void userwindow::Init()
     ui->groupBox_5->setEnabled(false);
 }
 
+
+/* 信息框修改权限 */
 void userwindow::setFlag(bool flag)
 {
     ui->groupBox_3->setEnabled(flag);
     ui->groupBox_4->setEnabled(flag);
 }
+
 
 /* 清除图像 */
 void userwindow::on_actClear_triggered()
@@ -108,6 +123,7 @@ void userwindow::on_actClear_triggered()
     ui->label_photo->clear();
     m_record.setNull("photo");
 }
+
 
 /* 修改图像 */
 void userwindow::on_actPhoto_triggered()
@@ -128,6 +144,7 @@ void userwindow::on_actPhoto_triggered()
     pic.loadFromData(data);
     ui->label_photo->setPixmap(pic.scaledToWidth(ui->label_photo->size().width()));
 }
+
 
 /* 保存 */
 void userwindow::on_actSave_triggered()
@@ -178,6 +195,7 @@ void userwindow::on_actSave_triggered()
         }
 }
 
+
 /* 修改 */
 void userwindow::on_actModify_triggered()
 {
@@ -189,31 +207,36 @@ void userwindow::on_actModify_triggered()
 
 }
 
+
 /* 密码 */
 void userwindow::on_actPwd_triggered()
 {
     bool ok;
-    QString newPassword = QInputDialog::getText(this, "输入密码", "请输入新密码：", QLineEdit::Password, "", &ok);
+    QString newPassword = QInputDialog::getText(this, "修改密码", "请输入新密码：", QLineEdit::Normal, "请确保密码安全性！！！", &ok);
 
     if (ok) {
-        QString salt = GenerateRandomSalt(16);
-        QString hashedPassword = hashPassword(newPassword, salt);
-
-        QSqlQuery query(DB);
-        query.prepare("UPDATE users SET password = :password, salt = :salt WHERE id = :count");
-        query.bindValue(":password", hashedPassword);
-        query.bindValue(":salt", salt);
-        query.bindValue(":count", loginCount); // 指定要更新的记录的 loginCount
-
-        if (query.exec()) {
-            QMessageBox::information(this, "成功", "密码已更新并保存");
+        if (newPassword.isEmpty()) {
+            QMessageBox::warning(this, "错误", "密码不能为空，请重新输入。");
         } else {
-             QMessageBox::warning(this, "错误", "密码更新失败");
-        }
-    } else {
+            QString salt = GenerateRandomSalt(16);
+            QString hashedPassword = hashPassword(newPassword, salt);
 
+            QSqlQuery query(DB);
+            query.prepare("UPDATE users SET password = :password, salt = :salt WHERE id = :count");
+            query.bindValue(":password", hashedPassword);
+            query.bindValue(":salt", salt);
+            query.bindValue(":count", loginCount); // 指定要更新的记录的 loginCount
+
+            if (query.exec()) {
+                QMessageBox::information(this, "成功", "密码已更新并保存");
+            } else {
+                QMessageBox::warning(this, "错误", "密码更新失败");
+            }
+        }
     }
 }
+
+
 
 /* 更新记录 */
 void userwindow::setUpdateRecord(QSqlRecord &recData)
@@ -256,6 +279,7 @@ void userwindow::setUpdateRecord(QSqlRecord &recData)
     }
 }
 
+
 /* 获取界面输入的数据 */
 QSqlRecord userwindow::getRecordData()
 {
@@ -278,6 +302,7 @@ QSqlRecord userwindow::getRecordData()
 
     return m_record;
 }
+
 
 /* 哈希加密 */
 QString userwindow::GenerateRandomSalt(int length)
