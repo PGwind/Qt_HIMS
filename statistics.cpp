@@ -1,6 +1,15 @@
 #include "statistics.h"
 #include "ui_statistics.h"
 
+/**************************************************************
+
+Title：statistics.c
+Function: 信息管理二级界面, 饼图展示各科室人数
+Time: 2023/10/31
+
+**************************************************************/
+
+
 Statistics::Statistics(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Statistics)
@@ -16,10 +25,12 @@ Statistics::~Statistics()
     delete ui;
 }
 
+
+/* 数据库连接 */
 void Statistics::openDB()
 {
     DB = QSqlDatabase::addDatabase("QMYSQL", "statistics");
-    DB.setHostName("localhost"); // MySQL服务器主机名s
+    DB.setHostName("121.37.155.243"); // MySQL服务器主机名s
     DB.setDatabaseName("ims"); // 数据库名称
     DB.setUserName("ims"); // MySQL用户名
     DB.setPassword("ims"); // MySQL密码
@@ -30,6 +41,8 @@ void Statistics::openDB()
     }
 }
 
+
+/* 饼图初始化 */
 void Statistics::Init()
 {
     //饼状图
@@ -128,12 +141,15 @@ void Statistics::Init()
     }
 }
 
+
+/* 饼图各片信息 */
 void Statistics::onPieSeriesClicked(QPieSlice* slice)
 {
     slice->setExploded(!slice->isExploded());
 }
 
-// 重写
+
+/* 重写关闭事件 */
 void Statistics::closeEvent(QCloseEvent *event)
 {
     emit closed();
