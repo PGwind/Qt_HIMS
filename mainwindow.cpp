@@ -1,6 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+/**************************************************************
+
+Title：mainwindow.c
+Function: 信息管理员界面，负责病人信息的增删改查
+Time: 2023/10/31
+
+**************************************************************/
+
+
 MainWindow::MainWindow(QWidget *parent, const QString &loginCount)
     : QMainWindow(parent),
      ui(new Ui::MainWindow),
@@ -19,6 +28,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+/* 初始化 */
 void MainWindow::Init()
 {
     // CSS
@@ -32,7 +43,7 @@ void MainWindow::Init()
     searchLineEdit->setPlaceholderText("搜索...");
     searchLineEdit->setMaximumWidth(200);
 
-    searchButton = new QPushButton();
+    searchButton = new QPushButton;
     searchButton->setIcon(QIcon(":/icons/images/icons/search.png")); // 设置按钮的图标
 
     searchLineEdit->setMinimumSize(100, 30);
@@ -53,7 +64,7 @@ void MainWindow::Init()
 
     ui->toolBar->addWidget(widget);
 
-   // connect(searchButton, &QPushButton::clicked, this, &adminWindow::searchButtonClicked);
+    connect(searchButton, &QPushButton::clicked, this, &MainWindow::searchButtonClicked);
 
     // 底部状态栏
     QStatusBar *statusBar = new QStatusBar(this);
@@ -75,11 +86,13 @@ void MainWindow::Init()
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
+
+/* 数据库连接 */
 void MainWindow::openTable()
 {
     // 数据库处理
     DB = QSqlDatabase::addDatabase("QMYSQL");
-    DB.setHostName("localhost");
+    DB.setHostName("121.37.155.243");
     DB.setDatabaseName("ims");
     DB.setUserName("ims");
     DB.setPassword("ims");
@@ -90,6 +103,9 @@ void MainWindow::openTable()
     }
 }
 
+
+
+/* 数据模式选择映射 */
 void MainWindow::selectData()
 {
     qryModel= new QSqlQueryModel(this);
@@ -103,7 +119,6 @@ void MainWindow::selectData()
         return;
     }
 
-
     // 标题样式
     QHeaderView* header = ui->tableView->horizontalHeader();
     header->setStyleSheet("QHeaderView::section { background-color: #3498db; color: white; border: 1px solid #2980b9; }");
@@ -116,6 +131,7 @@ void MainWindow::selectData()
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);	//项选择
     ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);	//单项选择
     ui->tableView->setAlternatingRowColors(true);	//交错行底色
+
     // 调整列宽
     int idColumnIndex = qryModel->record().indexOf("id");
     if (idColumnIndex != -1) {
@@ -157,6 +173,7 @@ void MainWindow::selectData()
 }
 
 
+
 /************************************ 按钮 **********************************/
 // 修改按钮
 void MainWindow::on_actModify_triggered()
@@ -165,12 +182,14 @@ void MainWindow::on_actModify_triggered()
     updateRecord(curRecNo);
 }
 
+
 // 双击修改
 void MainWindow::on_tableView_doubleClicked(const QModelIndex &index)
 {
     int curRecNo=index.row();
     updateRecord(curRecNo);
 }
+
 
 // 更新记录
 void MainWindow::updateRecord(int recNo)
@@ -248,6 +267,7 @@ void MainWindow::updateRecord(int recNo)
     delete dataDialog;
 }
 
+
 // 添加
 void MainWindow::on_actAdd_triggered()
 {
@@ -317,6 +337,7 @@ void MainWindow::on_actAdd_triggered()
     delete dataDialog;
 }
 
+
 // 删除
 void MainWindow::on_actDelete_triggered()
 {
@@ -344,6 +365,7 @@ void MainWindow::on_actDelete_triggered()
     }
 }
 
+
 // 信息统计
 void MainWindow::on_actSum_triggered()
 {
@@ -358,13 +380,17 @@ void MainWindow::onStatisticsClosed()
     ui->actSum->setEnabled(true);
 }
 
+
+
 /************************ 修改密码  *********************************/
 void MainWindow::on_actPwd_triggered()
 {
     bool ok = true;;
     QString newPassword = QInputDialog::getText(this, "修改密码","请输入 " + loginCount + " 的新密码:", QLineEdit::Normal, "请确保密码安全性！！！", &ok);
     if (ok) {
-        if (updatePassword(loginCount, newPassword)) {
+        if (newPassword.isEmpty()) {
+            QMessageBox::warning(this, "错误", "密码不能为空，请重新输入。");
+        } else if (updatePassword(loginCount, newPassword)) {
             QMessageBox::information(this, "成功", "密码已成功修改");
         } else {
             qDebug() << loginCount;
@@ -373,30 +399,6 @@ void MainWindow::on_actPwd_triggered()
     }
 }
 
-
-
-
-// 更新密码
-/*  存在bug，数据库修改失败
-bool MainWindow::updatePassword(const QString &loginCount, const QString &newPassword)
-{
-    QString newSalt = MainWindow::GenerateRandomSalt(16);
-    QString hashedPassword = MainWindow::hashPassword(newPassword, newSalt);
-
-    QSqlQuery query(DB);
-    query.prepare("UPDATE admin SET password = :password, salt = :salt WHERE count = :loginCount");
-    query.bindValue(":password", hashedPassword);
-    query.bindValue(":salt", newSalt);
-    query.bindValue(":count", loginCount);
-    if (query.exec()) {
-        qDebug() << "查询成功" ;
-        return true;
-    } else {
-        qDebug() << query.lastError().text();
-        return false;
-    }
-}
-*/
 
 // 更新密码
 bool MainWindow::updatePassword(const QString &logincount, const QString &newPassword)
@@ -442,6 +444,7 @@ bool MainWindow::updatePassword(const QString &logincount, const QString &newPas
     }
 }
 
+
 // 哈希加密
 QString MainWindow::GenerateRandomSalt(int length)
 {
@@ -468,6 +471,8 @@ QString MainWindow::hashPassword(const QString &password, const QString &salt)
     return QString(hashedPassword.toHex());
 }
 
+
+
 /********************** 搜索 *************************/
 void MainWindow::searchButtonClicked()
 {
@@ -488,7 +493,7 @@ void MainWindow::searchButtonClicked()
     showRecordCount();
 }
 
-/* Enter快捷键搜索 */
+// Enter快捷键搜索
 void MainWindow::keyPressEvent(QKeyEvent *event) {
         if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
             searchButtonClicked();
