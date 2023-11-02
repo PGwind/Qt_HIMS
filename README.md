@@ -1,6 +1,6 @@
 ## 介绍
 
-> 一款基于Qt的医院住院管理系统
+> 一款基于Qt的医院住院管理系统 
 
 医院住院管理系统是一款基于 Qt 的医疗信息管理软件。用户需要通过密码验证进行登录，并且提供了高级管理员和信息管理员 两种角色。高级管理员负责系统管理，包括添加、修改信息管理员等任务，信息管理员则管理患者信息。系统连接 MySQL 数据 库以安全存储和检索数据，并生成一个随机的盐值以及使用SHA-256哈希算法对密码和盐值进行哈希处理。
 
@@ -8,11 +8,82 @@
 
 ## 使用
 
+### 项目文件
+
 删除 `IMS.pro.user` 文件，用 `Qt Creator`  软件打开，选择编译配置信息 `Desktop Qt 6.2.4 MinGW 64-bit`。 
 
-打开 `SQL`文件夹，导入`ims.sql` ，修改相关数据库连接信息即可。默认数据库名、用户名和密码皆为`ims`。
+### Mysql配置
 
-默认最高级用户 `admin` 密码为 `admin`
+1. 使用版本为 `5.7` ，注意关闭Mysql 的 ssl连接。
+
+```shell
+ vim /etc/my.cnf 		# 打开mysql配置文件
+ skip-ssl               # 添加此行，跳过ssl
+ sudo service mysqld restart  # 重启mysql服务
+ 
+ # 进入mysql，查看是否关闭，DISABLED即为关闭
+ mysql> show variables like '%ssl%';
++---------------+----------+
+| Variable_name | Value    |
++---------------+----------+
+| have_openssl  | DISABLED |
+| have_ssl      | DISABLED |
+| ssl_ca        |          |
+| ssl_capath    |          |
+| ssl_cert      |          |
+| ssl_cipher    |          |
+| ssl_crl       |          |
+| ssl_crlpath   |          |
+| ssl_key       |          |
++---------------+----------+
+9 rows in set (0.01 sec)
+```
+
+2. 新建数据库、用户 `ims`
+
+   1. 登录到MySQL服务器：
+
+   ```mysql
+   mysql -u root -p
+   ```
+
+   输入MySQL的root用户密码以登录。
+
+   2. 创建一个名为`ims`的数据库：
+
+   ```mysql
+   CREATE DATABASE ims;
+   ```
+
+   3. 创建一个名为`ims`的用户并分配密码。
+
+   ```mysql
+   CREATE USER 'ims'@'%' IDENTIFIED BY 'ims';
+   ```
+
+   4. 授予用户`ims` 对`ims`数据库的所有权限：
+
+   ```mysql
+   GRANT ALL PRIVILEGES ON ims.* TO 'ims'@'%';
+   ```
+
+   5. 刷新权限以使更改生效：
+
+   ```mysql
+   FLUSH PRIVILEGES;
+   ```
+
+   5. 退出MySQL提示符：
+
+   ```mysql
+   exit;
+   ```
+
+3. 导入 `ims.sql`
+
+   打开 `SQL`文件夹，导入`ims.sql` ，修改相关数据库连接信息即可。默认数据库名、用户名和密码皆为`ims`。
+
+   默认最高级用户 `admin` 密码为 `admin`
 
 
 
@@ -97,3 +168,9 @@ Release 是发行版 本，不带有调试信息，针对运行速度对文件�
 `style.qrc`    `*.css`
 
 相关控件美化CSS
+
+
+
+### 资源文件
+
+来自阿里巴巴矢量图标库
