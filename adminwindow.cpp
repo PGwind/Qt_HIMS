@@ -20,9 +20,22 @@ adminWindow::adminWindow(QWidget *parent, const QString &loginCount) :
 
     ui->setupUi(this);
     setWindowTitle("高级用户信息管理");
+    this->setWindowIcon(QIcon(":/icons/images/icons/admin.ico"));
 
     Init();
-    openTable(); // 数据库
+    openTable();
+
+    // 更新登录时间
+    QSqlQuery query(DB);
+    query.prepare("UPDATE admin SET logintime = :currentDateTime WHERE count = :loginCount");
+    query.bindValue(":currentDateTime", QDateTime::currentDateTime());
+    query.bindValue(":loginCount", loginCount);
+
+    if (query.exec()) {
+        //qDebug() << "logintime updated successfully.";
+    } else {
+        //qDebug() << "Failed to update logintime:" << query.lastError().text();
+    }
 }
 
 adminWindow::~adminWindow()
@@ -95,10 +108,10 @@ void adminWindow::openTable()
 {
     // 数据库
     DB = QSqlDatabase::addDatabase("QMYSQL", "admin");
-    DB.setHostName("121.37.155.243"); // MySQL服务器主机名
-    DB.setDatabaseName("ims"); // 数据库名称
-    DB.setUserName("ims"); // MySQL用户名
-    DB.setPassword("ims"); // MySQL密码
+    DB.setHostName("121.37.155.243");
+    DB.setDatabaseName("hims");
+    DB.setUserName("hims");
+    DB.setPassword("hims2002");
     if (DB.open()) {
        // qDebug() << "admin connect";
     } else {
@@ -106,12 +119,12 @@ void adminWindow::openTable()
     }
 
     model = new QSqlTableModel(nullptr, DB);
-    model->setTable("admin"); // 设置表名
+    model->setTable("admin");
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);
     if (!power)
-        model->setFilter("count != 'admin'");   // 过滤
-    model->select(); // 从数据库加载数据
-    if (!(model->select()))	//查询数据失败
+        model->setFilter("count != 'admin'");
+    model->select();
+    if (!(model->select()))
     {
         QMessageBox::critical(this, "错误信息",
                               "打开数据表错误,错误信息:\n"+ model->lastError().text());
@@ -132,9 +145,9 @@ void adminWindow::openTable()
     QFont font("Arial", 12, QFont::Bold);
     header->setFont(font);
     header->setDefaultAlignment(Qt::AlignCenter);
-    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);	//项选择
-    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);	//单项选择
-    ui->tableView->setAlternatingRowColors(true);	//交错行底色
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectItems);
+    ui->tableView->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->tableView->setAlternatingRowColors(true);
 
     // 标题大小
     int countColumnIndex = model->fieldIndex("count");
@@ -249,7 +262,7 @@ void adminWindow::on_actAdd_triggered()
     model->setRecord(row, rec);
 
     selModel->clearSelection();
-    QModelIndex curIndex = model->index(model->rowCount()-1,1);     //创建最后一行的ModelIndex
+    QModelIndex curIndex = model->index(model->rowCount()-1,1);
     selModel->setCurrentIndex(curIndex,QItemSelectionModel::Select);
 
     showRecordCount();
@@ -266,7 +279,7 @@ void adminWindow::on_actAdd_triggered()
 void adminWindow::on_actSave_triggered()
 {
     int rowCount = model->rowCount();
-    QSet<QString> countSet; // 使用集合来存储 "count" 值，以便检查重复
+    QSet<QString> countSet;
     bool hasDuplicateOrNonAdmin = false;
 
     for (int row = 0; row < rowCount; row++) {
@@ -311,11 +324,11 @@ void adminWindow::on_actDelete_triggered()
     int row = ui->tableView->currentIndex().row();//记录当前选择行
     if(QMessageBox::Yes == QMessageBox::question(this,"警告","确定删除第"+QString::number(row)+"行吗？此操作无法撤回！",QMessageBox::Yes | QMessageBox::No , QMessageBox::Yes))
     {
-        if(model->select())//判断是否为空表
-            model->removeRow(row);//删除当前行
-        model->submitAll();//提交修改的数据
-        ui->tableView->setModel(model);//设置模型
-        model->select();//显示修改后的数据
+        if(model->select())
+            model->removeRow(row);
+        model->submitAll();
+        ui->tableView->setModel(model);
+        model->select();
     }
 }
 
