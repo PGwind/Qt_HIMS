@@ -1,0 +1,15 @@
+release/adminwindow.o
+release/dialog.o
+release/login.o
+release/main.o
+release/mainwindow.o
+release/statistics.o
+release/userwindow.o
+release/qrc_images.o
+release/qrc_style.o
+release/moc_adminwindow.o
+release/moc_dialog.o
+release/moc_login.o
+release/moc_mainwindow.o
+release/moc_statistics.o
+release/moc_userwindow.o
