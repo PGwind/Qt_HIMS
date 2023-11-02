@@ -18,6 +18,7 @@ userwindow::userwindow(QWidget *parent, const QString &loginCount) :
     ui->setupUi(this);
     setWindowTitle("个人信息");
 
+    this->setWindowIcon(QIcon(":/icons/images/icons/user.ico"));
     Init();
     openTable();
 }
@@ -33,9 +34,9 @@ void userwindow::openTable()
 {
     DB = QSqlDatabase::addDatabase("QMYSQL", "user");
     DB.setHostName("121.37.155.243");
-    DB.setDatabaseName("ims");
-    DB.setUserName("ims");
-    DB.setPassword("ims");
+    DB.setDatabaseName("hims");
+    DB.setUserName("hims");
+    DB.setPassword("hims2002");
     if (DB.open()) {
         //qDebug() << "DB_patients connect";
     } else {
@@ -139,7 +140,7 @@ void userwindow::on_actPhoto_triggered()
     data = file->readAll();
     file->close();
     delete file;
-    m_record.setValue("photo",data); //图片保存到 Photo 字段中
+    m_record.setValue("photo",data);
     QPixmap pic;
     pic.loadFromData(data);
     ui->label_photo->setPixmap(pic.scaledToWidth(ui->label_photo->size().width()));
@@ -225,7 +226,7 @@ void userwindow::on_actPwd_triggered()
             query.prepare("UPDATE users SET password = :password, salt = :salt WHERE id = :count");
             query.bindValue(":password", hashedPassword);
             query.bindValue(":salt", salt);
-            query.bindValue(":count", loginCount); // 指定要更新的记录的 loginCount
+            query.bindValue(":count", loginCount);
 
             if (query.exec()) {
                 QMessageBox::information(this, "成功", "密码已更新并保存");
@@ -319,7 +320,7 @@ QString userwindow::GenerateRandomSalt(int length)
     return salt;
 }
 
-QString userwindow::hashPassword(const QString &password, const QString &salt) // 哈希加密
+QString userwindow::hashPassword(const QString &password, const QString &salt)
 {
     QByteArray saltByteArray = salt.toUtf8();
     QByteArray passwordbytes = password.toUtf8();
