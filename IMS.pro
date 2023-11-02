@@ -45,3 +45,6 @@ RESOURCES += \
     style.qrc
 
 DISTFILES +=
+
+RC_ICONS += hims.ico
+TARGET = HIMS
