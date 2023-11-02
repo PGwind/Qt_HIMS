@@ -30,10 +30,10 @@ Statistics::~Statistics()
 void Statistics::openDB()
 {
     DB = QSqlDatabase::addDatabase("QMYSQL", "statistics");
-    DB.setHostName("121.37.155.243"); // MySQL服务器主机名s
-    DB.setDatabaseName("ims"); // 数据库名称
-    DB.setUserName("ims"); // MySQL用户名
-    DB.setPassword("ims"); // MySQL密码
+    DB.setHostName("121.37.155.243");
+    DB.setDatabaseName("hims");
+    DB.setUserName("hims");
+    DB.setPassword("hims2002");
     if (DB.open()) {
        // qDebug() << "statistics connect";
     } else {
@@ -58,7 +58,7 @@ void Statistics::Init()
     };
 
     // 总人数
-    int sum;
+    int sum = 0;
 
     QSqlQuery query(DB);
     if (query.exec("SELECT COUNT(*) AS totalUsers FROM patientinfo;")) {
