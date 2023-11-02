@@ -44,16 +44,16 @@ void login::Init()
     // 连接数据库
     DB = QSqlDatabase::addDatabase("QMYSQL", "login");
     DB.setHostName("121.37.155.243");
-    DB.setDatabaseName("ims");
-    DB.setUserName("ims");
-    DB.setPassword("ims");
+    DB.setDatabaseName("hims");
+    DB.setUserName("hims");
+    DB.setPassword("hims2002");
 
     if (DB.open()) {
         //qDebug() << "Connected to the database!";
         //QMessageBox::information(this, "Database Connection", "Connected to the database!");
     } else {
         //qDebug() << "Failed to connect to the database: " << DB.lastError().text();
-        //QMessageBox::critical(this, "Database Connection Error", "Failed to connect to the database: " + DB.lastError().text());
+        QMessageBox::critical(this, "Database Connection Error", "Failed to connect to the database: " + DB.lastError().text());
     }
 
     // 数据模型和选择模型
