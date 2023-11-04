@@ -5,7 +5,7 @@
 
 Title：userwindow.c
 Function: 病人信息界面，可进行信息以及密码修改
-Time: 2023/10/31
+Change_Time: 2023/10/31
 
 **************************************************************/
 
@@ -42,8 +42,6 @@ void userwindow::openTable()
     } else {
         //qDebug() << "Database connection error: " << DB.lastError().text();
     }
-
-    qryModel= new QSqlQueryModel(this);
 
     // 界面信息获取
     QSqlQuery query(DB);

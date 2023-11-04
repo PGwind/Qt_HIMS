@@ -23,7 +23,6 @@ class userwindow : public QMainWindow
 private:
     QSqlRecord m_record;
     QSqlDatabase DB;
-    QSqlQueryModel *qryModel;
 
     void openTable();
     void Init();
