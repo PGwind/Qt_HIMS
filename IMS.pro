@@ -1,6 +1,7 @@
 QT       += core gui
 QT += sql
 QT += charts
+QT += webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -17,7 +18,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     statistics.cpp \
-    userwindow.cpp
+    userwindow.cpp \
+    visualization.cpp
 
 HEADERS += \
     adminwindow.h \
@@ -25,7 +27,8 @@ HEADERS += \
     login.h \
     mainwindow.h \
     statistics.h \
-    userwindow.h
+    userwindow.h \
+    visualization.h
 
 FORMS += \
     adminwindow.ui \
@@ -33,7 +36,8 @@ FORMS += \
     login.ui \
     mainwindow.ui \
     statistics.ui \
-    userwindow.ui
+    userwindow.ui \
+    visualization.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -48,3 +52,4 @@ DISTFILES +=
 
 RC_ICONS += hims.ico
 TARGET = HIMS
+
