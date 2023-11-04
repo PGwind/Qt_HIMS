@@ -12,9 +12,7 @@
 #include <QItemSelectionModel>
 #include <QMessageBox>
 #include <QMouseEvent>
-#include "dialog.h"
-#include "statistics.h"
-
+#include <QtSql>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -66,7 +64,9 @@ private slots:
 
     void on_actSum_triggered();
 
-    void onStatisticsClosed();
+    void onDataViewClosed();
+
+    void onDataViewDestroyed(QObject *obj);
 
 private:
     Ui::MainWindow *ui;

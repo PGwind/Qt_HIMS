@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "dialog.h"
+#include "visualization.h"
 
 /**************************************************************
 
 Title：mainwindow.c
 Function: 信息管理员界面，负责病人信息的增删改查
-Time: 2023/10/31
+Change_Time: 2023/10/31
 
 **************************************************************/
 
@@ -380,20 +382,35 @@ void MainWindow::on_actDelete_triggered()
 
 
 // 信息统计
+//void MainWindow::on_actSum_triggered()
+//{
+//    Statistics *statistic = new Statistics(this);
+//    connect(statistic, &Statistics::closed, this, &MainWindow::onStatisticsClosed);
+//    statistic->show();
+//    ui->actSum->setEnabled(false);
+//}
+
 void MainWindow::on_actSum_triggered()
 {
-    Statistics *statistic = new Statistics(this);
-    connect(statistic, &Statistics::closed, this, &MainWindow::onStatisticsClosed);
-    statistic->show();
+    visualization *dataView = new visualization(this);
+    dataView->show();
     ui->actSum->setEnabled(false);
+    connect(dataView, &visualization::closed, this, &MainWindow::onDataViewClosed);
+    connect(dataView, &QObject::destroyed, this, &MainWindow::onDataViewDestroyed);
 }
 
-void MainWindow::onStatisticsClosed()
+
+void MainWindow::onDataViewClosed()
 {
     ui->actSum->setEnabled(true);
+
 }
 
-
+void MainWindow::onDataViewDestroyed(QObject *obj)
+{
+    if (obj == nullptr)
+        disconnect(obj, nullptr, this, nullptr);
+}
 
 /************************ 修改密码  *********************************/
 void MainWindow::on_actPwd_triggered()
