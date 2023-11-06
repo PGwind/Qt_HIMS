@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/backgroud">
         <file>images/backgroud/login_bg.png</file>
-        <file>images/backgroud/uesr_bg.png</file>
-        <file>images/backgroud/user_bg.jpg</file>
     </qresource>
     <qresource prefix="/icons">
         <file>images/icons/close.png</file>
@@ -21,6 +19,9 @@
         <file>images/icons/user.ico</file>
         <file>images/icons/admin.ico</file>
         <file>images/icons/main.ico</file>
+        <file>images/icons/aichat.png</file>
+        <file>images/icons/send.png</file>
+        <file>images/icons/dialog.ico</file>
     </qresource>
     <qresource prefix="/"/>
 </RCC>
