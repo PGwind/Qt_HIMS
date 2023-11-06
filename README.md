@@ -2,42 +2,48 @@
 
 > 一款基于Qt的医院住院管理系统 
 
-医院住院管理系统是一款基于 Qt 的医疗信息管理软件。用户需要通过密码验证进行登录，并且提供了高级管理员和信息管理员 两种角色。高级管理员负责系统管理，包括添加、修改信息管理员等任务，信息管理员则管理患者信息。系统连接 MySQL 数据 库以安全存储和检索数据，并生成一个随机的盐值以及使用SHA-256哈希算法对密码和盐值进行哈希处理。
+​	医院住院管理系统是一款基于 Qt 的医疗信息管理软件。用户需要通过密码验证进行登录，并且提供了高级管理员和信息管理员 两种角色。高级管理员负责系统管理，包括添加、修改信息管理员等任务，信息管理员则管理患者信息。系统连接 MySQL 数据 库以安全存储和检索数据，并生成一个随机的盐值以及使用SHA-256哈希算法对密码和盐值进行哈希处理。
+
+​	因使用C++开发，具有极高效率和极小的内存占用。除此之外，还具有强大的跨平台能力，可在Linux系统下进行编译运行。  
 
 
 
 ## 使用
 
+由于第一次使用 `Qt` 写项目，相关文件以及配置信息过于杂乱
+
+> 建议新建工程，复制相关UI文件、头文件和CPP文件，重新编译
+
 ### 项目文件
 
-删除 `IMS.pro.user` 文件，用 `Qt Creator`  软件打开，选择编译配置信息 `Desktop Qt 6.2.4 MinGW 64-bit`。 
+删除 `IMS.pro.user` 文件，用 `Qt Creator`  软件打开，选择编译配置信息
 
 ### Mysql配置
 
 1. 使用版本为 `5.7` ，注意关闭Mysql 的 ssl连接。
 
-```shell
- vim /etc/my.cnf 		# 打开mysql配置文件
- skip-ssl               # 添加此行，跳过ssl
- sudo service mysqld restart  # 重启mysql服务
- 
- # 进入mysql，查看是否关闭，DISABLED即为关闭
- mysql> show variables like '%ssl%';
-+---------------+----------+
-| Variable_name | Value    |
-+---------------+----------+
-| have_openssl  | DISABLED |
-| have_ssl      | DISABLED |
-| ssl_ca        |          |
-| ssl_capath    |          |
-| ssl_cert      |          |
-| ssl_cipher    |          |
-| ssl_crl       |          |
-| ssl_crlpath   |          |
-| ssl_key       |          |
-+---------------+----------+
-9 rows in set (0.01 sec)
-```
+   ```shell
+    vim /etc/my.cnf 		# 打开mysql配置文件
+    skip-ssl               # 添加此行，跳过ssl
+    sudo service mysqld restart  # 重启mysql服务
+    
+    # 进入mysql，查看是否关闭，DISABLED即为关闭
+    mysql> show variables like '%ssl%';
+   +---------------+----------+
+   | Variable_name | Value    |
+   +---------------+----------+
+   | have_openssl  | DISABLED |
+   | have_ssl      | DISABLED |
+   | ssl_ca        |          |
+   | ssl_capath    |          |
+   | ssl_cert      |          |
+   | ssl_cipher    |          |
+   | ssl_crl       |          |
+   | ssl_crlpath   |          |
+   | ssl_key       |          |
+   +---------------+----------+
+   9 rows in set (0.01 sec)
+   ```
 
 2. 新建数据库、用户 `ims`
 
@@ -159,7 +165,7 @@ Debug 是调试版本，二进制文件带有调试信息，编译时不进行�
 
 `release`
 
-Release 是发行版 本，不带有调试信息，针对运行速度对文件大小进行了优化；
+Release 是发行版本，不带有调试信息，针对运行速度对文件大小进行了优化；
 
 `images.qrc`  `images`  
 
