@@ -1,7 +1,7 @@
-QT       += core gui
+QT += core gui
 QT += sql
 QT += charts
-QT += webenginewidgets
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,31 +13,31 @@ CONFIG += c++17
 
 SOURCES += \
     adminwindow.cpp \
+    aidialog.cpp \
     dialog.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
     statistics.cpp \
-    userwindow.cpp \
-    visualization.cpp
+    userwindow.cpp
 
 HEADERS += \
     adminwindow.h \
+    aidialog.h \
     dialog.h \
     login.h \
     mainwindow.h \
     statistics.h \
-    userwindow.h \
-    visualization.h
+    userwindow.h
 
 FORMS += \
     adminwindow.ui \
+    aidialog.ui \
     dialog.ui \
     login.ui \
     mainwindow.ui \
     statistics.ui \
-    userwindow.ui \
-    visualization.ui
+    userwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
