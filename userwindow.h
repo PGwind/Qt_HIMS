@@ -50,6 +50,8 @@ private slots:
 
     void on_actPwd_triggered();
 
+    void onChatButtonClicked();
+
 private:
     Ui::userwindow *ui;
     QString loginCount;

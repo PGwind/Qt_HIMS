@@ -1,5 +1,6 @@
 #include "userwindow.h"
 #include "ui_userwindow.h"
+#include "aidialog.h"
 
 /**************************************************************
 
@@ -17,6 +18,8 @@ userwindow::userwindow(QWidget *parent, const QString &loginCount) :
 {
     ui->setupUi(this);
     setWindowTitle("个人信息");
+
+    //connect(ui->a, &QAction::triggered, this, &aichat::on_actChat_triggered);
 
     this->setWindowIcon(QIcon(":/icons/images/icons/user.ico"));
     Init();
@@ -94,6 +97,14 @@ void userwindow::Init()
     items.sort();
     ui->comboBox_department->addItems(items);
 
+    // AI咨询按钮
+    ui->toolBarUser->addSeparator();
+    QAction *actChat = new QAction("AI咨询", this);
+    actChat->setIcon(QIcon(":/icons/images/icons/aichat.png"));
+    ui->toolBarUser->addAction(actChat);
+    QObject::connect(actChat, &QAction::triggered, this, &userwindow::onChatButtonClicked);
+
+    // 其他按钮
     ui->actSave->setEnabled(false);
     ui->label_photo->setEnabled(true);
     ui->groupBox->setEnabled(false);
@@ -111,6 +122,14 @@ void userwindow::setFlag(bool flag)
 {
     ui->groupBox_3->setEnabled(flag);
     ui->groupBox_4->setEnabled(flag);
+}
+
+
+/* AIChat*/
+void userwindow::onChatButtonClicked()
+{
+    AiDialog *dialog = new AiDialog(this);
+    dialog->show();
 }
 
 
@@ -236,7 +255,6 @@ void userwindow::on_actPwd_triggered()
 }
 
 
-
 /* 更新记录 */
 void userwindow::setUpdateRecord(QSqlRecord &recData)
 {
@@ -327,3 +345,5 @@ QString userwindow::hashPassword(const QString &password, const QString &salt)
     QByteArray hashedPassword = QCryptographicHash::hash(passwordbytes, QCryptographicHash::Sha256);
     return QString(hashedPassword.toHex());
 }
+
+
