@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "dialog.h"
-#include "visualization.h"
+#include "aidialog.h"
+#include "statistics.h"
 
 /**************************************************************
 
@@ -53,6 +54,13 @@ void MainWindow::Init()
     QString style = QLatin1String(styleFile.readAll());
     qApp->setStyleSheet(style);
 
+    // AI咨询按钮
+    ui->toolBar->addSeparator();
+    QAction *actChat = new QAction("AI咨询", this);
+    actChat->setIcon(QIcon(":/icons/images/icons/aichat.png"));
+    ui->toolBar->addAction(actChat);
+    QObject::connect(actChat, &QAction::triggered, this, &MainWindow::onChatButtonClicked);
+
     // 搜索
     searchLineEdit = new QLineEdit;
     searchLineEdit->setPlaceholderText("搜索...");
@@ -99,6 +107,8 @@ void MainWindow::Init()
     setCentralWidget(centralWidget);
     ui->tableView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+
 }
 
 
@@ -190,6 +200,13 @@ void MainWindow::selectData()
 
 
 /************************************ 按钮 **********************************/
+/* AIChat*/
+void MainWindow::onChatButtonClicked()
+{
+    AiDialog *dialog = new AiDialog(this);
+    dialog->show();
+}
+
 // 修改按钮
 void MainWindow::on_actModify_triggered()
 {
@@ -382,14 +399,21 @@ void MainWindow::on_actDelete_triggered()
 
 
 // 信息统计
-//void MainWindow::on_actSum_triggered()
-//{
-//    Statistics *statistic = new Statistics(this);
-//    connect(statistic, &Statistics::closed, this, &MainWindow::onStatisticsClosed);
-//    statistic->show();
-//    ui->actSum->setEnabled(false);
-//}
+void MainWindow::on_actSum_triggered()
+{
+    Statistics *statistic = new Statistics(this);
+    statistic->show();
+    ui->actSum->setEnabled(false);
+    connect(statistic, &Statistics::closed, this, &MainWindow::onStatisticsClosed);
+}
 
+void MainWindow::onStatisticsClosed()
+{
+    ui->actSum->setEnabled(true);
+}
+
+/*
+// visualization.h
 void MainWindow::on_actSum_triggered()
 {
     visualization *dataView = new visualization(this);
@@ -411,6 +435,7 @@ void MainWindow::onDataViewDestroyed(QObject *obj)
     if (obj == nullptr)
         disconnect(obj, nullptr, this, nullptr);
 }
+*/
 
 /************************ 修改密码  *********************************/
 void MainWindow::on_actPwd_triggered()
@@ -537,9 +562,6 @@ void MainWindow::showRecordCount()
     int recordCount = qryModel->rowCount();
     recordCountLabel->setText(QString("记录条数：%1").arg(recordCount));
 }
-
-
-
 
 
 

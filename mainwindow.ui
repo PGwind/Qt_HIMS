@@ -54,6 +54,8 @@
    <addaction name="separator"/>
    <addaction name="actPwd"/>
    <addaction name="actSum"/>
+   <addaction name="separator"/>
+   <addaction name="actChat"/>
   </widget>
   <action name="actAdd">
    <property name="icon">
@@ -133,6 +135,18 @@
    </property>
    <property name="toolTip">
     <string>信息统计</string>
+   </property>
+  </action>
+  <action name="actChat">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/icons/images/icons/aichat.png</normaloff>:/icons/images/icons/aichat.png</iconset>
+   </property>
+   <property name="text">
+    <string>AI咨询</string>
+   </property>
+   <property name="toolTip">
+    <string>AI咨询</string>
    </property>
   </action>
  </widget>

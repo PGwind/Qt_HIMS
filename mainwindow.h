@@ -64,9 +64,10 @@ private slots:
 
     void on_actSum_triggered();
 
-    void onDataViewClosed();
+    void onStatisticsClosed();
 
-    void onDataViewDestroyed(QObject *obj);
+    void onChatButtonClicked();
+
 
 private:
     Ui::MainWindow *ui;
