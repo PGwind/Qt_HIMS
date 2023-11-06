@@ -1,5 +1,6 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
+#include "aidialog.h"
 
 /**************************************************************
 
@@ -52,6 +53,13 @@ void adminWindow::Init()
     styleFile.open(QFile::ReadOnly);
     QString style = QLatin1String(styleFile.readAll());
     qApp->setStyleSheet(style);
+
+    // AI咨询按钮
+    ui->toolBar->addSeparator();
+    QAction *actChat = new QAction("AI咨询", this);
+    actChat->setIcon(QIcon(":/icons/images/icons/aichat.png"));
+    ui->toolBar->addAction(actChat);
+    QObject::connect(actChat, &QAction::triggered, this, &adminWindow::onChatButtonClicked);
 
     // 搜索控件
     searchLineEdit = new QLineEdit;
@@ -235,6 +243,14 @@ QString adminWindow::hashPassword(const QString &password, const QString &salt)
 
 
 /***************************************** 菜单栏 ***************************/
+/* AIChat*/
+void adminWindow::onChatButtonClicked()
+{
+    AiDialog *dialog = new AiDialog(this);
+    dialog->show();
+}
+
+
 /* 添加 */
 void adminWindow::on_actAdd_triggered()
 {

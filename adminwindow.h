@@ -74,6 +74,8 @@ private slots:
 
     void on_tableView_doubleClicked(const QModelIndex &index);
 
+    void onChatButtonClicked();
+
 private:
     Ui::adminWindow *ui;
     QString loginCount;
