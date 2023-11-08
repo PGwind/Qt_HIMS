@@ -50,7 +50,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void searchButtonClicked(); // 搜索
+    void searchButtonClicked();
 
     void on_actModify_triggered();
 

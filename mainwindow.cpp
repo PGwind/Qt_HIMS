@@ -6,9 +6,9 @@
 
 /**************************************************************
 
-Title：mainwindow.c
+Title：mainwindow.cpp
 Function: 信息管理员界面，负责病人信息的增删改查
-Change_Time: 2023/10/31
+Change_Time: 2023/11/7
 
 **************************************************************/
 
@@ -107,8 +107,6 @@ void MainWindow::Init()
     setCentralWidget(centralWidget);
     ui->tableView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
-
 }
 
 
@@ -204,6 +202,7 @@ void MainWindow::selectData()
 void MainWindow::onChatButtonClicked()
 {
     AiDialog *dialog = new AiDialog(this);
+    dialog->setAttribute(Qt::WA_DeleteOnClose);
     dialog->show();
 }
 
@@ -249,6 +248,7 @@ void MainWindow::updateRecord(int recNo)
     Qt::WindowFlags flags= dataDialog->windowFlags();
     dataDialog->setWindowFlags(flags | Qt::MSWindowsFixedSizeDialogHint);
     dataDialog->setUpdateRecord(curRec);
+
 
     int ret= dataDialog->exec();
     if (ret == QDialog::Accepted) {
@@ -402,6 +402,7 @@ void MainWindow::on_actDelete_triggered()
 void MainWindow::on_actSum_triggered()
 {
     Statistics *statistic = new Statistics(this);
+    statistic->setAttribute(Qt::WA_DeleteOnClose);
     statistic->show();
     ui->actSum->setEnabled(false);
     connect(statistic, &Statistics::closed, this, &MainWindow::onStatisticsClosed);
