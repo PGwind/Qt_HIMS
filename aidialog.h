@@ -17,9 +17,11 @@ private:
     QTcpSocket *socket;
     QThread *connectionThread;
 
-    void InitThread();
-    void Init();
-    void connectToServer();
+    void Init(); // 界面
+
+    void InitThread();  // 线程
+
+    void connectToServer(); // 连接服务
 
 public:
     explicit AiDialog(QWidget *parent = nullptr);
