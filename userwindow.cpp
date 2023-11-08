@@ -4,9 +4,9 @@
 
 /**************************************************************
 
-Title：userwindow.c
+Title：userwindow.cpp
 Function: 病人信息界面，可进行信息以及密码修改
-Change_Time: 2023/10/31
+Change_Time: 2023/11/7
 
 **************************************************************/
 
@@ -230,7 +230,7 @@ void userwindow::on_actModify_triggered()
 void userwindow::on_actPwd_triggered()
 {
     bool ok;
-    QString newPassword = QInputDialog::getText(this, "修改密码", "请输入新密码：", QLineEdit::Normal, "请确保密码安全性！！！", &ok);
+    QString newPassword = QInputDialog::getText(this, "修改密码", "请输入新密码(确保密码安全!)", QLineEdit::Password, "", &ok);
 
     if (ok) {
         if (newPassword.isEmpty()) {
