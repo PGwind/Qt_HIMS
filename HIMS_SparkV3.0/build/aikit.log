@@ -1,0 +1,524 @@
+ 2023-10-20:22:58:13.704 Tx0005E3  INFO AEE_SetLogInfo                 1333 logfile path set to ./aikit.log
+ 2023-10-20:22:58:13.788 Tx0005E3 DEBUG getThreadNum                     71 working thread num is 4
+ 2023-10-20:22:58:13.789 Tx0005E3  INFO getDeviceId                     850 PARTA:0,PARTD:0
+ 2023-10-20:22:58:13.789 Tx0005E3  INFO getDeviceId                     867 PARTB:1 is 00:15:5d:d8:d0:a6
+ 2023-10-20:22:58:13.789 Tx0005E3  INFO getDeviceId                     873 PARTC:1 
+ 2023-10-20:22:58:13.794 Tx0005E3 DEBUG getArchitect                   1431 current runtime machine: x86_64
+ 2023-10-20:22:58:13.813 Tx0005E3  INFO AEE_Init                        180 use default workDir:./
+ 2023-10-20:22:58:13.814 Tx0005E3  INFO AEE_Init                        182 licenseFile path is 
+ 2023-10-20:22:58:13.815 Tx0005E3  INFO AEE_Init                        183 authBatch is (null)
+ 2023-10-20:22:58:13.815 Tx0005E3  INFO AEE_Init                        184 userdefined device id is (null)
+ 2023-10-20:22:58:13.815 Tx0005E3  INFO AEE_Init                        185 sdk mode: net mode
+ 2023-10-20:22:58:13.816 Tx0005E3  VERB init                            106 TimerMgr init success
+ 2023-10-20:22:58:13.816 Tx0005E3 DEBUG APMManager                      272 IP is 172.24.191.3
+ 2023-10-20:22:58:13.899 Tx0005E3  INFO resolveHost                     454 dns mode:0
+ 2023-10-20:22:58:13.900 Tx0005E3  WARN getNameServerResult             308 cannot find "xns.xf-yun.com"'s IP, ipList is empty
+ 2023-10-20:22:58:13.993 Tx0005E3 DEBUG addDnsAddressList               779 dnsMap size:1 [xns.xf-yun.com]
+ 2023-10-20:22:58:13.994 Tx0005E3  INFO getNameServerResult             309 dns resolve xns.xf-yun.com as [101.200.180.128]
+ 2023-10-20:22:58:13.994 Tx0005E3 DEBUG ~DNSResolver                    399 nsMap:0 dnsMap:1 curAddrMap:0
+ 2023-10-20:22:58:13.994 Tx0005E3 DEBUG setCurAddress                   796 curAddrMap size:1 [xns.xf-yun.com]
+ 2023-10-20:22:58:13.995 Tx0005E3 DEBUG ConnectPool                    1050 mMultiplexing 0
+ 2023-10-20:22:58:13.995 Tx0005E3 DEBUG NetConnection                   422 conn ID: 0 ptr: 0x556bfbe4d228
+ 2023-10-20:22:58:13.995 Tx0005E3 DEBUG addConnection                  1500 conID is 0, size is 1
+ 2023-10-20:22:58:13.995 Tx0005E3 DEBUG loadCertContent                1356 load ca cert from file:/etc/ssl/certs/ca-certificates.crt succeed.
+ 2023-10-20:22:58:13.996 Tx0005E3 DEBUG enableCert                       90 TLS Strategies: UseTLS: 1, Port: 443, EnableCert: 1
+ 2023-10-20:22:58:14.021 Tx0005E3  WARN httpCallback                    496 wsi:0x556bfbe4fd98 conn ptr is NULL,ignore this reason:21
+ 2023-10-20:22:58:14.021 Tx0005E3  INFO LWSContext                      111 create:2 context ok! Context:0x556bfbe4e000 ops:0x556bfbe4d880
+ 2023-10-20:22:58:14.021 Tx0005F3  WARN httpCallback                    496 wsi:0x7f0018e4b778 conn ptr is NULL,ignore this reason:27
+ 2023-10-20:22:58:14.022 Tx0005F3  WARN httpCallback                    496 wsi:0x556bfbe4fd98 conn ptr is NULL,ignore this reason:71
+ 2023-10-20:22:58:14.022 Tx0005F3  WARN httpCallback                    496 wsi:0x556bfbe4fd98 conn ptr is NULL,ignore this reason:71
+ 2023-10-20:22:58:14.022 Tx0005F3  WARN httpCallback                    496 wsi:0x556bfbe4fd98 conn ptr is NULL,ignore this reason:71
+ 2023-10-20:22:58:14.122 Tx0005F3 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe4e000 tsi:0 opaque(conn):0x556bfbe4d228
+ 2023-10-20:22:58:14.123 Tx0005F3 DEBUG attach_callback                 360 host:xns.xf-yun.com,ip:101.200.180.128,port:80
+ 2023-10-20:22:58:14.123 Tx0005F3  WARN httpCallback                    496 wsi:0x7f0014001040 conn ptr is NULL,ignore this reason:85
+ 2023-10-20:22:58:14.123 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:105
+ 2023-10-20:22:58:14.123 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:19
+ 2023-10-20:22:58:14.124 Tx0005F3 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0014001040
+ 2023-10-20:22:58:14.300 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:29
+ 2023-10-20:22:58:14.300 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:24
+ 2023-10-20:22:58:14.301 Tx0005F3 DEBUG httpCallback                    623 Short Conn payloadLen 190
+ 2023-10-20:22:58:14.301 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:57
+ 2023-10-20:22:58:14.403 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:2
+ 2023-10-20:22:58:14.404 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:44
+ 2023-10-20:22:58:14.405 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:47
+ 2023-10-20:22:58:14.405 Tx0005E3 DEBUG waitConnected                   539 http status:200 timeout:0
+ 2023-10-20:22:58:14.405 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:45
+ 2023-10-20:22:58:14.406 Tx0005E3 DEBUG addDefAddressList               788 defMap size:1 [aee.xf-yun.com]
+ 2023-10-20:22:58:14.406 Tx0005E3 DEBUG setCurAddress                   796 curAddrMap size:2 [aee.xf-yun.com]
+ 2023-10-20:22:58:14.406 Tx0005F3 DEBUG httpCallback                    506 http conn:0x556bfbe4d228 wsi:0x7f0014001040 reason:30
+ 2023-10-20:22:58:14.407 Tx0005E3 DEBUG addDefAddressList               788 defMap size:2 [spark-api.xf-yun.com]
+ 2023-10-20:22:58:14.407 Tx0005E3 DEBUG setCurAddress                   796 curAddrMap size:3 [spark-api.xf-yun.com]
+ 2023-10-20:22:58:14.407 Tx0005E3 DEBUG parseResultToAddressList        718 add 114.118.65.88 to aee.xf-yun.com NsAdrressList
+ 2023-10-20:22:58:14.407 Tx0005E3 DEBUG parseResultToAddressList        718 add 114.118.65.86 to aee.xf-yun.com NsAdrressList
+ 2023-10-20:22:58:14.407 Tx0005F3 DEBUG ~ShortConnection                951 ~ShortConn wsi:0x7f0014001040,conn:0x556bfbe4d228
+ 2023-10-20:22:58:14.408 Tx0005E3 DEBUG addNsAdrressList                770 addNsAdrressList! (aee.xf-yun.com) isEmpty:0 number:1
+ 2023-10-20:22:58:14.408 Tx0005E3 DEBUG setCurAddress                   796 curAddrMap size:3 [aee.xf-yun.com]
+ 2023-10-20:22:58:14.408 Tx0005E3  WARN parseResultToAddressList        724 [cn-huabei-1-lg.xf-yun.com] IP list is empty!
+ 2023-10-20:22:58:14.408 Tx0005E3 DEBUG parseResultToAddressList        718 add 114.118.65.88 to spark-api.xf-yun.com NsAdrressList
+ 2023-10-20:22:58:14.408 Tx0005E3 DEBUG parseResultToAddressList        718 add 114.118.65.75 to spark-api.xf-yun.com NsAdrressList
+ 2023-10-20:22:58:14.408 Tx0005E3 DEBUG addNsAdrressList                770 addNsAdrressList! (spark-api.xf-yun.com) isEmpty:0 number:2
+ 2023-10-20:22:58:14.408 Tx0005E3 DEBUG setCurAddress                   796 curAddrMap size:3 [spark-api.xf-yun.com]
+ 2023-10-20:22:58:14.408 Tx0005E3  WARN parseResultToAddressList        724 [172.16.59.78] IP list is empty!
+ 2023-10-20:22:58:14.415 Tx0005E3 DEBUG addDnsAddressList               779 dnsMap size:2 [aee.xf-yun.com]
+ 2023-10-20:22:58:14.415 Tx0005E3  INFO resolveLocalDns                 765 dns resolve aee.xf-yun.com as [114.118.67.62, 114.118.65.87, 114.118.65.88, 114.118.65.86, 114.118.65.75, 114.118.67.61]
+ 2023-10-20:22:58:14.416 Tx0005E3 DEBUG ~DNSResolver                    399 nsMap:2 dnsMap:2 curAddrMap:3
+ 2023-10-20:22:58:14.507 Tx0005E3 DEBUG addDnsAddressList               779 dnsMap size:3 [cn-huabei-1-lg.xf-yun.com]
+ 2023-10-20:22:58:14.508 Tx0005E3  INFO resolveLocalDns                 765 dns resolve cn-huabei-1-lg.xf-yun.com as [114.118.65.88, 114.118.65.86, 114.118.65.75, 114.118.65.87]
+ 2023-10-20:22:58:14.508 Tx0005E3 DEBUG ~DNSResolver                    399 nsMap:2 dnsMap:3 curAddrMap:3
+ 2023-10-20:22:58:14.508 Tx0005E3 DEBUG setCurAddress                   796 curAddrMap size:4 [cn-huabei-1-lg.xf-yun.com]
+ 2023-10-20:22:58:14.609 Tx0005E3 DEBUG addDnsAddressList               779 dnsMap size:4 [spark-api.xf-yun.com]
+ 2023-10-20:22:58:14.609 Tx0005E3  INFO resolveLocalDns                 765 dns resolve spark-api.xf-yun.com as [114.118.65.75, 114.118.65.86, 114.118.65.87, 114.118.65.88]
+ 2023-10-20:22:58:14.610 Tx0005E3 DEBUG ~DNSResolver                    399 nsMap:2 dnsMap:4 curAddrMap:4
+ 2023-10-20:22:58:14.610 Tx0005E3 DEBUG addDnsAddressList               779 dnsMap size:5 [172.16.59.78]
+ 2023-10-20:22:58:14.610 Tx0005E3  INFO resolveLocalDns                 765 dns resolve 172.16.59.78 as [172.16.59.78]
+ 2023-10-20:22:58:14.610 Tx0005E3 DEBUG ~DNSResolver                    399 nsMap:2 dnsMap:5 curAddrMap:4
+ 2023-10-20:22:58:14.611 Tx0005E3 DEBUG setCurAddress                   796 curAddrMap size:5 [172.16.59.78]
+ 2023-10-20:22:58:14.612 Tx0005F4 DEBUG threadLoop                      433 ttl:0
+ 2023-10-20:22:58:14.612 Tx0005E3  CRIT init                            906 framework versoion is 1.1.2
+ 2023-10-20:22:58:14.612 Tx0005E3  CRIT init                            908 appid is c1504e50
+ 2023-10-20:22:58:14.612 Tx0005E3  CRIT init                            913 auth type is 0,platform is 4, arch is 4
+ 2023-10-20:22:58:14.613 Tx0005F6  INFO WCMainLoop                     2021 succeed to start WCMainLoop.
+ 2023-10-20:22:58:14.613 Tx0005F5  INFO NDMainLoop                     1987 succeed to start NDMainLoop
+ 2023-10-20:22:58:14.613 Tx0005E3 DEBUG addMetric                       542 metric map size:2
+ 2023-10-20:22:58:14.617 Tx0005E3  INFO getDeviceId                     850 PARTA:0,PARTD:0
+ 2023-10-20:22:58:14.617 Tx0005E3  INFO getDeviceId                     867 PARTB:1 is 00:15:5d:d8:d0:a6
+ 2023-10-20:22:58:14.618 Tx0005E3  INFO getDeviceId                     873 PARTC:1 
+ 2023-10-20:22:58:14.619 Tx0005E3 DEBUG loadLocalLicense                111 cached spark auth type is token
+ 2023-10-20:22:58:14.619 Tx0005E3 DEBUG changeState                      32 change state type:notSet ==> tokenAuth, code: 0 ==> 0
+ 2023-10-20:22:58:14.622 Tx0005E3  INFO delKey                          191 store 247,247 deviceLicense success
+ 2023-10-20:22:58:14.624 Tx0005ED DEBUG NetConnection                   422 conn ID: 1 ptr: 0x7efffc001758
+ 2023-10-20:22:58:14.625 Tx0005ED DEBUG addConnection                  1500 conID is 1, size is 1
+ 2023-10-20:22:58:14.625 Tx0005ED DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:14.625 Tx0005ED DEBUG genAuthorization                218 host: cn-huabei-1-lg.xf-yun.com,method:POST, apiPath:/collector/metrics time:Fri, 20 Oct 2023 14:58:14 GMT
+ 2023-10-20:22:58:14.625 Tx0005F3  WARN httpCallback                    496 wsi:0x556bfbe4fd98 conn ptr is NULL,ignore this reason:71
+ 2023-10-20:22:58:14.626 Tx0005F3 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe4e000 tsi:0 opaque(conn):0x7efffc001758
+ 2023-10-20:22:58:14.626 Tx0005F3 DEBUG attach_callback                 360 host:cn-huabei-1-lg.xf-yun.com,ip:114.118.65.88,port:80
+ 2023-10-20:22:58:14.626 Tx0005F3  WARN httpCallback                    496 wsi:0x7f0014001040 conn ptr is NULL,ignore this reason:85
+ 2023-10-20:22:58:14.626 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:105
+ 2023-10-20:22:58:14.626 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:19
+ 2023-10-20:22:58:14.627 Tx0005F3 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0014001040
+ 2023-10-20:22:58:14.627 Tx0005E3  INFO delKey                          191 store 247,247 deviceLicense success
+ 2023-10-20:22:58:14.627 Tx0005E3 DEBUG writeLog                       1845 start to insert cid 0.
+ 2023-10-20:22:58:14.628 Tx0005E3  CRIT AEE_Init                        269 AEE_Init ret 0, cost 839.665833 ms
+ 2023-10-20:22:58:14.628 Tx0005F6 DEBUG WCMainLoop                     2036 start to write cid 0.
+ 2023-10-20:22:58:14.628 Tx0005E3  VERB param                           180 key:domain, data:generalv2, dataLen:9
+ 2023-10-20:22:58:14.628 Tx0005F6 DEBUG addCriticalTimeConsume          824 succeed to get cid 0, usrInput 0, sdkSend 0, sdkRecvF 0, sdkRecvL 0, usrRecvF 0, usrRecvL 0.
+ 2023-10-20:22:58:14.628 Tx0005F6 DEBUG addCriticalTimeConsume          834 succeed to get usrToSdkSend 0.000000, sdkSendToFirstFrame 0.000000, sdkSendToLastFrame 0.000000, firstFrameToUsr 0.000000, lastFrameToUsr 0.000000, usrInputToUsrRecvFirst 0.000000, usrInputToUsrRecvLast 0.000000.
+ 2023-10-20:22:58:14.628 Tx0005E3  VERB param                           180 key:domain, data:generalv3, dataLen:9
+ 2023-10-20:22:58:14.629 Tx0005F6 DEBUG ~SessionInfo                    196 Succeed to deconstruct session id 0.
+ 2023-10-20:22:58:14.629 Tx0005E3 DEBUG AIKIT_AsyncChat                 211 Spark auth type is Token
+ 2023-10-20:22:58:14.629 Tx0005E3  VERB oneshotAsync                    618 [chat stat] [usr_input] [sid:1] [time: 2023-10-20:22:58:14.629 ]
+ 2023-10-20:22:58:14.629 Tx0005E3 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 1, record type 0, time 1697813894629752800.
+ 2023-10-20:22:58:14.629 Tx0005E3 DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:14.630 Tx0005E3 DEBUG genAuthorization                218 host: spark-api.xf-yun.com,method:GET, apiPath:/v3.1/chat time:Fri, 20 Oct 2023 14:58:14 GMT
+ 2023-10-20:22:58:14.630 Tx0005E3 DEBUG NetConnection                   422 conn ID: 2 ptr: 0x556bfbe5b5e8
+ rops_pt_init_destroy_netlink: netlink bind failed
+ 2023-10-20:22:58:14.634 Tx0005F6  VERB isFiveMinute                    327 succeed to get interval 134977, current time 1697813759657, current time 1697813894634.
+ 2023-10-20:22:58:14.634 Tx0005E3 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x556bfbe5db98 reason:21
+ 2023-10-20:22:58:14.635 Tx0005E3  INFO LWSContext                      111 create:1 context ok! Context:0x556bfbe5be00 ops:0x556bfbe5b9b0
+ 2023-10-20:22:58:14.635 Tx0005E3 DEBUG newLongConnection              1087 conID is 2, size is 2
+ 2023-10-20:22:58:14.635 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x7f00127fb5a8 reason:27
+ 2023-10-20:22:58:14.635 Tx0005F7 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe5be00 tsi:0 opaque(conn):0x556bfbe5b5e8
+ 2023-10-20:22:58:14.635 Tx0005F7 DEBUG attach_callback                 360 host:spark-api.xf-yun.com,ip:114.118.65.88,port:443
+ 2023-10-20:22:58:14.635 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x7f0000000ba0 reason:85
+ 2023-10-20:22:58:14.636 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:105
+ 2023-10-20:22:58:14.636 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:19
+ 2023-10-20:22:58:14.636 Tx0005F7 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0000000ba0
+ 2023-10-20:22:58:14.710 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:29
+ 2023-10-20:22:58:14.711 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:24
+ 2023-10-20:22:58:14.711 Tx0005F3 DEBUG httpCallback                    623 Short Conn payloadLen 315
+ 2023-10-20:22:58:14.712 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:57
+ 2023-10-20:22:58:14.713 Tx0005EE  INFO genAuthLicense                  223 timestamp is 1697813894
+ 2023-10-20:22:58:14.713 Tx0005EE DEBUG NetConnection                   422 conn ID: 3 ptr: 0x7efff4001538
+ 2023-10-20:22:58:14.714 Tx0005EE DEBUG addConnection                  1500 conID is 3, size is 3
+ 2023-10-20:22:58:14.714 Tx0005EE DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:14.714 Tx0005EE DEBUG genAuthorization                218 host: aee.xf-yun.com,method:POST, apiPath:/api/auth/spark/new time:Fri, 20 Oct 2023 14:58:14 GMT
+ rops_pt_init_destroy_netlink: netlink bind failed
+ 2023-10-20:22:58:14.718 Tx0005EE  WARN httpCallback                    496 wsi:0x7efff4004348 conn ptr is NULL,ignore this reason:21
+ 2023-10-20:22:58:14.718 Tx0005EE  INFO LWSContext                      111 create:3 context ok! Context:0x7efff40025b0 ops:0x7efff4001c40
+ 2023-10-20:22:58:14.719 Tx0005FE  WARN httpCallback                    496 wsi:0x7f0011ffa5a8 conn ptr is NULL,ignore this reason:27
+ 2023-10-20:22:58:14.719 Tx0005FE DEBUG attach_callback                 330 attach_callback! context:0x7efff40025b0 tsi:0 opaque(conn):0x7efff4001538
+ 2023-10-20:22:58:14.719 Tx0005FE DEBUG attach_callback                 360 host:aee.xf-yun.com,ip:114.118.65.88,port:443
+ 2023-10-20:22:58:14.719 Tx0005FE  WARN httpCallback                    496 wsi:0x7efff8000ba0 conn ptr is NULL,ignore this reason:85
+ 2023-10-20:22:58:14.719 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:105
+ 2023-10-20:22:58:14.719 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:19
+ 2023-10-20:22:58:14.720 Tx0005FE DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7efff8000ba0
+ 2023-10-20:22:58:14.720 Tx0005FE  WARN httpCallback                    496 wsi:0x7efff4004348 conn ptr is NULL,ignore this reason:71
+ 2023-10-20:22:58:14.730 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:29
+ 2023-10-20:22:58:14.813 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:29
+ 2023-10-20:22:58:14.813 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:2
+ 2023-10-20:22:58:14.813 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:44
+ 2023-10-20:22:58:14.814 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:47
+ 2023-10-20:22:58:14.814 Tx0005ED DEBUG waitConnected                   539 http status:200 timeout:0
+ 2023-10-20:22:58:14.814 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:45
+ 2023-10-20:22:58:14.814 Tx0005ED  INFO uploadMetricTask                629 metrics sid is lat000ee0f0@dx18b4d983f7ea4bc812
+ 2023-10-20:22:58:14.814 Tx0005F3 DEBUG httpCallback                    506 http conn:0x7efffc001758 wsi:0x7f0014001040 reason:30
+ 2023-10-20:22:58:14.815 Tx0005F3 DEBUG ~ShortConnection                951 ~ShortConn wsi:0x7f0014001040,conn:0x7efffc001758
+ 2023-10-20:22:58:14.915 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:26
+ 2023-10-20:22:58:14.916 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:24
+ 2023-10-20:22:58:15.017 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:44
+ 2023-10-20:22:58:15.018 Tx0005F7 DEBUG wsCallback                      290 LWS_CALLBACK_ESTABLISHED_CLIENT_HTTP(44) status:101 conn:0x556bfbe5b5e8
+ 2023-10-20:22:58:15.018 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:24
+ 2023-10-20:22:58:15.019 Tx0005FE DEBUG httpCallback                    623 Short Conn payloadLen 238
+ 2023-10-20:22:58:15.019 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:2
+ 2023-10-20:22:58:15.020 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:57
+ 2023-10-20:22:58:15.020 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:3
+ 2023-10-20:22:58:15.020 Tx0005F7 DEBUG wsCallback                      301 LWS_CALLBACK_CLIENT_ESTABLISHED(3) status:0 conn:0x556bfbe5b5e8
+ 2023-10-20:22:58:15.021 Tx0005F7 DEBUG notifyStatus                   1187 notifyStatus! [15] ability:1-chat
+ 2023-10-20:22:58:15.021 Tx0005E3 DEBUG waitConnected                   539 http status:101 timeout:0
+ 2023-10-20:22:58:15.021 Tx0005EF  INFO processEventMsg                 341 process event:15
+ 2023-10-20:22:58:15.022 Tx0005E3  VERB onWriteAble                     526 NetConnection:0x556bfbe5b5e8 onWriteable
+ 2023-10-20:22:58:15.022 Tx0005F7  VERB OnWrite                         190 on_writable:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:15.022 Tx0005E3  CRIT AIKIT_AsyncChat                 275 AIKIT_AsyncChat ret 0
+ 2023-10-20:22:58:15.022 Tx0005F7  VERB wsCallback                      393 [chat stat] [sdk_sent] [sid:1] [time: 2023-10-20:22:58:15.022 ]
+ 2023-10-20:22:58:15.022 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 1, record type 1, time 1697813895022895100.
+ 2023-10-20:22:58:15.023 Tx0005F7  VERB wsCallback                      419 sessionid:1 conn:0x556bfbe5b5e8 data sent
+ 2023-10-20:22:58:15.023 Tx0005F7  VERB startCBTimer                    792 start timer,sessionId:1
+ 2023-10-20:22:58:15.023 Tx0005F7  VERB start                            33 Timer start success,sessionId [1] timeout:5000 ms.
+ 2023-10-20:22:58:15.120 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:2
+ 2023-10-20:22:58:15.120 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:44
+ 2023-10-20:22:58:15.120 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:47
+ 2023-10-20:22:58:15.121 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:45
+ 2023-10-20:22:58:15.121 Tx0005FE DEBUG httpCallback                    506 http conn:0x7efff4001538 wsi:0x7efff8000ba0 reason:30
+ 2023-10-20:22:58:15.121 Tx0005EE DEBUG waitConnected                   539 http status:200 timeout:0
+ 2023-10-20:22:58:15.121 Tx0005EE DEBUG ~ShortConnection                951 ~ShortConn wsi:0x7efff8000ba0,conn:0x7efff4001538
+ 2023-10-20:22:58:15.122 Tx0005EE  WARN getOnlineLicense                202 error msg: 未发现应用
+ 2023-10-20:22:58:15.122 Tx0005EE DEBUG changeState                      32 change state type:tokenAuth ==> tokenAuth, code: 0 ==> 0
+ 2023-10-20:22:58:15.125 Tx0005EE  INFO delKey                          191 store 247,247 deviceLicense success
+ 2023-10-20:22:58:15.427 Tx0005F7  VERB resetCBTimer                    812 reset timer,sessionId:1
+ 2023-10-20:22:58:15.428 Tx0005F7  VERB reset                            46 Timer reset success,sessionId [1].
+ 2023-10-20:22:58:15.428 Tx0005F7  VERB pushIntoRecvQueue               766 [chat stat] [sdk_recv_first] [sid:1] [time: 2023-10-20:22:58:15.428 ]
+ 2023-10-20:22:58:15.428 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 1, record type 2, time 1697813895428771000.
+ 2023-10-20:22:58:15.429 Tx0005F0  INFO processResult                   297 chat sid:cht000c789c@dx18b4d9840b0b894550, cid 1
+ 2023-10-20:22:58:15.429 Tx0005F0  VERB notifyResult                    209 [chat stat] [usr_recv_first] [sid:1] [time: 2023-10-20:22:58:15.429 ]
+ 2023-10-20:22:58:15.429 Tx0005F0 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 1, record type 4, time 1697813895429591500.
+ 2023-10-20:22:58:15.429 Tx0005F0  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:15.529 Tx0005F7  VERB stopCBTimer                     817 stop timer,sessionId:1
+ 2023-10-20:22:58:15.529 Tx0005F7  VERB stop                             72 Timer stop success,sessionId [1].
+ 2023-10-20:22:58:15.530 Tx0005F7  VERB destroy                         285 destroy timer:1
+ 2023-10-20:22:58:15.530 Tx0005F7  VERB pushIntoRecvQueue               772 [chat stat] [sdk_recv_last] [sid:1] [time: 2023-10-20:22:58:15.530 ]
+ 2023-10-20:22:58:15.530 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 1, record type 3, time 1697813895530802900.
+ 2023-10-20:22:58:15.531 Tx0005ED  INFO processResult                   297 chat sid:cht000c789c@dx18b4d9840b0b894550, cid 1
+ 2023-10-20:22:58:15.531 Tx0005ED  VERB notifyResult                    215 [chat stat] [usr_recv_last] [sid:1] [time: 2023-10-20:22:58:15.531 ]
+ 2023-10-20:22:58:15.531 Tx0005ED DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 1, record type 5, time 1697813895531728200.
+ 2023-10-20:22:58:15.531 Tx0005ED  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:15.532 Tx0005ED DEBUG processLastResponse             534 response:
+Hello
+ 2023-10-20:22:58:15.532 Tx0005ED  VERB chatTokenCount                  151 LLM token callback
+ 2023-10-20:22:58:15.532 Tx0005ED  INFO processResult                   310 session 1 is end.
+ 2023-10-20:22:58:15.532 Tx0005ED DEBUG onClose                         656 set conn:0x556bfbe5b5e8 status to discarded:0x7f0000000ba0
+ 2023-10-20:22:58:15.533 Tx0005ED DEBUG addToIdleSessionMap             368 addToIdle! mSessionMap size 1
+ 2023-10-20:22:58:15.533 Tx0005F7 DEBUG onClose                         200 lws_close_free_wsi:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:15.533 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:75
+ 2023-10-20:22:58:15.533 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbe5b5e8 wsi:0x7f0000000ba0 reason:30
+ 2023-10-20:22:58:15.533 Tx0005ED DEBUG writeLog                       1845 start to insert cid 1.
+ 2023-10-20:22:58:15.534 Tx0005F6 DEBUG WCMainLoop                     2036 start to write cid 1.
+ 2023-10-20:22:58:15.534 Tx0005F6 DEBUG addCriticalTimeConsume          824 succeed to get cid 1, usrInput 1697813894629752800, sdkSend 1697813895022895100, sdkRecvF 1697813895428771000, sdkRecvL 1697813895530802900, usrRecvF 1697813895429591500, usrRecvL 1697813895531728200.
+ 2023-10-20:22:58:15.534 Tx0005F6 DEBUG addCriticalTimeConsume          834 succeed to get usrToSdkSend 393.142303, sdkSendToFirstFrame 405.875916, sdkSendToLastFrame 507.907806, firstFrameToUsr 0.820500, lastFrameToUsr 0.925300, usrInputToUsrRecvFirst 799.838745, usrInputToUsrRecvLast 901.975464.
+ 2023-10-20:22:58:15.534 Tx0005F6 DEBUG ~SessionInfo                    196 Succeed to deconstruct session id 1.
+ 2023-10-20:22:58:15.536 Tx0005F6  VERB isFiveMinute                    327 succeed to get interval 135879, current time 1697813759657, current time 1697813895536.
+ 2023-10-20:22:58:15.541 Tx0005E3 DEBUG AIKIT_AsyncChat                 211 Spark auth type is Token
+ 2023-10-20:22:58:15.542 Tx0005E3  VERB oneshotAsync                    618 [chat stat] [usr_input] [sid:2] [time: 2023-10-20:22:58:15.542 ]
+ 2023-10-20:22:58:15.542 Tx0005E3 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 2, record type 0, time 1697813895542443700.
+ 2023-10-20:22:58:15.542 Tx0005E3 DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:15.542 Tx0005E3 DEBUG genAuthorization                218 host: spark-api.xf-yun.com,method:GET, apiPath:/v3.1/chat time:Fri, 20 Oct 2023 14:58:15 GMT
+ 2023-10-20:22:58:15.543 Tx0005E3 DEBUG NetConnection                   422 conn ID: 4 ptr: 0x556bfbeea678
+ 2023-10-20:22:58:15.543 Tx0005E3 DEBUG getContex                       745 context 0x556bfbe5b998 con size:1
+ 2023-10-20:22:58:15.543 Tx0005E3 DEBUG newLongConnection              1087 conID is 4, size is 1
+ 2023-10-20:22:58:15.543 Tx0005F7 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe5be00 tsi:0 opaque(conn):0x556bfbeea678
+ 2023-10-20:22:58:15.543 Tx0005F7 DEBUG attach_callback                 360 host:spark-api.xf-yun.com,ip:114.118.65.88,port:443
+ 2023-10-20:22:58:15.543 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x7f0000000ba0 reason:85
+ 2023-10-20:22:58:15.544 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:105
+ 2023-10-20:22:58:15.544 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:19
+ 2023-10-20:22:58:15.544 Tx0005F7 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0000000ba0
+ 2023-10-20:22:58:15.632 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:29
+ 2023-10-20:22:58:15.654 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:26
+ 2023-10-20:22:58:15.654 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:24
+ 2023-10-20:22:58:15.836 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:44
+ 2023-10-20:22:58:15.837 Tx0005F7 DEBUG wsCallback                      290 LWS_CALLBACK_ESTABLISHED_CLIENT_HTTP(44) status:101 conn:0x556bfbeea678
+ 2023-10-20:22:58:15.837 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:2
+ 2023-10-20:22:58:15.837 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:3
+ 2023-10-20:22:58:15.838 Tx0005F7 DEBUG wsCallback                      301 LWS_CALLBACK_CLIENT_ESTABLISHED(3) status:0 conn:0x556bfbeea678
+ 2023-10-20:22:58:15.838 Tx0005F7 DEBUG notifyStatus                   1187 notifyStatus! [15] ability:1-chat
+ 2023-10-20:22:58:15.838 Tx0005EF  INFO processEventMsg                 341 process event:15
+ 2023-10-20:22:58:15.839 Tx0005E3 DEBUG waitConnected                   539 http status:101 timeout:0
+ 2023-10-20:22:58:15.839 Tx0005E3  VERB onWriteAble                     526 NetConnection:0x556bfbeea678 onWriteable
+ 2023-10-20:22:58:15.839 Tx0005E3  CRIT AIKIT_AsyncChat                 275 AIKIT_AsyncChat ret 0
+ 2023-10-20:22:58:15.839 Tx0005F7  VERB OnWrite                         190 on_writable:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:15.840 Tx0005F7  VERB wsCallback                      393 [chat stat] [sdk_sent] [sid:2] [time: 2023-10-20:22:58:15.840 ]
+ 2023-10-20:22:58:15.840 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 2, record type 1, time 1697813895840188500.
+ 2023-10-20:22:58:15.840 Tx0005F7  VERB wsCallback                      419 sessionid:2 conn:0x556bfbeea678 data sent
+ 2023-10-20:22:58:15.840 Tx0005F7  VERB startCBTimer                    792 start timer,sessionId:2
+ 2023-10-20:22:58:15.840 Tx0005F7  VERB start                            33 Timer start success,sessionId [2] timeout:5000 ms.
+ 2023-10-20:22:58:16.246 Tx0005F7  VERB resetCBTimer                    812 reset timer,sessionId:2
+ 2023-10-20:22:58:16.246 Tx0005F7  VERB reset                            46 Timer reset success,sessionId [2].
+ 2023-10-20:22:58:16.247 Tx0005F7  VERB pushIntoRecvQueue               766 [chat stat] [sdk_recv_first] [sid:2] [time: 2023-10-20:22:58:16.247 ]
+ 2023-10-20:22:58:16.247 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 2, record type 2, time 1697813896247676600.
+ 2023-10-20:22:58:16.248 Tx0005F0  INFO processResult                   297 chat sid:cht000b7b2a@dx18b4d9843e39a4b550, cid 2
+ 2023-10-20:22:58:16.248 Tx0005F0  VERB notifyResult                    209 [chat stat] [usr_recv_first] [sid:2] [time: 2023-10-20:22:58:16.248 ]
+ 2023-10-20:22:58:16.248 Tx0005F0 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 2, record type 4, time 1697813896248752800.
+ 2023-10-20:22:58:16.248 Tx0005F0  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:16.348 Tx0005F7  VERB resetCBTimer                    812 reset timer,sessionId:2
+ 2023-10-20:22:58:16.349 Tx0005F7  VERB reset                            46 Timer reset success,sessionId [2].
+ 2023-10-20:22:58:16.350 Tx0005ED  INFO processResult                   297 chat sid:cht000b7b2a@dx18b4d9843e39a4b550, cid 2
+ 2023-10-20:22:58:16.350 Tx0005ED  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:16.655 Tx0005F7  VERB stopCBTimer                     817 stop timer,sessionId:2
+ 2023-10-20:22:58:16.655 Tx0005F7  VERB stop                             72 Timer stop success,sessionId [2].
+ 2023-10-20:22:58:16.655 Tx0005F7  VERB destroy                         285 destroy timer:2
+ 2023-10-20:22:58:16.656 Tx0005F7  VERB pushIntoRecvQueue               772 [chat stat] [sdk_recv_last] [sid:2] [time: 2023-10-20:22:58:16.656 ]
+ 2023-10-20:22:58:16.656 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 2, record type 3, time 1697813896656175000.
+ 2023-10-20:22:58:16.656 Tx0005EF  INFO processResult                   297 chat sid:cht000b7b2a@dx18b4d9843e39a4b550, cid 2
+ 2023-10-20:22:58:16.656 Tx0005EF  VERB notifyResult                    215 [chat stat] [usr_recv_last] [sid:2] [time: 2023-10-20:22:58:16.656 ]
+ 2023-10-20:22:58:16.656 Tx0005EF DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 2, record type 5, time 1697813896656609600.
+ 2023-10-20:22:58:16.656 Tx0005EF  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:16.656 Tx0005EF DEBUG processLastResponse             534 response:
+こんにちは
+ 2023-10-20:22:58:16.656 Tx0005EF  VERB chatTokenCount                  151 LLM token callback
+ 2023-10-20:22:58:16.657 Tx0005EF  INFO processResult                   310 session 2 is end.
+ 2023-10-20:22:58:16.657 Tx0005EF DEBUG onClose                         656 set conn:0x556bfbeea678 status to discarded:0x7f0000000ba0
+ 2023-10-20:22:58:16.657 Tx0005EF DEBUG addToIdleSessionMap             368 addToIdle! mSessionMap size 1
+ 2023-10-20:22:58:16.657 Tx0005F7 DEBUG onClose                         200 lws_close_free_wsi:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:16.657 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:75
+ 2023-10-20:22:58:16.658 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeea678 wsi:0x7f0000000ba0 reason:30
+ 2023-10-20:22:58:16.658 Tx0005EF DEBUG writeLog                       1845 start to insert cid 2.
+ 2023-10-20:22:58:16.658 Tx0005F6 DEBUG WCMainLoop                     2036 start to write cid 2.
+ 2023-10-20:22:58:16.658 Tx0005F6 DEBUG addCriticalTimeConsume          824 succeed to get cid 2, usrInput 1697813895542443700, sdkSend 1697813895840188500, sdkRecvF 1697813896247676600, sdkRecvL 1697813896656175000, usrRecvF 1697813896248752800, usrRecvL 1697813896656609600.
+ 2023-10-20:22:58:16.658 Tx0005F6 DEBUG addCriticalTimeConsume          834 succeed to get usrToSdkSend 297.744812, sdkSendToFirstFrame 407.488098, sdkSendToLastFrame 815.986511, firstFrameToUsr 1.076200, lastFrameToUsr 0.434600, usrInputToUsrRecvFirst 706.309143, usrInputToUsrRecvLast 1114.165894.
+ 2023-10-20:22:58:16.659 Tx0005F6 DEBUG ~SessionInfo                    196 Succeed to deconstruct session id 2.
+ 2023-10-20:22:58:16.660 Tx0005F6  VERB isFiveMinute                    327 succeed to get interval 137003, current time 1697813759657, current time 1697813896660.
+ 2023-10-20:22:58:16.664 Tx0005E3  VERB param                           180 key:domain, data:generalv2, dataLen:9
+ 2023-10-20:22:58:16.664 Tx0005E3  VERB param                           180 key:domain, data:generalv3, dataLen:9
+ 2023-10-20:22:58:16.664 Tx0005E3 DEBUG AIKIT_AsyncChat                 211 Spark auth type is Token
+ 2023-10-20:22:58:16.664 Tx0005E3  VERB oneshotAsync                    618 [chat stat] [usr_input] [sid:3] [time: 2023-10-20:22:58:16.664 ]
+ 2023-10-20:22:58:16.665 Tx0005E3 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 3, record type 0, time 1697813896665062100.
+ 2023-10-20:22:58:16.665 Tx0005E3 DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:16.665 Tx0005E3 DEBUG genAuthorization                218 host: spark-api.xf-yun.com,method:GET, apiPath:/v3.1/chat time:Fri, 20 Oct 2023 14:58:16 GMT
+ 2023-10-20:22:58:16.665 Tx0005E3 DEBUG NetConnection                   422 conn ID: 5 ptr: 0x556bfbeeb798
+ 2023-10-20:22:58:16.665 Tx0005E3 DEBUG getContex                       745 context 0x556bfbe5b998 con size:1
+ 2023-10-20:22:58:16.665 Tx0005E3 DEBUG newLongConnection              1087 conID is 5, size is 1
+ 2023-10-20:22:58:16.666 Tx0005F7 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe5be00 tsi:0 opaque(conn):0x556bfbeeb798
+ 2023-10-20:22:58:16.666 Tx0005F7 DEBUG attach_callback                 360 host:spark-api.xf-yun.com,ip:114.118.65.88,port:443
+ 2023-10-20:22:58:16.666 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x7f0000000ba0 reason:85
+ 2023-10-20:22:58:16.666 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:105
+ 2023-10-20:22:58:16.666 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:19
+ 2023-10-20:22:58:16.666 Tx0005F7 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0000000ba0
+ 2023-10-20:22:58:16.758 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:29
+ 2023-10-20:22:58:16.862 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:26
+ 2023-10-20:22:58:16.863 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:24
+ 2023-10-20:22:58:16.963 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:44
+ 2023-10-20:22:58:16.963 Tx0005F7 DEBUG wsCallback                      290 LWS_CALLBACK_ESTABLISHED_CLIENT_HTTP(44) status:101 conn:0x556bfbeeb798
+ 2023-10-20:22:58:16.964 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:2
+ 2023-10-20:22:58:16.964 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:3
+ 2023-10-20:22:58:16.964 Tx0005F7 DEBUG wsCallback                      301 LWS_CALLBACK_CLIENT_ESTABLISHED(3) status:0 conn:0x556bfbeeb798
+ 2023-10-20:22:58:16.964 Tx0005F7 DEBUG notifyStatus                   1187 notifyStatus! [15] ability:1-chat
+ 2023-10-20:22:58:16.964 Tx0005F0  INFO processEventMsg                 341 process event:15
+ 2023-10-20:22:58:16.964 Tx0005E3 DEBUG waitConnected                   539 http status:101 timeout:0
+ 2023-10-20:22:58:16.965 Tx0005E3  VERB onWriteAble                     526 NetConnection:0x556bfbeeb798 onWriteable
+ 2023-10-20:22:58:16.965 Tx0005F7  VERB OnWrite                         190 on_writable:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:16.965 Tx0005E3  CRIT AIKIT_AsyncChat                 275 AIKIT_AsyncChat ret 0
+ 2023-10-20:22:58:16.965 Tx0005F7  VERB wsCallback                      393 [chat stat] [sdk_sent] [sid:3] [time: 2023-10-20:22:58:16.965 ]
+ 2023-10-20:22:58:16.965 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 3, record type 1, time 1697813896965822300.
+ 2023-10-20:22:58:16.966 Tx0005F7  VERB wsCallback                      419 sessionid:3 conn:0x556bfbeeb798 data sent
+ 2023-10-20:22:58:16.966 Tx0005F7  VERB startCBTimer                    792 start timer,sessionId:3
+ 2023-10-20:22:58:16.966 Tx0005F7  VERB start                            33 Timer start success,sessionId [3] timeout:5000 ms.
+ 2023-10-20:22:58:17.376 Tx0005F7  VERB resetCBTimer                    812 reset timer,sessionId:3
+ 2023-10-20:22:58:17.377 Tx0005F7  VERB reset                            46 Timer reset success,sessionId [3].
+ 2023-10-20:22:58:17.377 Tx0005F7  VERB pushIntoRecvQueue               766 [chat stat] [sdk_recv_first] [sid:3] [time: 2023-10-20:22:58:17.377 ]
+ 2023-10-20:22:58:17.377 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 3, record type 2, time 1697813897377559100.
+ 2023-10-20:22:58:17.377 Tx0005ED  INFO processResult                   297 chat sid:cht000b776c@dx18b4d984846b81b550, cid 3
+ 2023-10-20:22:58:17.377 Tx0005ED  VERB notifyResult                    209 [chat stat] [usr_recv_first] [sid:3] [time: 2023-10-20:22:58:17.377 ]
+ 2023-10-20:22:58:17.378 Tx0005ED DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 3, record type 4, time 1697813897378146900.
+ 2023-10-20:22:58:17.378 Tx0005ED  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:17.577 Tx0005F7  VERB stopCBTimer                     817 stop timer,sessionId:3
+ 2023-10-20:22:58:17.578 Tx0005F7  VERB stop                             72 Timer stop success,sessionId [3].
+ 2023-10-20:22:58:17.578 Tx0005F7  VERB destroy                         285 destroy timer:3
+ 2023-10-20:22:58:17.578 Tx0005F7  VERB pushIntoRecvQueue               772 [chat stat] [sdk_recv_last] [sid:3] [time: 2023-10-20:22:58:17.578 ]
+ 2023-10-20:22:58:17.578 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 3, record type 3, time 1697813897578868500.
+ 2023-10-20:22:58:17.579 Tx0005EF  INFO processResult                   297 chat sid:cht000b776c@dx18b4d984846b81b550, cid 3
+ 2023-10-20:22:58:17.579 Tx0005EF  VERB notifyResult                    215 [chat stat] [usr_recv_last] [sid:3] [time: 2023-10-20:22:58:17.579 ]
+ 2023-10-20:22:58:17.579 Tx0005EF DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 3, record type 5, time 1697813897579614700.
+ 2023-10-20:22:58:17.579 Tx0005EF  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:17.579 Tx0005EF DEBUG processLastResponse             534 response:
+Hello
+ 2023-10-20:22:58:17.580 Tx0005EF  VERB chatTokenCount                  151 LLM token callback
+ 2023-10-20:22:58:17.580 Tx0005EF  INFO processResult                   310 session 3 is end.
+ 2023-10-20:22:58:17.580 Tx0005EF DEBUG onClose                         656 set conn:0x556bfbeeb798 status to discarded:0x7f0000000ba0
+ 2023-10-20:22:58:17.580 Tx0005EF DEBUG addToIdleSessionMap             368 addToIdle! mSessionMap size 1
+ 2023-10-20:22:58:17.580 Tx0005F7 DEBUG onClose                         200 lws_close_free_wsi:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:17.580 Tx0005EF DEBUG writeLog                       1845 start to insert cid 3.
+ 2023-10-20:22:58:17.581 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:75
+ 2023-10-20:22:58:17.581 Tx0005F6 DEBUG WCMainLoop                     2036 start to write cid 3.
+ 2023-10-20:22:58:17.581 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeb798 wsi:0x7f0000000ba0 reason:30
+ 2023-10-20:22:58:17.581 Tx0005F6 DEBUG addCriticalTimeConsume          824 succeed to get cid 3, usrInput 1697813896665062100, sdkSend 1697813896965822300, sdkRecvF 1697813897377559100, sdkRecvL 1697813897578868500, usrRecvF 1697813897378146900, usrRecvL 1697813897579614700.
+ 2023-10-20:22:58:17.581 Tx0005F6 DEBUG addCriticalTimeConsume          834 succeed to get usrToSdkSend 300.760193, sdkSendToFirstFrame 411.736816, sdkSendToLastFrame 613.046204, firstFrameToUsr 0.587800, lastFrameToUsr 0.746200, usrInputToUsrRecvFirst 713.084839, usrInputToUsrRecvLast 914.552551.
+ 2023-10-20:22:58:17.582 Tx0005F6 DEBUG ~SessionInfo                    196 Succeed to deconstruct session id 3.
+ 2023-10-20:22:58:17.583 Tx0005F6  VERB isFiveMinute                    327 succeed to get interval 137926, current time 1697813759657, current time 1697813897583.
+ 2023-10-20:22:58:17.587 Tx0005E3 DEBUG AIKIT_AsyncChat                 211 Spark auth type is Token
+ 2023-10-20:22:58:17.588 Tx0005E3  VERB oneshotAsync                    618 [chat stat] [usr_input] [sid:4] [time: 2023-10-20:22:58:17.588 ]
+ 2023-10-20:22:58:17.588 Tx0005E3 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 4, record type 0, time 1697813897588341700.
+ 2023-10-20:22:58:17.588 Tx0005E3 DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:17.588 Tx0005E3 DEBUG genAuthorization                218 host: spark-api.xf-yun.com,method:GET, apiPath:/v3.1/chat time:Fri, 20 Oct 2023 14:58:17 GMT
+ 2023-10-20:22:58:17.588 Tx0005E3 DEBUG NetConnection                   422 conn ID: 6 ptr: 0x556bfbeed8b8
+ 2023-10-20:22:58:17.589 Tx0005E3 DEBUG getContex                       745 context 0x556bfbe5b998 con size:1
+ 2023-10-20:22:58:17.589 Tx0005E3 DEBUG newLongConnection              1087 conID is 6, size is 1
+ 2023-10-20:22:58:17.589 Tx0005F7 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe5be00 tsi:0 opaque(conn):0x556bfbeed8b8
+ 2023-10-20:22:58:17.589 Tx0005F7 DEBUG attach_callback                 360 host:spark-api.xf-yun.com,ip:114.118.65.88,port:443
+ 2023-10-20:22:58:17.589 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x7f0000000ba0 reason:85
+ 2023-10-20:22:58:17.589 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:105
+ 2023-10-20:22:58:17.590 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:19
+ 2023-10-20:22:58:17.590 Tx0005F7 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0000000ba0
+ 2023-10-20:22:58:17.680 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:29
+ 2023-10-20:22:58:17.700 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:26
+ 2023-10-20:22:58:17.700 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:24
+ 2023-10-20:22:58:17.782 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:44
+ 2023-10-20:22:58:17.782 Tx0005F7 DEBUG wsCallback                      290 LWS_CALLBACK_ESTABLISHED_CLIENT_HTTP(44) status:101 conn:0x556bfbeed8b8
+ 2023-10-20:22:58:17.783 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:2
+ 2023-10-20:22:58:17.783 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:3
+ 2023-10-20:22:58:17.783 Tx0005F7 DEBUG wsCallback                      301 LWS_CALLBACK_CLIENT_ESTABLISHED(3) status:0 conn:0x556bfbeed8b8
+ 2023-10-20:22:58:17.784 Tx0005F7 DEBUG notifyStatus                   1187 notifyStatus! [15] ability:1-chat
+ 2023-10-20:22:58:17.784 Tx0005E3 DEBUG waitConnected                   539 http status:101 timeout:0
+ 2023-10-20:22:58:17.784 Tx0005E3  VERB onWriteAble                     526 NetConnection:0x556bfbeed8b8 onWriteable
+ 2023-10-20:22:58:17.784 Tx0005F0  INFO processEventMsg                 341 process event:15
+ 2023-10-20:22:58:17.785 Tx0005F7  VERB OnWrite                         190 on_writable:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:17.785 Tx0005E3  CRIT AIKIT_AsyncChat                 275 AIKIT_AsyncChat ret 0
+ 2023-10-20:22:58:17.785 Tx0005F7  VERB wsCallback                      393 [chat stat] [sdk_sent] [sid:4] [time: 2023-10-20:22:58:17.785 ]
+ 2023-10-20:22:58:17.785 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 4, record type 1, time 1697813897785867700.
+ 2023-10-20:22:58:17.786 Tx0005F7  VERB wsCallback                      419 sessionid:4 conn:0x556bfbeed8b8 data sent
+ 2023-10-20:22:58:17.786 Tx0005F7  VERB startCBTimer                    792 start timer,sessionId:4
+ 2023-10-20:22:58:17.786 Tx0005F7  VERB start                            33 Timer start success,sessionId [4] timeout:5000 ms.
+ 2023-10-20:22:58:18.193 Tx0005F7  VERB resetCBTimer                    812 reset timer,sessionId:4
+ 2023-10-20:22:58:18.193 Tx0005F7  VERB reset                            46 Timer reset success,sessionId [4].
+ 2023-10-20:22:58:18.193 Tx0005F7  VERB pushIntoRecvQueue               766 [chat stat] [sdk_recv_first] [sid:4] [time: 2023-10-20:22:58:18.193 ]
+ 2023-10-20:22:58:18.193 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 4, record type 2, time 1697813898193980900.
+ 2023-10-20:22:58:18.194 Tx0005ED  INFO processResult                   297 chat sid:cht000b7a79@dx18b4d984b7cb8f2550, cid 4
+ 2023-10-20:22:58:18.194 Tx0005ED  VERB notifyResult                    209 [chat stat] [usr_recv_first] [sid:4] [time: 2023-10-20:22:58:18.194 ]
+ 2023-10-20:22:58:18.194 Tx0005ED DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 4, record type 4, time 1697813898194840500.
+ 2023-10-20:22:58:18.195 Tx0005ED  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:18.294 Tx0005F7  VERB resetCBTimer                    812 reset timer,sessionId:4
+ 2023-10-20:22:58:18.294 Tx0005F7  VERB reset                            46 Timer reset success,sessionId [4].
+ 2023-10-20:22:58:18.295 Tx0005EF  INFO processResult                   297 chat sid:cht000b7a79@dx18b4d984b7cb8f2550, cid 4
+ 2023-10-20:22:58:18.295 Tx0005EF  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:18.513 Tx0005F7  VERB stopCBTimer                     817 stop timer,sessionId:4
+ 2023-10-20:22:58:18.513 Tx0005F7  VERB stop                             72 Timer stop success,sessionId [4].
+ 2023-10-20:22:58:18.514 Tx0005F7  VERB destroy                         285 destroy timer:4
+ 2023-10-20:22:58:18.514 Tx0005F7  VERB pushIntoRecvQueue               772 [chat stat] [sdk_recv_last] [sid:4] [time: 2023-10-20:22:58:18.514 ]
+ 2023-10-20:22:58:18.514 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 4, record type 3, time 1697813898514696900.
+ 2023-10-20:22:58:18.515 Tx0005F0  INFO processResult                   297 chat sid:cht000b7a79@dx18b4d984b7cb8f2550, cid 4
+ 2023-10-20:22:58:18.515 Tx0005F0  VERB notifyResult                    215 [chat stat] [usr_recv_last] [sid:4] [time: 2023-10-20:22:58:18.515 ]
+ 2023-10-20:22:58:18.515 Tx0005F0 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 4, record type 5, time 1697813898515481300.
+ 2023-10-20:22:58:18.515 Tx0005F0  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:18.515 Tx0005F0 DEBUG processLastResponse             534 response:
+こんにちは
+ 2023-10-20:22:58:18.516 Tx0005F0  VERB chatTokenCount                  151 LLM token callback
+ 2023-10-20:22:58:18.516 Tx0005F0  INFO processResult                   310 session 4 is end.
+ 2023-10-20:22:58:18.516 Tx0005F0 DEBUG onClose                         656 set conn:0x556bfbeed8b8 status to discarded:0x7f0000000ba0
+ 2023-10-20:22:58:18.516 Tx0005F0 DEBUG addToIdleSessionMap             368 addToIdle! mSessionMap size 1
+ 2023-10-20:22:58:18.517 Tx0005F7 DEBUG onClose                         200 lws_close_free_wsi:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:18.517 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:75
+ 2023-10-20:22:58:18.517 Tx0005F0 DEBUG writeLog                       1845 start to insert cid 4.
+ 2023-10-20:22:58:18.517 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeed8b8 wsi:0x7f0000000ba0 reason:30
+ 2023-10-20:22:58:18.517 Tx0005F6 DEBUG WCMainLoop                     2036 start to write cid 4.
+ 2023-10-20:22:58:18.517 Tx0005F6 DEBUG addCriticalTimeConsume          824 succeed to get cid 4, usrInput 1697813897588341700, sdkSend 1697813897785867700, sdkRecvF 1697813898193980900, sdkRecvL 1697813898514696900, usrRecvF 1697813898194840500, usrRecvL 1697813898515481300.
+ 2023-10-20:22:58:18.518 Tx0005F6 DEBUG addCriticalTimeConsume          834 succeed to get usrToSdkSend 197.526001, sdkSendToFirstFrame 408.113220, sdkSendToLastFrame 728.829163, firstFrameToUsr 0.859600, lastFrameToUsr 0.784400, usrInputToUsrRecvFirst 606.498840, usrInputToUsrRecvLast 927.139587.
+ 2023-10-20:22:58:18.518 Tx0005F6 DEBUG ~SessionInfo                    196 Succeed to deconstruct session id 4.
+ 2023-10-20:22:58:18.519 Tx0005F6  VERB isFiveMinute                    327 succeed to get interval 138862, current time 1697813759657, current time 1697813898519.
+ 2023-10-20:22:58:18.521 Tx0005E3  VERB param                           180 key:domain, data:generalv2, dataLen:9
+ 2023-10-20:22:58:18.521 Tx0005E3  VERB param                           180 key:domain, data:generalv3, dataLen:9
+ 2023-10-20:22:58:18.521 Tx0005E3 DEBUG AIKIT_AsyncChat                 211 Spark auth type is Token
+ 2023-10-20:22:58:18.521 Tx0005E3  VERB oneshotAsync                    618 [chat stat] [usr_input] [sid:5] [time: 2023-10-20:22:58:18.521 ]
+ 2023-10-20:22:58:18.521 Tx0005E3 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 5, record type 0, time 1697813898521734100.
+ 2023-10-20:22:58:18.521 Tx0005E3 DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:18.522 Tx0005E3 DEBUG genAuthorization                218 host: spark-api.xf-yun.com,method:GET, apiPath:/v3.1/chat time:Fri, 20 Oct 2023 14:58:18 GMT
+ 2023-10-20:22:58:18.522 Tx0005E3 DEBUG NetConnection                   422 conn ID: 7 ptr: 0x556bfbeeee08
+ 2023-10-20:22:58:18.522 Tx0005E3 DEBUG getContex                       745 context 0x556bfbe5b998 con size:1
+ 2023-10-20:22:58:18.522 Tx0005E3 DEBUG newLongConnection              1087 conID is 7, size is 1
+ 2023-10-20:22:58:18.522 Tx0005F7 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe5be00 tsi:0 opaque(conn):0x556bfbeeee08
+ 2023-10-20:22:58:18.522 Tx0005F7 DEBUG attach_callback                 360 host:spark-api.xf-yun.com,ip:114.118.65.88,port:443
+ 2023-10-20:22:58:18.523 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x7f0000000ba0 reason:85
+ 2023-10-20:22:58:18.523 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:105
+ 2023-10-20:22:58:18.523 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:19
+ 2023-10-20:22:58:18.523 Tx0005F7 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0000000ba0
+ 2023-10-20:22:58:18.623 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:29
+ 2023-10-20:22:58:18.806 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:26
+ 2023-10-20:22:58:18.807 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:24
+ 2023-10-20:22:58:18.908 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:44
+ 2023-10-20:22:58:18.909 Tx0005F7 DEBUG wsCallback                      290 LWS_CALLBACK_ESTABLISHED_CLIENT_HTTP(44) status:101 conn:0x556bfbeeee08
+ 2023-10-20:22:58:18.909 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:2
+ 2023-10-20:22:58:18.910 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:3
+ 2023-10-20:22:58:18.910 Tx0005F7 DEBUG wsCallback                      301 LWS_CALLBACK_CLIENT_ESTABLISHED(3) status:0 conn:0x556bfbeeee08
+ 2023-10-20:22:58:18.910 Tx0005F7 DEBUG notifyStatus                   1187 notifyStatus! [15] ability:1-chat
+ 2023-10-20:22:58:18.911 Tx0005ED  INFO processEventMsg                 341 process event:15
+ 2023-10-20:22:58:18.911 Tx0005E3 DEBUG waitConnected                   539 http status:101 timeout:0
+ 2023-10-20:22:58:18.911 Tx0005E3  VERB onWriteAble                     526 NetConnection:0x556bfbeeee08 onWriteable
+ 2023-10-20:22:58:18.911 Tx0005F7  VERB OnWrite                         190 on_writable:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:18.912 Tx0005E3  CRIT AIKIT_AsyncChat                 275 AIKIT_AsyncChat ret 0
+ 2023-10-20:22:58:18.912 Tx0005F7  VERB wsCallback                      393 [chat stat] [sdk_sent] [sid:5] [time: 2023-10-20:22:58:18.912 ]
+ 2023-10-20:22:58:18.912 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 5, record type 1, time 1697813898912464800.
+ 2023-10-20:22:58:18.912 Tx0005F7  VERB wsCallback                      419 sessionid:5 conn:0x556bfbeeee08 data sent
+ 2023-10-20:22:58:18.912 Tx0005F7  VERB startCBTimer                    792 start timer,sessionId:5
+ 2023-10-20:22:58:18.913 Tx0005F7  VERB start                            33 Timer start success,sessionId [5] timeout:5000 ms.
+ 2023-10-20:22:58:19.318 Tx0005F7  VERB resetCBTimer                    812 reset timer,sessionId:5
+ 2023-10-20:22:58:19.318 Tx0005F7  VERB reset                            46 Timer reset success,sessionId [5].
+ 2023-10-20:22:58:19.319 Tx0005F7  VERB pushIntoRecvQueue               766 [chat stat] [sdk_recv_first] [sid:5] [time: 2023-10-20:22:58:19.319 ]
+ 2023-10-20:22:58:19.319 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 5, record type 2, time 1697813899319461900.
+ 2023-10-20:22:58:19.319 Tx0005EF  INFO processResult                   297 chat sid:cht000c78ca@dx18b4d984fe0b894550, cid 5
+ 2023-10-20:22:58:19.320 Tx0005EF  VERB notifyResult                    209 [chat stat] [usr_recv_first] [sid:5] [time: 2023-10-20:22:58:19.320 ]
+ 2023-10-20:22:58:19.320 Tx0005EF DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 5, record type 4, time 1697813899320594900.
+ 2023-10-20:22:58:19.320 Tx0005EF  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:19.523 Tx0005F7  VERB stopCBTimer                     817 stop timer,sessionId:5
+ 2023-10-20:22:58:19.524 Tx0005F7  VERB stop                             72 Timer stop success,sessionId [5].
+ 2023-10-20:22:58:19.524 Tx0005F7  VERB destroy                         285 destroy timer:5
+ 2023-10-20:22:58:19.524 Tx0005F7  VERB pushIntoRecvQueue               772 [chat stat] [sdk_recv_last] [sid:5] [time: 2023-10-20:22:58:19.524 ]
+ 2023-10-20:22:58:19.525 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 5, record type 3, time 1697813899525294800.
+ 2023-10-20:22:58:19.525 Tx0005F0  INFO processResult                   297 chat sid:cht000c78ca@dx18b4d984fe0b894550, cid 5
+ 2023-10-20:22:58:19.525 Tx0005F0  VERB notifyResult                    215 [chat stat] [usr_recv_last] [sid:5] [time: 2023-10-20:22:58:19.525 ]
+ 2023-10-20:22:58:19.526 Tx0005F0 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 5, record type 5, time 1697813899526222200.
+ 2023-10-20:22:58:19.526 Tx0005F0  VERB chatOnOutput                    194 LLM output callback
+ 2023-10-20:22:58:19.526 Tx0005F0 DEBUG processLastResponse             534 response:
+Hello
+ 2023-10-20:22:58:19.526 Tx0005F0  VERB chatTokenCount                  151 LLM token callback
+ 2023-10-20:22:58:19.527 Tx0005F0  INFO processResult                   310 session 5 is end.
+ 2023-10-20:22:58:19.527 Tx0005F0 DEBUG onClose                         656 set conn:0x556bfbeeee08 status to discarded:0x7f0000000ba0
+ 2023-10-20:22:58:19.527 Tx0005F0 DEBUG addToIdleSessionMap             368 addToIdle! mSessionMap size 1
+ 2023-10-20:22:58:19.527 Tx0005F0 DEBUG writeLog                       1845 start to insert cid 5.
+ 2023-10-20:22:58:19.527 Tx0005F6 DEBUG WCMainLoop                     2036 start to write cid 5.
+ 2023-10-20:22:58:19.527 Tx0005F7 DEBUG onClose                         200 lws_close_free_wsi:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:19.528 Tx0005F6 DEBUG addCriticalTimeConsume          824 succeed to get cid 5, usrInput 1697813898521734100, sdkSend 1697813898912464800, sdkRecvF 1697813899319461900, sdkRecvL 1697813899525294800, usrRecvF 1697813899320594900, usrRecvL 1697813899526222200.
+ 2023-10-20:22:58:19.528 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:75
+ 2023-10-20:22:58:19.528 Tx0005F6 DEBUG addCriticalTimeConsume          834 succeed to get usrToSdkSend 390.730682, sdkSendToFirstFrame 406.997101, sdkSendToLastFrame 612.830017, firstFrameToUsr 1.133000, lastFrameToUsr 0.927400, usrInputToUsrRecvFirst 798.860840, usrInputToUsrRecvLast 1004.488098.
+ 2023-10-20:22:58:19.528 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbeeee08 wsi:0x7f0000000ba0 reason:30
+ 2023-10-20:22:58:19.528 Tx0005F6 DEBUG ~SessionInfo                    196 Succeed to deconstruct session id 5.
+ 2023-10-20:22:58:19.530 Tx0005F6  VERB isFiveMinute                    327 succeed to get interval 139873, current time 1697813759657, current time 1697813899530.
+ 2023-10-20:22:58:19.533 Tx0005E3 DEBUG AIKIT_AsyncChat                 211 Spark auth type is Token
+ 2023-10-20:22:58:19.533 Tx0005E3  VERB oneshotAsync                    618 [chat stat] [usr_input] [sid:6] [time: 2023-10-20:22:58:19.533 ]
+ 2023-10-20:22:58:19.533 Tx0005E3 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 6, record type 0, time 1697813899533565300.
+ 2023-10-20:22:58:19.533 Tx0005E3 DEBUG genCurrentTime                  194 setlocale ok! en_US.UTF-8
+ 2023-10-20:22:58:19.533 Tx0005E3 DEBUG genAuthorization                218 host: spark-api.xf-yun.com,method:GET, apiPath:/v3.1/chat time:Fri, 20 Oct 2023 14:58:19 GMT
+ 2023-10-20:22:58:19.534 Tx0005E3 DEBUG NetConnection                   422 conn ID: 8 ptr: 0x556bfbef1158
+ 2023-10-20:22:58:19.534 Tx0005E3 DEBUG getContex                       745 context 0x556bfbe5b998 con size:1
+ 2023-10-20:22:58:19.534 Tx0005E3 DEBUG newLongConnection              1087 conID is 8, size is 1
+ 2023-10-20:22:58:19.534 Tx0005F7 DEBUG attach_callback                 330 attach_callback! context:0x556bfbe5be00 tsi:0 opaque(conn):0x556bfbef1158
+ 2023-10-20:22:58:19.534 Tx0005F7 DEBUG attach_callback                 360 host:spark-api.xf-yun.com,ip:114.118.65.88,port:443
+ 2023-10-20:22:58:19.534 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:(nil) wsi:0x7f0000000ba0 reason:85
+ 2023-10-20:22:58:19.535 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:105
+ 2023-10-20:22:58:19.535 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:19
+ 2023-10-20:22:58:19.535 Tx0005F7 DEBUG attach_callback                 387 lws_client_connect_via_info wsi:0x7f0000000ba0
+ 2023-10-20:22:58:19.625 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:29
+ 2023-10-20:22:58:19.728 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:26
+ 2023-10-20:22:58:19.728 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:24
+ 2023-10-20:22:58:19.830 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:44
+ 2023-10-20:22:58:19.831 Tx0005F7 DEBUG wsCallback                      290 LWS_CALLBACK_ESTABLISHED_CLIENT_HTTP(44) status:101 conn:0x556bfbef1158
+ 2023-10-20:22:58:19.831 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:2
+ 2023-10-20:22:58:19.831 Tx0005F7 DEBUG wsCallback                      231 ws context:0x556bfbe5b998 conn:0x556bfbef1158 wsi:0x7f0000000ba0 reason:3
+ 2023-10-20:22:58:19.832 Tx0005F7 DEBUG wsCallback                      301 LWS_CALLBACK_CLIENT_ESTABLISHED(3) status:0 conn:0x556bfbef1158
+ 2023-10-20:22:58:19.832 Tx0005F7 DEBUG notifyStatus                   1187 notifyStatus! [15] ability:1-chat
+ 2023-10-20:22:58:19.832 Tx0005E3 DEBUG waitConnected                   539 http status:101 timeout:0
+ 2023-10-20:22:58:19.833 Tx0005E3  VERB onWriteAble                     526 NetConnection:0x556bfbef1158 onWriteable
+ 2023-10-20:22:58:19.833 Tx0005ED  INFO processEventMsg                 341 process event:15
+ 2023-10-20:22:58:19.833 Tx0005E3  CRIT AIKIT_AsyncChat                 275 AIKIT_AsyncChat ret 0
+ 2023-10-20:22:58:19.833 Tx0005F7  VERB OnWrite                         190 on_writable:0x7f0000000ba0 size:0
+ 2023-10-20:22:58:19.834 Tx0005F7  VERB wsCallback                      393 [chat stat] [sdk_sent] [sid:6] [time: 2023-10-20:22:58:19.834 ]
+ 2023-10-20:22:58:19.834 Tx0005F7 DEBUG addSessionCriticalTRecord      1702 Succeed to get cid 6, record type 1, time 1697813899834215400.
+ 2023-10-20:22:58:19.834 Tx0005F7  VERB wsCallback                      419 sessionid:6 conn:0x556bfbef1158 data sent
+ 2023-10-20:22:58:19.834 Tx0005F7  VERB startCBTimer                    792 start timer,sessionId:6
+ 2023-10-20:22:58:19.834 Tx0005F7  VERB start                            33 Timer start success,sessionId [6] timeout:5000 ms.
