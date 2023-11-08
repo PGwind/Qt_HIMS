@@ -3,9 +3,9 @@
 
 /**************************************************************
 
-Title：dialog.c
+Title：dialog.cpp
 Function: 信息管理二级界面，负载病人信息修改
-Change_Time: 2023/10/31
+Change_Time: 2023/11/7
 
 **************************************************************/
 
@@ -36,19 +36,21 @@ void Dialog::Init()
 
     ui->frame->setStyleSheet("QFrame { border: 1px solid black; }");
 
-
     // 性别
     ui->comboBox_gender->addItem("男");
     ui->comboBox_gender->addItem("女");
+
     // 楼号
     ui->comboBox_build->addItem("1");
     ui->comboBox_build->addItem("2");
     ui->comboBox_build->addItem("3");
     ui->comboBox_build->addItem("4");
+
     // 床号
     ui->comboBox_bed->addItem("1");
     ui->comboBox_bed->addItem("2");
     ui->comboBox_bed->addItem("3");
+
     // 科室
     QStringList items;
     items << "呼吸内科" << "消化内科" << "泌尿内科" << "心内科" << "血液科" << "内分泌科"
@@ -173,9 +175,9 @@ void Dialog::on_pushButton_lock_clicked()
     int id = m_record.value("id").toInt();
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL", "change");
     db.setHostName("121.37.155.243");
-    db.setDatabaseName("ims");
-    db.setUserName("ims");
-    db.setPassword("ims");
+    db.setDatabaseName("hims");
+    db.setUserName("hims");
+    db.setPassword("hims2002");
 
     if (db.open()) {
         //qDebug() << "dialog connect";
@@ -227,7 +229,6 @@ QString Dialog::hashPassword(const QString &password, const QString &salt)
     QByteArray passwordbytes = password.toUtf8();
     passwordbytes.append(saltByteArray);
 
-    // 使用SHA-256哈希算法对密码和盐值进行哈希
     QByteArray hashedPassword = QCryptographicHash::hash(passwordbytes, QCryptographicHash::Sha256);
     return QString(hashedPassword.toHex());
 }
