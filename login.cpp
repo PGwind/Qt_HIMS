@@ -3,9 +3,9 @@
 
 /**************************************************************
 
-Title：login.c
+Title：login.cpp
 Function: 登录界面，账号密码验证，进入不同界面
-Change_Time: 2023/10/31
+Change_Time: 2023/11/7
 
 **************************************************************/
 
@@ -15,6 +15,9 @@ login::login(QWidget *parent) :
     ui(new Ui::login)
 {
     ui->setupUi(this);
+
+    setWindowTitle("用户登录");
+
     Init();
 
 }
@@ -37,9 +40,17 @@ void login::Init()
     QString style = QLatin1String(styleFile.readAll());
     qApp->setStyleSheet(style);
 
-    ui->lineEdit_count->setPlaceholderText("🧑‍💻 Enter Account");
-    ui->lineEdit_passwd->setPlaceholderText("🔒 Enter Password");
-    ui->lineEdit_passwd->setEchoMode(QLineEdit::Password);  // 输入时隐藏
+    ui->lineEdit_count->setPlaceholderText("👋 Account：");
+    ui->lineEdit_passwd->setPlaceholderText("🔒 Password：");
+
+    ui->lineEdit_passwd->setEchoMode(QLineEdit::Password);
+
+    // 位置 ，大小
+    ui->labelCover->setGeometry(105, 50, 220, 50);
+    ui->lineEdit_count->setGeometry(130, 130, 170, 30);
+    ui->lineEdit_passwd->setGeometry(130, 200, 170, 30);
+    ui->btnLogin->setGeometry(145,260,140, 30);
+
 
     // 连接数据库
     DB = QSqlDatabase::addDatabase("QMYSQL", "login");
