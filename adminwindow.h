@@ -72,13 +72,14 @@ private slots:
 
     void on_actPwd_triggered(); // 密码
 
-    void on_tableView_doubleClicked(const QModelIndex &index);
+    void on_tableView_doubleClicked(const QModelIndex &index);  //双击修改
 
-    void onChatButtonClicked();
+    void onChatButtonClicked(); // AI
 
 private:
     Ui::adminWindow *ui;
-    QString loginCount;
+
+    QString loginCount; // 登录账户
     bool power = false; // 最高级用户
 };
 
