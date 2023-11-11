@@ -21,32 +21,6 @@ using namespace std;
 static atomic_bool finish(false);
 string final_result = "";
 
-class SparkCallbacks : public LLMCallbacks
-{
-    void onLLMResult(LLMResult *result, void *usrContext)
-    {
-        int status = result->getStatus();
-        printf(GREEN "%d:%s:%s:%s \n" RESET, status, result->getRole(), result->getContent(), usrContext);
-        final_result += string(result->getContent());
-        if (status == 2)
-        {
-            printf(GREEN "tokens:%d + %d = %d\n" RESET, result->getCompletionTokens(), result->getPromptTokens(), result->getTotalTokens());
-            finish = true;
-        }
-    }
-
-    void onLLMEvent(LLMEvent *event, void *usrContext)
-    {
-        printf(YELLOW "onLLMEventCB\n  eventID:%d eventMsg:%s\n" RESET, event->getEventID(), event->getEventMsg());
-    }
-
-    void onLLMError(LLMError *error, void *usrContext)
-    {
-        printf(RED "onLLMErrorCB\n errCode:%d errMsg:%s \n" RESET, error->getErrCode(), error->getErrMsg());
-        finish = true;
-    }
-};
-
 int initSDK()
 {
     // 全局初始化
