@@ -202,8 +202,9 @@ void MainWindow::selectData()
 void MainWindow::onChatButtonClicked()
 {
     AiDialog *dialog = new AiDialog(this);
-    dialog->setAttribute(Qt::WA_DeleteOnClose);
-    dialog->show();
+//    dialog->setAttribute(Qt::WA_DeleteOnClose);
+    //dialog->show();
+    dialog->openDialog();
 }
 
 // 修改按钮
