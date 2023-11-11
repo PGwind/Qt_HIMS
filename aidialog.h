@@ -27,6 +27,8 @@ public:
     explicit AiDialog(QWidget *parent = nullptr);
     ~AiDialog();
 
+    void openDialog();
+
 private slots:
     void onReadyRead();
 

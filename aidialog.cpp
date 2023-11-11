@@ -19,8 +19,8 @@ AiDialog::AiDialog(QWidget *parent) :
     ui->setupUi(this);
 
     Init();
-
-    InitThread();
+    //openDialog();
+    //InitThread();
 }
 
 AiDialog::~AiDialog()
@@ -41,6 +41,12 @@ AiDialog::~AiDialog()
     //qDebug() << "AiDialog destructor called";
 }
 
+void AiDialog::openDialog()
+{
+    InitThread();  // 初始化线程和 socket
+
+    show();  // 显示对话框
+}
 
 // 界面初始化
 void AiDialog::Init()
@@ -74,6 +80,19 @@ void AiDialog::Init()
 // 线程初始化
 void AiDialog::InitThread()
 {
+    // 确保之前的线程和 socket 已经被删除
+//    if (connectionThread) {
+//        connectionThread->quit();
+//        connectionThread->wait();
+//        delete connectionThread;
+//    }
+
+//    if (socket) {
+//        socket->disconnectFromHost();
+//        socket->close();
+//        delete socket;
+//    }
+
     connectionThread = new QThread;
 
     socket = new QTcpSocket();
@@ -94,7 +113,7 @@ void AiDialog::InitThread()
 void AiDialog::connectToServer()
 {
     QString ipAddress = "47.236.109.14";
-    quint64 port = Q_UINT64_C(1024);
+    quint64 port = Q_UINT64_C(12345);
 
     socket->connectToHost(ipAddress, port);  // 服务器信息
 
