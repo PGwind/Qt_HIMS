@@ -101,7 +101,7 @@
 
 也可以使用我的文件夹 `HIMS_SparkV3.0`，**记得修改相关接口信息**。
 
-建议参考官方文档：[Spark Linux SDK接入文档 | 讯飞开放平台文档中心 (xfyun.cn)](https://www.xfyun.cn/doc/spark/LinuxSDK.html)
+建议我的博客教程：[讯飞免费星火大模型部署教程 – Echo小窝 (liveout.cn)](https://www.liveout.cn/64-2/)
 
 > 注意开放相关端口，默认为 1024
 
